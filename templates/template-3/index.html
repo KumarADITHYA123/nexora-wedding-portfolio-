@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="intro-open">
+<head>
+<!-- Nexora Enterprise Security & Anti-Leak Shield -->
+<script>
+(function(){
+  // Frame-buster redirect (Prevent direct standalone scraping)
+  if (window.top === window.self) {
+    var p = window.location.pathname;
+    var seg = p.split('/').filter(Boolean);
+    var tName = seg.length > 1 ? seg[seg.length - 2] : '';
+    window.location.replace('/' + (tName ? '?preview=' + encodeURIComponent(tName) : ''));
+  }
+  // Disable context menu
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, {capture:true});
+  // Disable DevTools shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) || (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, {capture:true});
+  // Anti-debugging loop
+  setInterval(function(){ try { (function(){}).constructor("debugger")(); } catch(e){} }, 1200);
+})();
+</script>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Venkata Chandra Sekhar &amp; Varsha | Wedding Invitation</title>
+  <meta name="description" content="Wedding invitation of Venkata Chandra Sekhar and Varsha. Join us in celebrating our auspicious union on 23 August 2026."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Venkata Chandra Sekhar &amp; Varsha"/>
+  <meta property="og:title" content="Venkata Chandra Sekhar &amp; Varsha — Wedding Invitation"/>
+  <meta property="og:description" content="Join us as we celebrate our wedding on 23 August 2026. Tap to open the invitation."/>
+  <meta property="og:image" content="assets/intro-image.webp"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Venkata Chandra Sekhar &amp; Varsha — Wedding Invitation"/>
+  <meta name="twitter:description" content="Join us as we celebrate our wedding on 23 August 2026."/>
+  <meta name="twitter:image" content="assets/intro-image.webp"/>
+
+  <!-- Local Offline Stylesheet -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="intro-open">
+
+  <!-- Floating Language Switcher -->
+  <nav class="lang-pill" aria-label="Language selector">
+    <button type="button" class="lang-pill__btn is-active" data-lang="en">EN</button>
+    <button type="button" class="lang-pill__btn" data-lang="te">TE</button>
+    <button type="button" class="lang-pill__btn" data-lang="hi">HI</button>
+  </nav>
+
+  <!-- Background Music Audio Tag -->
+  <audio id="bgMusic" src="assets/music.mp3" loop preload="auto"></audio>
+
+  <!-- Sound Toggle Control (Bottom Left) -->
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle background music" aria-pressed="true">
+    <svg class="icon-volume-on" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"/>
+    </svg>
+    <svg class="icon-volume-off" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M16 9.5l5 5M21 9.5l-5 5"/>
+    </svg>
+  </button>
+
+  <!-- Made By Nexora Branding Pill (Bottom Right) -->
+  <a class="credit-pill" href="https://instagram.com/nexora_invitations" target="_blank" rel="noopener noreferrer" aria-label="Made by Nexora on Instagram" title="Made by Nexora">
+    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <circle cx="17.2" cy="6.8" r="1.15" fill="currentColor"/>
+    </svg>
+    <span>MADE BY NEXORA</span>
+  </a>
+
+  <!-- Section 1: Hero & Intro Video -->
+  <section class="hero" id="hero">
+    <video class="hero__video hero__video--loop" id="heroVideo" playsinline webkit-playsinline muted loop preload="auto" aria-hidden="true">
+      <source src="assets/hero-video.mp4" type="video/mp4"/>
+    </video>
+    <video class="hero__video hero__video--intro" id="introVideo" playsinline webkit-playsinline muted preload="auto" poster="assets/intro-image.webp">
+      <source src="assets/intro-video.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <button class="intro__prompt" id="introPlay" aria-label="Tap to open the invitation">Tap to open</button>
+    <button class="intro__skip" id="introSkip">Skip &rsaquo;</button>
+    <div class="intro__caption" id="introCaption" aria-hidden="true">
+      <p class="intro__caption-line" data-i18n="hero_eyebrow">We're getting married</p>
+      <p class="intro__caption-names" data-i18n="hero_names">Chandra Sekhar <span class="intro__caption-amp">&amp;</span> Varsha</p>
+    </div>
+    <div class="hero__scroll" id="heroScroll" aria-hidden="true">
+      <span class="hero__scroll-word">Scroll</span>
+      <span class="hero__scroll-arrow" aria-hidden="true">&#8964;</span>
+    </div>
+  </section>
+
+  <!-- Section 2: Sacred Invocation (Ganesh) -->
+  <section class="ganesh" id="ganesh" aria-label="Shri Ganeshaya Namah">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+      <img class="ganesh__img reveal" src="assets/ganesh-image.webp" alt="Shri Ganeshaya Namah — with the blessings of Lord Ganesha"/>
+      <p class="ganesh__blessing reveal telugu-text" data-i18n="ganesh_blessing" style="font-size: clamp(1.2rem, 5vw, 1.6rem); color: var(--gold); letter-spacing: 0.08em; text-align: center; margin-top: 1.25rem; font-weight: 600; line-height: 1.6;">
+        ॥ శ్రీరస్తు శుభమస్తు ॥<br/>
+        <span style="font-size: 0.88em; color: var(--maroon); font-weight: 500;">॥ శ్రీ విఘ్నేశ్వరాయ నమః ॥</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 3: Monogram Crest -->
+  <section class="monogram" id="monogram" aria-label="Chandra Sekhar and Varsha monogram">
+    <img class="monogram__crest reveal" src="assets/monogram-cut.webp" alt="Ornate floral crest with monogram — Chandra Sekhar and Varsha"/>
+  </section>
+
+  <!-- Section 4: Live Countdown Timer -->
+  <section class="countdown" id="countdown" aria-label="Countdown to the wedding">
+    <span class="countdown__sparkle countdown__sparkle--1" aria-hidden="true">&#10022;</span>
+    <span class="countdown__sparkle countdown__sparkle--2" aria-hidden="true">&#10022;</span>
+    <span class="countdown__sparkle countdown__sparkle--3" aria-hidden="true">&#10022;</span>
+    <div class="countdown__inner">
+      <h2 class="countdown__title">Countdown</h2>
+      <p class="countdown__subtitle">Until 23 August 2026 &middot; Muhurtham 5:45 AM</p>
+      <div class="countdown__timer" role="timer">
+        <div class="countdown__unit">
+          <span class="countdown__num" data-days>—</span>
+          <span class="countdown__label" data-i18n="count_days">Days</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__num" data-hours>—</span>
+          <span class="countdown__label" data-i18n="count_hours">Hours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__num" data-minutes>—</span>
+          <span class="countdown__label">Minutes</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__num" data-seconds>—</span>
+          <span class="countdown__label">Seconds</span>
+        </div>
+      </div>
+    </div>
+    <img class="countdown__curtain countdown__curtain--left" src="assets/curatin op1 left.webp" alt="" aria-hidden="true"/>
+    <img class="countdown__curtain countdown__curtain--right" src="assets/countdown-right.webp" alt="" aria-hidden="true"/>
+  </section>
+
+  <!-- Section 5: Welcome Note Frame -->
+  <section class="welcome" id="welcome" aria-label="Welcome note">
+    <div class="welcome__frame-wrap reveal">
+      <img class="welcome__frame" src="assets/welcome-frame.webp" alt="" aria-hidden="true"/>
+      <div class="welcome__content">
+        <p class="welcome__heading">Two hearts,<br/>one sacred union.</p>
+        <span class="welcome__rule" aria-hidden="true"></span>
+        <p class="welcome__body">As we embark on this eternal voyage of love, harmony, and togetherness, we warmly invite you and your family to bless us with your cherished presence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Two Families Become One (Curtains Parallax) -->
+  <section class="family" id="family" aria-label="Our families">
+    <div class="family__curtains-wrap" style="position:absolute;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none;">
+      <img class="family__curtain family__curtain--left" src="assets/curtain-left.webp" alt="" aria-hidden="true"/>
+      <img class="family__curtain family__curtain--center" src="assets/curtain-middle.webp" alt="" aria-hidden="true"/>
+      <img class="family__curtain family__curtain--right" src="assets/curtain-right.webp" alt="" aria-hidden="true"/>
+    </div>
+    <div class="family__inner">
+      <p class="family__eyebrow reveal">With the blessings of our families</p>
+      <h2 class="family__title reveal">Two Families Become One</h2>
+      <span class="family__rule reveal" aria-hidden="true"></span>
+      <p class="family__intro reveal">Joined in love &middot; Bound by tradition.</p>
+      <div class="family__groups reveal">
+        <div class="family__group">
+          <span class="family__role">The Bride</span>
+          <h3 class="family__name">Chi. La. Sow.<br/>Varsha</h3>
+          <p class="family__rel">Daughter of</p>
+          <p class="family__parents">Sri Vaitla Gopal<br/>Venkatachalam (Late)<br/>&amp; Smt. Sarada</p>
+        </div>
+        <span class="family__amp" aria-hidden="true">&amp;</span>
+        <div class="family__group">
+          <span class="family__role">The Groom</span>
+          <h3 class="family__name">Chi. Venkata<br/>Chandra Sekhar</h3>
+          <p class="family__rel">Son of</p>
+          <p class="family__parents">Sri Venkata Ratnam<br/>&amp; Smt. Veera Kumari</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Celebrations Frame (4 Events) -->
+  <section class="events" id="events" aria-label="Wedding events">
+    <h2 class="events__title reveal">Celebrations</h2>
+    <span class="events__rule" aria-hidden="true"></span>
+    <p class="events__venue-eyebrow reveal">The Venue</p>
+    <h3 class="events__venue-name reveal">Sri Venkateswara Kalyana Vedika</h3>
+    <p class="events__venue-addr reveal">Road No. 12, Banjara Hills, Hyderabad</p>
+    <img class="events__venue reveal" src="assets/venue.webp" alt="Wedding Venue — Sri Venkateswara Kalyana Vedika"/>
+    <div class="events__frame reveal">
+      <img class="events__bg" src="assets/events-frame-final.webp" alt="" aria-hidden="true"/>
+      <div class="events__content">
+        <ul class="events__list">
+          <li class="event">
+            <span class="event__name">Mehendi &amp; Nalangu</span>
+            <span class="event__when">22 August 2026<br/>Saturday</span>
+            <span class="event__time">4:00 PM</span>
+          </li>
+          <li class="event">
+            <span class="event__name">Sangeet</span>
+            <span class="event__when">22 August 2026<br/>Saturday</span>
+            <span class="event__time">7:00 PM</span>
+          </li>
+          <li class="event">
+            <span class="event__name">Muhurtham</span>
+            <span class="event__when">23 August 2026<br/>Sunday</span>
+            <span class="event__time">5:45 AM</span>
+          </li>
+          <li class="event">
+            <span class="event__name">Reception</span>
+            <span class="event__when">23 August 2026<br/>Sunday</span>
+            <span class="event__time">7:00 PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a class="events__maps reveal" href="https://www.google.com/maps/search/?api=1&query=Sri+Venkateswara+Kalyana+Vedika+Banjara+Hills+Hyderabad" target="_blank" rel="noopener noreferrer">
+      <svg class="events__pin" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+      </svg>
+      Open in Maps
+    </a>
+  </section>
+
+  <!-- Section 8: The Engagement (Nichayathartham) -->
+  <section class="events" id="engagement" aria-label="Engagement">
+    <h2 class="events__title reveal">The Engagement</h2>
+    <span class="events__rule" aria-hidden="true"></span>
+    <p class="events__venue-eyebrow reveal">The Venue</p>
+    <h3 class="events__venue-name reveal">Sri Venkateswara Kalyana Vedika</h3>
+    <p class="events__venue-addr reveal">Road No. 12, Banjara Hills, Hyderabad</p>
+    <img class="events__venue reveal" src="assets/engagement-venue.webp" alt="Engagement Venue"/>
+    <div class="events__frame reveal">
+      <img class="events__bg" src="assets/engagement-frame.webp" alt="" aria-hidden="true"/>
+      <div class="events__content">
+        <div class="event">
+          <span class="event__name">Nichayathartham</span>
+          <span class="event__when">22 August 2026<br/>Saturday</span>
+          <span class="event__time">10:30 AM</span>
+        </div>
+      </div>
+    </div>
+    <a class="events__maps reveal" href="https://www.google.com/maps/search/?api=1&query=Sri+Venkateswara+Kalyana+Vedika+Banjara+Hills+Hyderabad" target="_blank" rel="noopener noreferrer">
+      <svg class="events__pin" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+      </svg>
+      Open in Maps
+    </a>
+  </section>
+
+  <!-- Section 9: Dress Code -->
+  <section class="dresscode" id="dresscode" aria-label="Dress code">
+    <h2 class="dresscode__title reveal">Dress Code</h2>
+    <span class="dresscode__rule reveal" aria-hidden="true"></span>
+    <div class="dresscode__cards">
+      <div class="dresscode__card reveal">
+        <h3 class="dresscode__event">Traditional &amp; Festive Splendor</h3>
+        <p class="dresscode__date">22 &middot; 23 August 2026</p>
+        <img class="dresscode__outfits" src="assets/dresscode-outfits.webp" alt="Engagement and Wedding Dress Code — Traditional Indian &amp; Festive Elegance"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: Closing Scene -->
+  <section class="closing" id="closing" aria-label="With love, Chandra Sekhar and Varsha">
+    <p class="closing__wish">With hearts full of joy and love, we eagerly look forward to sharing this momentous beginning with you and your family.</p>
+    <h2 class="closing__names" data-i18n="closing_names">
+      <span class="closing__name">Varsha</span>
+      <span class="closing__amp" aria-hidden="true">&amp;</span>
+      <span class="closing__name">Chandra Sekhar</span>
+    </h2>
+    <span class="closing__rule" aria-hidden="true"></span>
+    <img class="closing__scene reveal" src="assets/closing-image.webp" alt="Varsha and Chandra Sekhar together"/>
+  </section>
+
+  <!-- Production Controller -->
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

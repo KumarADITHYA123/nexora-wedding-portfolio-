@@ -1738,7 +1738,222 @@
       height: 32px;
     }
 
-        /* ==========================================================================
+            /* ==========================================================================
+       NEXORA ENTERPRISE IN-FRAME LIVE PREVIEW VIEWER (EXACT REFERENCE REPLICATION)
+       ========================================================================== */
+    .nexora-frame-viewer {
+      position: fixed;
+      inset: 0;
+      background: #3C271C;
+      z-index: 100000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .nexora-frame-viewer.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Outer Shell simulating the reference image frame */
+    .frame-viewer-shell {
+      width: min(94vw, 410px);
+      height: min(90vh, 790px);
+      background: #FAF7F2;
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .frame-viewer-shell.expanded {
+      width: min(98vw, 860px);
+      height: 94vh;
+      border-radius: 18px;
+    }
+
+    /* Top Bar inside Frame: [🟢 LIVE PREVIEW · NAME] [← EXIT] */
+    .frame-top-bar {
+      height: 48px;
+      padding: 0 1rem;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(232, 224, 215, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 30;
+    }
+
+    .frame-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 0 8px #25D366;
+      display: inline-block;
+      animation: pulseLive 1.8s infinite;
+    }
+
+    @keyframes pulseLive {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .live-text {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #5A4E48;
+    }
+
+    .frame-exit-btn {
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .frame-exit-btn:hover {
+      background: var(--color-burgundy);
+      color: #FFFFFF;
+      border-color: var(--color-burgundy);
+    }
+
+    /* Live Preview Stage with Watermark Shield */
+    .frame-stage-wrapper {
+      flex: 1;
+      position: relative;
+      background: #FAF7F2;
+      overflow: hidden;
+    }
+
+    /* Nexora Watermark Overlay Pattern (Non-intrusive diagonal repeating pattern matching reference) */
+    .preview-watermark-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      z-index: 20;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='140' viewBox='0 0 280 140'%3E%3Ctext x='20' y='80' font-family='serif' font-size='13' font-weight='600' fill='%23C5A059' opacity='0.16' transform='rotate(-25 140 70)' letter-spacing='2'%3ENexora Wedding Studio%3C/text%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: multiply;
+    }
+
+    /* Template iFrame */
+    .preview-template-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #FAF7F2;
+    }
+
+    /* Bottom Control Strip below the frame */
+    .frame-bottom-bar {
+      width: min(94vw, 410px);
+      padding: 0.75rem 0.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .frame-viewer-shell.expanded ~ .frame-bottom-bar,
+    .nexora-frame-viewer.is-expanded .frame-bottom-bar {
+      width: min(98vw, 860px);
+    }
+
+    .frame-hint-text {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: #D6A87C;
+      letter-spacing: 0.02em;
+    }
+
+    .frame-expand-btn {
+      background: transparent;
+      border: 1px solid rgba(214, 168, 124, 0.45);
+      color: #F5EFEB;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--transition-fast);
+    }
+
+    .frame-expand-btn:hover {
+      background: rgba(214, 168, 124, 0.15);
+      border-color: #D6A87C;
+    }
+
+    /* Floating WhatsApp Button in Live Preview */
+    .frame-floating-wa {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--color-wa-green);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+      z-index: 100010;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all var(--transition-fast);
+    }
+
+    .frame-floating-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.55);
+    }
+
+    /* ==========================================================================
        FLOATING DUAL ACTION DOCK (PREVIEW DEMO + BUY NOW)
        ========================================================================== */
     .card-action-dock {
@@ -4195,6 +4410,92 @@ Guests: ' + count);
         });
       }
 
+      
+      // 8. NEXORA ENTERPRISE LIVE TEMPLATE VIEWER & SECURITY SHIELD
+      const templateRegistry = {
+        'template-0': { name: 'Royal Heritage', url: 'templates/template-0/index.html' },
+        'rammandir': { name: 'Ram Mandir Divine', url: 'templates/rammandir/index.html' },
+        'template-1': { name: 'Traditional Kalyanam', url: 'templates/template-1/index.html' },
+        'template-2': { name: 'Golden Mandap', url: 'templates/template-2/index.html' },
+        'template-3': { name: 'Crimson Royal', url: 'templates/template-3/index.html' },
+        'template-4': { name: 'Vedic Mangalyam', url: 'templates/template-4/index.html' },
+        'template-5': { name: 'Shahi Darbar Nikah', url: 'templates/template-5/index.html' }
+      };
+
+      const nexoraViewer = document.getElementById('nexoraFrameViewer');
+      const frameViewerShell = document.getElementById('frameViewerShell');
+      const frameLiveTitle = document.getElementById('frameLiveTitle');
+      const previewIframe = document.getElementById('previewTemplateIframe');
+      const frameWaOrderBtn = document.getElementById('frameWaOrderBtn');
+      const frameWaOrderText = document.getElementById('frameWaOrderText');
+      const expandBtnLabel = document.getElementById('expandBtnLabel');
+
+      window.openNexoraViewer = function (templateKey) {
+        if (!nexoraViewer) return;
+        const info = templateRegistry[templateKey] || templateRegistry['template-0'];
+        const rate = (currentCatalogType === 'savedates') ? 5000 : 10000;
+        
+        frameLiveTitle.textContent = 'LIVE PREVIEW \u2022 ' + info.name.toUpperCase();
+        frameWaOrderText.textContent = 'Book ' + info.name + ' \u2022 \u20b9' + rate.toLocaleString('en-IN');
+        frameWaOrderBtn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I am previewing the ' + info.name + ' template and want to order it for \u20b9' + rate.toLocaleString('en-IN') + '.');
+        
+        previewIframe.src = info.url;
+        nexoraViewer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeNexoraViewer = function () {
+        if (!nexoraViewer) return;
+        nexoraViewer.classList.remove('active');
+        previewIframe.src = 'about:blank'; // Stop audio and scripts in template
+        document.body.style.overflow = '';
+        if (frameViewerShell) frameViewerShell.classList.remove('expanded');
+        if (expandBtnLabel) expandBtnLabel.textContent = 'EXPAND';
+      };
+
+      window.toggleViewerExpand = function () {
+        if (!frameViewerShell) return;
+        const isExp = frameViewerShell.classList.toggle('expanded');
+        expandBtnLabel.textContent = isExp ? 'COLLAPSE' : 'EXPAND';
+      };
+
+      // Check URL query on load: ?preview=template-0 or ?preview=rammandir
+      window.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const prevKey = urlParams.get('preview');
+        if (prevKey && templateRegistry[prevKey]) {
+          setTimeout(function () { openNexoraViewer(prevKey); }, 400);
+        }
+      });
+
+      // 9. SENIOR-GRADE ENTERPRISE ANTI-INSPECT & CODE LEAKAGE SHIELD
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        return false;
+      }, { capture: true });
+
+      document.addEventListener('keydown', function (e) {
+        // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U, Ctrl+S
+        if (
+          e.key === 'F12' ||
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) ||
+          (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))
+        ) {
+          e.preventDefault();
+          return false;
+        }
+        if (e.key === 'Escape') {
+          closeNexoraViewer();
+        }
+      }, { capture: true });
+
+      // Anti-debugging loop (Traps DevTools debugger if forced open)
+      setInterval(function () {
+        try {
+          (function () { return false; })["constructor"]("debugger")();
+        } catch (err) {}
+      }, 1500);
+
       window.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
           closeTemplateDemo();
@@ -4204,5 +4505,53 @@ Guests: ' + count);
 
     })();
   </script>
+  <!-- ======================================================================
+       NEXORA ENTERPRISE IN-FRAME LIVE PREVIEW VIEWER (MATCHING REFERENCE IMAGE)
+       ====================================================================== -->
+  <div class="nexora-frame-viewer" id="nexoraFrameViewer" aria-hidden="true">
+    
+    <!-- Phone / Viewport Shell Frame -->
+    <div class="frame-viewer-shell" id="frameViewerShell">
+      
+      <!-- Top Bar inside Frame: [🟢 LIVE PREVIEW · NAME] [← EXIT] -->
+      <div class="frame-top-bar">
+        <div class="frame-live-indicator">
+          <span class="live-dot"></span>
+          <span class="live-text" id="frameLiveTitle">LIVE PREVIEW &bull; ROYAL HERITAGE</span>
+        </div>
+        <button class="frame-exit-btn" onclick="closeNexoraViewer()" aria-label="Exit live preview">
+          &larr; EXIT
+        </button>
+      </div>
+
+      <!-- Live Preview Stage with Protected Watermark Overlay Shield -->
+      <div class="frame-stage-wrapper">
+        <!-- Repeating Diagonal Watermark Pattern (Nexora Wedding Studio) -->
+        <div class="preview-watermark-overlay" id="previewWatermarkOverlay" aria-hidden="true"></div>
+        
+        <!-- Live Template Embedded IFrame (Protected against inspection / standalone opening) -->
+        <iframe class="preview-template-iframe" id="previewTemplateIframe" src="about:blank" title="Nexora Live Wedding Invitation Preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Bar below the frame -->
+    <div class="frame-bottom-bar">
+      <span class="frame-hint-text">Interactive demo &bull; tap and explore</span>
+      <button class="frame-expand-btn" id="btnToggleExpand" onclick="toggleViewerExpand()" aria-label="Toggle Fullscreen Expand">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        <span id="expandBtnLabel">EXPAND</span>
+      </button>
+    </div>
+
+    <!-- Floating WhatsApp Action Button while previewing -->
+    <a class="frame-floating-wa" id="frameWaOrderBtn" href="https://wa.me/919032684083" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.97.57 3.81 1.56 5.37L2 22l4.76-1.53c1.51.93 3.29 1.48 5.27 1.48 5.536 0 10.031-4.495 10.031-10.031S17.567 2 12.031 2zm0 18.25c-1.74 0-3.34-.51-4.71-1.39l-.34-.21-2.82.91.91-2.75-.23-.37c-.96-1.42-1.52-3.1-1.52-4.91 0-4.55 3.7-8.25 8.25-8.25s8.25 3.7 8.25 8.25-3.7 8.25-8.25 8.25zm4.52-6.18c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
+      </svg>
+      <span class="wa-order-text" id="frameWaOrderText">Book This Design &bull; &#8377;10,000</span>
+    </a>
+
+  </div>
 </body>
 </html>

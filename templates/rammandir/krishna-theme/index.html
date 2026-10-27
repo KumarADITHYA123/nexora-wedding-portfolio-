@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Nexora Enterprise Security & Anti-Leak Shield -->
+<script>
+(function(){
+  // Frame-buster redirect (Prevent direct standalone scraping)
+  if (window.top === window.self) {
+    var p = window.location.pathname;
+    var seg = p.split('/').filter(Boolean);
+    var tName = seg.length > 1 ? seg[seg.length - 2] : '';
+    window.location.replace('/' + (tName ? '?preview=' + encodeURIComponent(tName) : ''));
+  }
+  // Disable context menu
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, {capture:true});
+  // Disable DevTools shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) || (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, {capture:true});
+  // Anti-debugging loop
+  setInterval(function(){ try { (function(){}).constructor("debugger")(); } catch(e){} }, 1200);
+})();
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wedding Invitation of Radha & Krishna. Join us to celebrate our eternal love.">
+    <meta property="og:title" content="Radha & Krishna | Wedding Invitation">
+    <meta property="og:description" content="Wedding Invitation of Radha & Krishna. Join us to celebrate our eternal love.">
+    <meta property="og:type" content="website">
+    <title>Radha & Krishna | Wedding Invitation</title>
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <!-- External JS -->
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- 1. LOADING SCREEN -->
+    <div id="loader" class="loader-screen">
+        <div class="loader-content">
+            <svg class="loader-lotus" viewBox="0 0 100 100" width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 10 C60 40 80 50 50 90 C20 50 40 40 50 10 Z" fill="#D4A843" opacity="0.8">
+                    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4s" repeatCount="indefinite" />
+                </path>
+                <path d="M50 20 C65 45 75 55 50 85 C25 55 35 45 50 20 Z" fill="#FFF8E7" opacity="0.9">
+                    <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="4s" repeatCount="indefinite" />
+                </path>
+            </svg>
+            <div class="loader-text">ॐ</div>
+        </div>
+    </div>
+
+    <main>
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-background-image"></div>
+            <div class="hero-background-overlay"></div>
+            
+            <!-- Floating Animated Particles Layer -->
+            <div class="hero-particles">
+                <span class="particle petal" style="--x:5%;--size:18px;--dur:8s;--delay:0s">🌸</span>
+                <span class="particle petal" style="--x:15%;--size:14px;--dur:10s;--delay:1.5s">🪷</span>
+                <span class="particle petal" style="--x:25%;--size:20px;--dur:7s;--delay:3s">🌸</span>
+                <span class="particle sparkle" style="--x:35%;--size:8px;--dur:6s;--delay:0.5s">✦</span>
+                <span class="particle petal" style="--x:45%;--size:16px;--dur:9s;--delay:2s">🪷</span>
+                <span class="particle sparkle" style="--x:55%;--size:10px;--dur:5s;--delay:1s">✧</span>
+                <span class="particle petal" style="--x:65%;--size:22px;--dur:11s;--delay:4s">🌸</span>
+                <span class="particle sparkle" style="--x:72%;--size:6px;--dur:7s;--delay:2.5s">✦</span>
+                <span class="particle petal" style="--x:80%;--size:15px;--dur:8s;--delay:0.8s">🪷</span>
+                <span class="particle sparkle" style="--x:88%;--size:12px;--dur:6s;--delay:3.5s">✧</span>
+                <span class="particle petal" style="--x:95%;--size:17px;--dur:9s;--delay:1.2s">🌸</span>
+                <span class="particle sparkle" style="--x:10%;--size:7px;--dur:5.5s;--delay:4.5s">✦</span>
+                <span class="particle sparkle" style="--x:50%;--size:9px;--dur:4.5s;--delay:2.8s">✧</span>
+                <span class="particle petal" style="--x:38%;--size:13px;--dur:12s;--delay:5s">🪷</span>
+                <span class="particle sparkle" style="--x:78%;--size:11px;--dur:6.5s;--delay:0.3s">✦</span>
+            </div>
+
+            <!-- Radha Krishna Hero Image -->
+            <div class="hero-divine-image">
+                <div class="hero-image-glow"></div>
+                <img src="images/radha-krishna-hero.jpg" alt="Radha Krishna Divine Art" class="hero-rk-img">
+                <div class="hero-image-border"></div>
+            </div>
+
+            <!-- Text Content Below Image -->
+            <div class="hero-content">
+                <div class="hero-small-text hindi-text">श्री गणेशाय नमः</div>
+                
+                <div class="hero-flute-container">
+                    <svg class="flute-svg" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="15" width="180" height="10" rx="5" fill="#D4A843"/>
+                        <circle cx="50" cy="20" r="2" fill="#2C1810"/>
+                        <circle cx="70" cy="20" r="2" fill="#2C1810"/>
+                        <circle cx="90" cy="20" r="2" fill="#2C1810"/>
+                        <circle cx="110" cy="20" r="2" fill="#2C1810"/>
+                        <circle cx="130" cy="20" r="2" fill="#2C1810"/>
+                        <circle cx="150" cy="20" r="2" fill="#2C1810"/>
+                        <path d="M20 15 Q10 5 0 20 Q10 35 20 25 Z" fill="#006D5B"/>
+                        <circle cx="10" cy="20" r="2" fill="#D4A843"/>
+                    </svg>
+                </div>
+
+                <h1 class="hero-name-large script-text">Radha</h1>
+                
+                <div class="hero-ampersand-container">
+                    <svg class="lotus-svg-small" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 5 C30 20 40 25 25 45 C10 25 20 20 25 5 Z" fill="#D4A843"/>
+                        <path d="M25 15 C32 25 38 30 25 40 C12 30 18 25 25 15 Z" fill="#FF6F00" opacity="0.6"/>
+                    </svg>
+                    <span class="hero-ampersand">&amp;</span>
+                    <svg class="lotus-svg-small" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 5 C30 20 40 25 25 45 C10 25 20 20 25 5 Z" fill="#D4A843"/>
+                        <path d="M25 15 C32 25 38 30 25 40 C12 30 18 25 25 15 Z" fill="#FF6F00" opacity="0.6"/>
+                    </svg>
+                </div>
+                
+                <h1 class="hero-name-large script-text">Krishna</h1>
+                
+                <div class="hero-subtitle body-text-italic">are getting married</div>
+                
+                <div class="hero-date heading-text">29 • August • 2026</div>
+                
+                <div class="hero-scroll-indicator">
+                    <svg viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 5 L20 15 L35 5" fill="none" stroke="#D4A843" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INVITATION SECTION -->
+        <section id="invitation" class="invitation-section">
+            <div class="invitation-container" data-aos="fade-in">
+                <img src="images/invitation-border.jpg" alt="Decorative border" class="invitation-border-img">
+                <div class="invitation-inner">
+                    <h2 class="invitation-heading hindi-text">सादर आमंत्रण</h2>
+                    <p class="invitation-text body-text">
+                        Together with the blessings of Lord Krishna and their beloved families, Mr. & Mrs. Sharma and Mr. & Mrs. Patel request the honor of your gracious presence at the wedding celebration of their children.
+                    </p>
+                    <div class="invitation-divider">
+                        <div class="divider-line"></div>
+                        <svg class="divider-lotus" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M25 5 C30 20 40 25 25 45 C10 25 20 20 25 5 Z" fill="#D4A843"/>
+                        </svg>
+                        <div class="divider-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. COUPLE SECTION -->
+        <section id="couple" class="couple-section">
+            <h2 class="section-title heading-text" data-aos="fade-up">The Couple</h2>
+            <div class="couple-grid">
+                <!-- Card 1: Radha -->
+                <div class="couple-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="couple-image-frame">
+                        <img src="images/couple-frame.jpg" alt="Decorative frame" class="couple-frame-img">
+                        <span class="couple-initial heading-text">R</span>
+                    </div>
+                    <h3 class="couple-name script-text">Radha Sharma</h3>
+                    <p class="couple-subtitle body-text-italic">Daughter of</p>
+                    <p class="couple-parents body-text">Mr. Rajesh & Mrs. Sunita Sharma</p>
+                    <p class="couple-bio body-text">A beautiful soul with a heart full of devotion and grace.</p>
+                </div>
+                
+                <!-- Card 2: Krishna -->
+                <div class="couple-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="couple-image-frame">
+                        <img src="images/couple-frame.jpg" alt="Decorative frame" class="couple-frame-img">
+                        <span class="couple-initial heading-text">K</span>
+                    </div>
+                    <h3 class="couple-name script-text">Krishna Patel</h3>
+                    <p class="couple-subtitle body-text-italic">Son of</p>
+                    <p class="couple-parents body-text">Mr. Devendra & Mrs. Meena Patel</p>
+                    <p class="couple-bio body-text">A charming companion bringing joy and love to every moment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. COUNTDOWN SECTION -->
+        <section id="countdown" class="countdown-section">
+            <div class="countdown-container" data-aos="fade-in">
+                <div class="countdown-box">
+                    <span class="countdown-number heading-text" id="cd-days">00</span>
+                    <span class="countdown-label body-text">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number heading-text" id="cd-hours">00</span>
+                    <span class="countdown-label body-text">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number heading-text" id="cd-minutes">00</span>
+                    <span class="countdown-label body-text">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number heading-text" id="cd-seconds">00</span>
+                    <span class="countdown-label body-text">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. EVENTS TIMELINE -->
+        <section id="events" class="events-section">
+            <h2 class="events-title heading-text gsap-title">Wedding Celebrations</h2>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Event 1: Mehendi -->
+                <div class="event-card left gsap-timeline-card">
+                    <div class="event-card-content">
+                        <div class="event-image">
+                            <img src="images/event-mehendi.jpg" alt="Mehendi">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-icon">🌸</div>
+                            <h3 class="event-card__name heading-text">Mehendi</h3>
+                            <p class="event-card__date body-text-italic">26th Aug 2026, Wednesday</p>
+                            <p class="event-card__time body-text">4:00 PM</p>
+                            <p class="event-card__venue body-text">Sharma Residence, Pune</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2: Sangeet -->
+                <div class="event-card right gsap-timeline-card">
+                    <div class="event-card-content">
+                        <div class="event-image">
+                            <img src="images/event-sangeet.jpg" alt="Sangeet">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-icon">🎵</div>
+                            <h3 class="event-card__name heading-text">Sangeet</h3>
+                            <p class="event-card__date body-text-italic">27th Aug 2026, Thursday</p>
+                            <p class="event-card__time body-text">7:00 PM</p>
+                            <p class="event-card__venue body-text">Grand Peacock Hall, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Haldi -->
+                <div class="event-card left gsap-timeline-card">
+                    <div class="event-card-content">
+                        <div class="event-image">
+                            <img src="images/event-haldi.jpg" alt="Haldi">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-icon">☀️</div>
+                            <h3 class="event-card__name heading-text">Haldi</h3>
+                            <p class="event-card__date body-text-italic">28th Aug 2026, Friday</p>
+                            <p class="event-card__time body-text">10:00 AM</p>
+                            <p class="event-card__venue body-text">Sharma Residence, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4: Wedding Ceremony -->
+                <div class="event-card right gsap-timeline-card">
+                    <div class="event-card-content">
+                        <div class="event-image">
+                            <img src="images/event-wedding.jpg" alt="Wedding">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-icon">🪔</div>
+                            <h3 class="event-card__name heading-text">Wedding Ceremony</h3>
+                            <p class="event-card__date body-text-italic">29th Aug 2026, Saturday</p>
+                            <p class="event-card__time body-text">11:30 AM</p>
+                            <p class="event-card__venue body-text">ISKCON Temple, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5: Reception -->
+                <div class="event-card left gsap-timeline-card">
+                    <div class="event-card-content">
+                        <div class="event-image">
+                            <img src="images/event-reception.jpg" alt="Reception">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-icon">✨</div>
+                            <h3 class="event-card__name heading-text">Reception</h3>
+                            <p class="event-card__date body-text-italic">29th Aug 2026, Saturday</p>
+                            <p class="event-card__time body-text">7:00 PM</p>
+                            <p class="event-card__venue body-text">Royal Krishna Banquet, Pune</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. VENUE SECTION -->
+        <section id="venue" class="venue-section">
+            <div class="venue-container" data-aos="fade-up">
+                <div class="venue-decorative-frame">
+                    <h2 class="venue-title heading-text">The Venue</h2>
+                    <div class="venue-map-placeholder">
+                        <p class="body-text">ISKCON Temple<br>Camp, Pune, Maharashtra 411001</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. GALLERY SECTION -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="gallery-title heading-text" data-aos="fade-in">Moments of Love</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/gallery-mehendi.jpg" alt="Mehendi ceremony" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Mehendi</span></div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/gallery-jewelry.jpg" alt="Bridal jewelry" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Jewelry</span></div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/gallery-lotus.jpg" alt="Lotus flowers" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Blessings</span></div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="images/gallery-mandap.jpg" alt="Wedding mandap" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Mandap</span></div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                    <img src="images/gallery-rangoli.jpg" alt="Rangoli art" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Rangoli</span></div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+                    <img src="images/gallery-diyas.jpg" alt="Diyas and flowers" class="gallery-img" loading="lazy">
+                    <div class="gallery-overlay"><span>Diyas</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. RSVP SECTION -->
+        <section id="rsvp" class="rsvp-section">
+            <div class="rsvp-container" data-aos="fade-up">
+                <h2 class="rsvp-title heading-text">Join Our Celebration</h2>
+                <form class="rsvp-form" action="#" method="POST" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="fullName" class="body-text">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required class="form-control body-text">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="body-text">Email Address</label>
+                        <input type="email" id="email" name="email" required class="form-control body-text">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests" class="body-text">Number of Guests</label>
+                        <select id="guests" name="guests" class="form-control body-text">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group radio-group">
+                        <label class="radio-label body-text">
+                            <input type="radio" name="attending" value="yes" checked>
+                            <span>Happily Accept</span>
+                        </label>
+                        <label class="radio-label body-text">
+                            <input type="radio" name="attending" value="no">
+                            <span>Regretfully Decline</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="body-text">Message for the Couple</label>
+                        <textarea id="message" name="message" rows="4" class="form-control body-text"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn heading-text">Send RSVP</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 10. FOOTER -->
+    <footer id="footer" class="footer-section">
+        <div class="footer-content">
+            <h3 class="footer-greeting hindi-text">Jai Shri Krishna 🙏</h3>
+            <div class="footer-divider">
+                <svg class="footer-lotus" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 5 C30 20 40 25 25 45 C10 25 20 20 25 5 Z" fill="#D4A843"/>
+                </svg>
+            </div>
+            <p class="footer-credit body-text">Made with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- 11. FLOATING MUSIC BUTTON -->
+    <button id="music-toggle" class="music-btn" aria-label="Toggle Music">
+        🎵
+    </button>
+
+</body>
+</html>

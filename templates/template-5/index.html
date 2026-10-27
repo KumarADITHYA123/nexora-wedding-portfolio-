@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" class="light" translate="no" style="color-scheme: light only">
+  <head>
+<!-- Nexora Enterprise Security & Anti-Leak Shield -->
+<script>
+(function(){
+  // Frame-buster redirect (Prevent direct standalone scraping)
+  if (window.top === window.self) {
+    var p = window.location.pathname;
+    var seg = p.split('/').filter(Boolean);
+    var tName = seg.length > 1 ? seg[seg.length - 2] : '';
+    window.location.replace('/' + (tName ? '?preview=' + encodeURIComponent(tName) : ''));
+  }
+  // Disable context menu
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, {capture:true});
+  // Disable DevTools shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) || (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, {capture:true});
+  // Anti-debugging loop
+  setInterval(function(){ try { (function(){}).constructor("debugger")(); } catch(e){} }, 1200);
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding of Venkata Chandra Sekhar &amp; Varsha</title>
+    <meta name="google" content="notranslate">
+    <meta name="description" content="Wedding Invitation of Venkata Chandra Sekhar &amp; Varsha | MADE BY NEXORA">
+    
+    <!-- Local Fonts -->
+    <link rel="stylesheet" href="assets/fonts.css">
+    <link rel="stylesheet" href="assets/index.css">
+
+    <!-- Deferred Application Scripts -->
+    <script src="assets/index.js" defer></script>
+    <script src="festivities.js" defer></script>
+    <script src="parallax.js" defer></script>
+    <script src="credit-button.js" defer></script>
+  </head>
+
+  <body>
+    <!-- React Root Mount -->
+    <div id="root"></div>
+
+    
+  </body>
+</html>

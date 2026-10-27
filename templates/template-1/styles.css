@@ -1,0 +1,1905 @@
+/* ============================================================
+   Aditya & Meenakshi — mobile-first wedding invitation
+   Base styles target a 360–430px phone. Wider screens are
+   progressive enhancements via min-width queries only.
+   ============================================================ */
+
+:root {
+  /* Palette pulled from the hero watercolour */
+  --cream:      #FBF6EC;
+  --cream-deep: #F3E9D6;
+  --gold:       #C2953C;
+  --gold-lite:  #E3C583;
+  --gold-deep:  #8A6620;
+  --maroon:     #6E2A24;
+  --maroon-lite:#8E463C;
+  --leaf:       #4F6F52;
+  --lotus:      #D98A94;
+  --ink:        #3A2E23;
+  --ink-soft:   #6B5A49;
+
+  /* Cinzel carries the names and headings, Cormorant the running text.
+     --regional is applied to Indic strings (Telugu / Tamil), which Cormorant cannot set. */
+  --serif:    "Cormorant Garamond", Georgia, serif;
+  --title:    "Cinzel", Georgia, serif;
+  --script:   "Cinzel", Georgia, serif;
+  --telugu:   "Tiro Telugu", "Nirmala UI", "Gautami", Georgia, serif;
+  --tamil:    "Tiro Telugu", "Nirmala UI", "Gautami", "Tiro Tamil", Georgia, serif;
+
+  /* Fluid type: phone value first, ceiling for larger screens */
+  --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.95rem);
+  --step-0:  clamp(1.02rem, 0.96rem + 0.3vw, 1.18rem);
+  --step-1:  clamp(1.35rem, 1.15rem + 1.0vw, 1.9rem);
+  --step-2:  clamp(1.9rem,  1.5rem  + 2.0vw, 3.0rem);
+  --step-3:  clamp(2.8rem,  2.0rem  + 4.2vw, 5.5rem);
+
+  --pad: clamp(1.25rem, 5vw, 3rem);
+  --rule: 1px solid rgba(194, 149, 60, 0.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--gold-lite); color: var(--maroon); }
+
+/* ============================ HERO ============================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Keeps the arch crown and the temple in frame on tall phones */
+  object-position: 50% 42%;
+}
+
+/* Softens the sky just enough for the names to hold contrast */
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  /* Centred on the open sky inside the arch (≈38% down the artwork),
+     tall enough to carry the whole name block at either end. */
+  background:
+    radial-gradient(125% 42% at 50% 38%, rgba(251, 246, 236, 0.78) 0%, rgba(251, 246, 236, 0.42) 52%, transparent 78%),
+    linear-gradient(to bottom, rgba(251, 246, 236, 0.28) 0%, transparent 22%, transparent 80%, rgba(110, 42, 36, 0.2) 100%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: max(16svh, 5rem) var(--pad) 0;
+  text-align: center;
+  animation: rise 1.4s cubic-bezier(.2,.7,.3,1) both;
+}
+
+.hero__blessing {
+  margin: 0 0 0.5rem;
+  font-family: var(--tamil);
+  font-size: var(--step-0);
+  color: var(--gold-deep);
+  opacity: 0.85;
+}
+
+.hero__eyebrow {
+  margin: 0 0 0.9rem;
+  font-family: var(--title);
+  font-size: var(--step--1);
+  letter-spacing: 0.16em;   /* fits "…OUR FAMILIES" on a 360px screen */
+  text-transform: uppercase;
+  color: var(--maroon-lite);
+}
+
+.hero__names {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.15rem + 1.8vw, 2.7rem);
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--maroon);
+  text-shadow: 0 1px 0 rgba(251, 246, 236, 0.9), 0 6px 26px rgba(251, 246, 236, 0.75);
+}
+
+.hero__amp {
+  font-family: var(--title);
+  font-size: 0.36em;
+  color: var(--gold-deep);
+  opacity: 0.9;
+}
+
+.hero__tagline {
+  margin: 0.7rem 0 0;
+  font-size: var(--step-1);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--maroon-lite);
+  text-shadow: 0 1px 0 rgba(251, 246, 236, 0.9);
+}
+
+/* ------------------------- Scratch to reveal ------------------------- */
+
+.scratch {
+  position: relative;
+  width: min(19rem, 100%);
+  margin-inline: auto;
+  border-radius: 3px;
+  touch-action: none;          /* let us paint instead of the page scrolling */
+  -webkit-user-select: none;
+  user-select: none;           /* no long-press text selection mid-scratch */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scratch__content { padding: 0.9rem 1rem; }
+
+.scratch__cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  cursor: crosshair;
+  transition: opacity 0.7s ease;
+  box-shadow: 0 2px 14px rgba(110, 42, 36, 0.18);
+}
+
+.scratch.is-revealed .scratch__cover { opacity: 0; pointer-events: none; }
+
+/* Celebration layer — sits above the artwork, never intercepts taps */
+.firecrackers {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ---- The reveal itself ----
+   The panel settles, a gold ring pushes outward, light rakes across the
+   foil's last trace, and the three lines of the date arrive in sequence. */
+
+.scratch.is-revealed .scratch__content {
+  animation: panelSettle 0.7s cubic-bezier(.2,.8,.3,1) both;
+}
+
+/* Expanding gold ring, as if the foil burst outward */
+.scratch.is-revealed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  pointer-events: none;
+  animation: ringOut 0.95s 0.1s cubic-bezier(.2,.7,.3,1) both;
+}
+
+/* Light raking across, the way foil catches the sun */
+.scratch.is-revealed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  pointer-events: none;
+  background: linear-gradient(105deg,
+    transparent 34%,
+    rgba(255, 255, 255, 0.8) 46%,
+    rgba(227, 197, 131, 0.75) 53%,
+    transparent 66%);
+  background-size: 280% 100%;
+  animation: sweep 1.15s 0.2s ease-out both;
+}
+
+/* Each line of the date lands in turn */
+.scratch.is-revealed .scratch__content > span:first-child { animation: lineIn 0.55s 0.18s cubic-bezier(.2,.8,.3,1) both; }
+.scratch.is-revealed .scratch__content > strong           { animation: dateIn 0.95s 0.30s cubic-bezier(.2,.8,.3,1) both; }
+.scratch.is-revealed .scratch__content > span:last-child  { animation: lineIn 0.55s 0.62s cubic-bezier(.2,.8,.3,1) both; }
+
+@keyframes panelSettle {
+  from { transform: scale(0.93); opacity: 0.35; }
+  to   { transform: none; opacity: 1; }
+}
+
+@keyframes ringOut {
+  0%   { transform: scale(0.9);  opacity: 0; }
+  25%  { opacity: 0.95; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+@keyframes sweep {
+  from { background-position: 190% 0; opacity: 1; }
+  to   { background-position: -90% 0; opacity: 0; }
+}
+
+@keyframes lineIn {
+  from { opacity: 0; transform: translateY(9px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes dateIn {
+  0%   { opacity: 0; transform: scale(0.7); filter: blur(7px); letter-spacing: 0.45em; }
+  55%  { opacity: 1; filter: blur(0); }
+  72%  { transform: scale(1.07); text-shadow: 0 0 24px rgba(194, 149, 60, 0.95); }
+  100% { transform: scale(1); text-shadow: 0 0 0 rgba(194, 149, 60, 0); letter-spacing: 0.14em; }
+}
+
+.hero__rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 1.1rem auto 1rem;
+  max-width: 15rem;
+  color: var(--gold);
+}
+.hero__rule span { flex: 1; height: 1px; background: currentColor; opacity: 0.55; }
+.hero__rule i { font-style: normal; font-size: 0.7rem; }
+
+.hero__date {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  font-family: var(--title);
+  font-size: var(--step--1);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero__date strong {
+  font-size: var(--step-1);
+  letter-spacing: 0.14em;
+  color: var(--maroon);
+  font-weight: 400;
+}
+
+.hero__scroll {
+  position: absolute;
+  z-index: 2;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: 50%;
+  translate: -50% 0;
+  width: 2.75rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, transparent, var(--gold-deep));
+  animation: drop 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes rise  { from { opacity: 0; transform: translateY(1.4rem); } to { opacity: 1; transform: none; } }
+@keyframes drop  { 0%, 100% { transform: scaleY(0.3); opacity: 0.3; } 50% { transform: scaleY(1); opacity: 1; } }
+
+/* ========================== SECTIONS ========================== */
+
+.section { padding: clamp(3.5rem, 12vw, 7rem) 0; }
+.wrap { width: min(100% - 2 * var(--pad), 62ch); margin-inline: auto; text-align: center; }
+
+.section--cream { background: var(--cream); }
+
+.section--gold {
+  background:
+    radial-gradient(90% 120% at 50% 0%, #E8D3A4 0%, transparent 70%),
+    linear-gradient(160deg, var(--gold-lite) 0%, #D8BA7C 100%);
+  background-color: var(--gold-lite);
+  color: var(--ink);
+}
+
+.section--deep {
+  background: linear-gradient(170deg, var(--maroon) 0%, #4E1B17 100%);
+  color: var(--cream);
+}
+
+/* Cormorant italic, not Cinzel — two lines of inscriptional capitals
+   stacked would read as two competing headings. */
+.script {
+  margin: 0 0 0.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  letter-spacing: 0.04em;
+  color: var(--gold-deep);
+  line-height: 1.35;
+}
+.script--light { color: var(--maroon); }
+.section--deep .script { color: var(--gold-lite); }
+
+.h2 {
+  margin: 0 0 1.1rem;
+  font-family: var(--title);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.4rem);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  color: var(--maroon);
+}
+.h2--light { color: var(--cream); }
+
+.lede { margin: 0 auto 1.5rem; max-width: 46ch; color: var(--ink-soft); }
+.lede--light { color: rgba(251, 246, 236, 0.82); }
+.lede b { color: var(--maroon); font-weight: 600; }
+.lede--light b { color: var(--gold-lite); }
+
+.verse {
+  margin: 2rem auto 0;
+  padding: 1.5rem 1.25rem;
+  max-width: 34ch;
+  border-top: var(--rule);
+  border-bottom: var(--rule);
+  font-family: var(--tamil);   /* Cormorant has no Tamil glyphs */
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--maroon);
+}
+.verse em { display: block; margin-top: 0.6rem; font-family: var(--serif); font-size: var(--step--1); color: var(--ink-soft); letter-spacing: 0.04em; }
+
+/* ========================= THE FAMILIES =========================
+   The artwork is a frame: foliage down both sides, an open cream void at
+   the top, sunset lake below. Text lives in the void and the pale sky,
+   clear of the lake. At 375px the image covers with only ~8px of side
+   crop, so the composition survives intact on a phone. */
+
+.families {
+  position: relative;
+  background: #F6E3B8;          /* matches the sky while the image loads */
+  padding: 0;
+}
+
+/* Shown whole, never cropped — the image sets the section's own height,
+   the same treatment as the celebrations panel. */
+.families__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 941 / 1670;     /* reserves the space before it loads */
+}
+
+/* Sits in the open sky inside the arch. No wash over the artwork — it only
+   muddied the watercolour; legibility comes from a halo on the glyphs, so
+   the painting stays at full strength behind the text. */
+/* Sampled row by row, this frame opens late: 20% → 41–59% (a narrow crown
+   under the ornamental cresting), then 28%–76% → 17–82%. So the block is
+   top-anchored into the body of the arch rather than centred, and sized to
+   the 17–82% channel. */
+.families__inner {
+  position: absolute;
+  top: 27%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(22rem, 84%);
+  text-align: center;
+  text-shadow:
+    0 0 3px rgba(251, 246, 236, 1),
+    0 0 9px rgba(251, 246, 236, 1),
+    0 0 20px rgba(251, 246, 236, 0.95),
+    0 0 42px rgba(251, 246, 236, 0.8);
+}
+
+.families .h2 {
+  font-size: clamp(1.4rem, 1.15rem + 1.4vw, 2.2rem);
+  letter-spacing: 0.03em;
+  line-height: 1.32;
+  margin-bottom: 0;
+}
+
+/* ---- The two households ---- */
+
+.house {
+  list-style: none;
+  margin: 1.2rem 0 1rem;        /* tightened to clear the arch's lower edge */
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.house__side > p { margin: 0; }
+
+.house__name {
+  font-family: var(--script);
+  font-size: clamp(1.3rem, 1.05rem + 1.1vw, 2.0rem);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: var(--maroon);
+}
+
+.house__of {
+  margin-top: 0.35rem !important;
+  font-size: clamp(0.88rem, 0.82rem + 0.25vw, 1.05rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.house__where {
+  margin-top: 0.3rem !important;
+  font-family: var(--title);
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+/* The divider between the two houses: a rule with a diamond set into it */
+.house__knot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  color: var(--gold);
+  font-size: 0.62rem;
+  line-height: 1;
+}
+.house__knot::before,
+.house__knot::after {
+  content: "";
+  width: 2.6rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(194, 149, 60, 0.75));
+}
+.house__knot::after { transform: scaleX(-1); }
+
+/* Not the display face — Rozha One is built for names, not running words */
+.families__blessing {
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1.02rem, 0.95rem + 0.35vw, 1.2rem);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--gold-deep);
+}
+
+/* ---- The closing panel ----
+   Nearly square (1205x1306 → 406px tall at phone width). The carved florals
+   take the outer ~18% each side and the balustrade closes below ~70%, so
+   the closing lines live in the clear middle. */
+
+.panel--last { background: #F2E4C9; }   /* the relief's cream, while it loads */
+.panel--last .panel__img { aspect-ratio: 1205 / 1306; }
+
+.panel--last .panel__inner {
+  top: 6%;
+  width: min(15rem, 62%);
+}
+
+/* Tighter than the standalone verse — the panel is only 407px tall and the
+   carved balustrade closes in below ~70% */
+.panel--last .verse {
+  margin: 0 auto 0.55rem;
+  padding: 0.45rem 0.25rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+.panel--last .verse em { margin-top: 0.25rem; }
+
+.panel--last .footer__mark { margin-bottom: 0.4rem; }
+.panel--last .footer__names { margin-bottom: 0.3rem; }
+.panel--last .footer__line { margin-bottom: 0.5rem; }
+.panel--last .footer__top { padding: 0.85rem 0.5rem; }   /* keeps the 44px target */
+
+/* ========================= COUNTDOWN ========================= */
+
+.count {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* two-up on phones */
+  gap: 0.75rem;
+}
+.count li {
+  padding: 1rem 0.5rem;
+  background: rgba(251, 246, 236, 0.55);
+  border: 1px solid rgba(138, 102, 32, 0.25);
+  border-radius: 2px;
+}
+.count b {
+  display: block;
+  font-family: var(--title);
+  font-weight: 400;
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  line-height: 1;
+  color: var(--maroon);
+  font-variant-numeric: tabular-nums;
+}
+.count span {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--title);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+/* ======================== SECTION FIVE ========================
+   A maroon-and-gold border around a large empty cream arch. Content sits
+   inside the arch: roughly 12%–58% down, and clear of the ornamental
+   border at the sides. */
+
+.panel {
+  position: relative;
+  background: #6B1F26;          /* the border's maroon, while it loads */
+}
+
+/* Shown whole, never cropped */
+.panel__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 1536;
+}
+
+/* Centred with auto margins rather than left:50% + translate. These blocks
+   also carry .reveal, which animates `transform`; keeping the centring out
+   of the transform/translate pipeline entirely avoids the two interfering. */
+.panel__inner {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(19rem, 72%);
+  text-align: center;
+}
+
+/* ---- The gallery, inside the arch ----
+   Same opening as the RSVP frame once measured: 28% → 28–74%,
+   44–56% → 12–87% (widest), 68% → 27–71%, 76% → 39–59%. The block sits in
+   the belly at 26%–70% and 54% wide, which clears every row it crosses. */
+
+/* No heading inside the arch — the picture takes the whole opening.
+   Solved against the arch profile rather than guessed: starting at 21% and
+   52% wide is the largest a 2:3 frame can be before its lower corners meet
+   the arch closing in. It ends at 73%, in an opening of 24–76%. */
+#section-five .panel__inner {
+  top: 21%;
+  width: min(11.7rem, 50%);
+}
+
+/* Reuses the carousel component, but anchors the controls to the bottom of
+   the frame rather than measuring down from the top. The carousel's height
+   is the slide's height, so `bottom` needs no hand-synced --photo-h — which
+   is what drifted and left the controls floating mid-frame. */
+.gallery .carousel__nav {
+  top: auto;
+  bottom: 0.55rem;
+  padding-inline: 0.9rem;
+}
+
+.shot {
+  position: relative;
+  aspect-ratio: 1024 / 1536;    /* the frame's own proportions */
+  margin: 0;
+}
+
+/* The photograph sits behind and shows through the frame's cut-out window,
+   measured from the artwork at x 13.7–86.0%, y 12.8–86.8%.
+
+   No placeholder fill: until real photographs are added the window is left
+   empty, so the arch behind shows through the frame rather than a flat
+   panel sitting inside it. */
+/* Window bounds shifted to match the 107% draw: an image coordinate p lands
+   at (-3.5 + 1.07p) in element space, so 13.7% → 11.2%, 86.0% → 88.5%. */
+.shot__img {
+  position: absolute;
+  top: 10.2%;
+  left: 11.2%;
+  right: 11.5%;
+  bottom: 10.6%;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* The gilt frame, laid over the photograph.
+
+   The artwork is a gold slab with the frame drawn on it, not a free-standing
+   cut-out: outside the ornament the pixels are solid gold (alpha 252) for
+   about 3% on every side. Drawing it at 107% pushes that plain margin past
+   the element's edges, where the background box clips it, leaving just the
+   ornament. No drop-shadow — on a near-rectangular opaque image it renders
+   as a grey rectangle rather than following the frame. */
+.shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/gallery-frame.webp") center / 107% 107% no-repeat;
+  pointer-events: none;
+}
+
+/* Drop photographs into assets/gallery/ and uncomment — they will appear
+   inside the frame's window.
+.shot__img[data-shot="1"] { background-image: url("assets/gallery/1.jpg"); }
+.shot__img[data-shot="2"] { background-image: url("assets/gallery/2.jpg"); }
+.shot__img[data-shot="3"] { background-image: url("assets/gallery/3.jpg"); }
+.shot__img[data-shot="4"] { background-image: url("assets/gallery/4.jpg"); }
+*/
+
+/* ---- The countdown, inside its landscape frame ----
+   The gopurams hold the left and right ends and the wall closes the bottom,
+   so the safe centre is roughly 24%–76% across and 20%–66% down. */
+
+.panel--count { background: #E9C98A; }   /* the frame's gold, while it loads */
+.panel--count .panel__img { aspect-ratio: 1535 / 1024; }
+
+/* Centred in the opening rather than pinned to its top — four numerals
+   side by side cap how large they can be, so the block cannot fill the
+   arch and looks better balanced within it. */
+.panel--count .panel__inner {
+  top: 29%;
+  width: min(14rem, 56%);
+}
+
+.panel--count .script {
+  margin-bottom: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--gold-deep);
+}
+
+.panel--count .count {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+  margin-top: 0;
+}
+
+/* No tiles — plain numerals read better on the ornamented cream */
+.panel--count .count li {
+  padding: 0;
+  background: none;
+  border: 0;
+}
+.panel--count .count b { font-size: 1.4rem; line-height: 1.1; }
+.panel--count .count span {
+  margin-top: 0.15rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* ---- The RSVP, inside its own frame ---- */
+
+.panel--rsvp .panel__img { aspect-ratio: 933 / 1686; }
+
+/* Sampled row by row, this frame's opening is a steep arch — 16% → 40–60%,
+   28% → 28–74%, 44–56% → 12–87% (widest), 64% → 20–75%, 76% → 39–59%.
+   Rather than shrink everything to the narrowest row, the block starts up
+   in the crown and each part is sized for the depth it actually sits at:
+   the heading to the crown, the fields to the belly, the button to the
+   taper below. */
+/* Horizontally the arch allows ~50% once the right edge closes to 75% by
+   depth 64%; the spare room is vertical, up in the crown. So the block
+   starts higher and breathes, rather than widening. */
+.panel--rsvp .panel__inner {
+  top: 22%;
+  width: min(11.75rem, 50%);
+}
+
+/* "Please reply" is short enough for the crown (116px of opening at 22–25%);
+   the heading is not, so this margin drops it to 27–30% where it widens. */
+.panel--rsvp .script { margin-bottom: 0.9rem; font-size: 0.85rem; }
+.panel--rsvp .h2 {
+  margin-bottom: 0.55rem;
+  font-size: 0.92rem;           /* the opening at 27–30% is 29–70%, ~154px */
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+/* Tighter than the standalone form: everything has to clear the arch.
+   Every selector is prefixed with .panel--rsvp — the base .form rules sit
+   further down the stylesheet at equal specificity and would otherwise win,
+   which is exactly what kept the field heights and gaps at full size.
+   2.75rem is the floor: that is the comfortable thumb target, so the height
+   is bought back from labels, gaps and padding instead. */
+/* Roomier than before, but not so loose that the button drifts past 70%,
+   where the arch tapers to 28–70% */
+.panel--rsvp .form--compact { margin-top: 0; gap: 0.35rem; text-align: left; }
+
+.panel--rsvp .form--compact .field { gap: 0.25rem; }
+.panel--rsvp .form--compact .field > span,
+.panel--rsvp .form--compact .field legend {
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  color: var(--gold-deep);
+  text-align: center;
+  width: 100%;
+}
+
+/* Ruled lines, not boxes. White input wells read as a web form pasted onto
+   an engraved card; a bottom rule reads as something you write on. */
+.panel--rsvp .form--compact :is(input[type="text"], select) {
+  min-height: 2.75rem;          /* the comfortable thumb target */
+  padding: 0.3rem 0.2rem;
+  font-size: 1rem;              /* keep 16px so iOS does not zoom on focus */
+  font-family: var(--serif);
+  color: var(--maroon);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(138, 90, 20, 0.55);
+  border-radius: 0;
+  text-align: center;
+}
+.panel--rsvp .form--compact input::placeholder {
+  color: rgba(110, 42, 36, 0.42);
+  font-style: italic;
+}
+.panel--rsvp .form--compact :is(input[type="text"], select):focus-visible {
+  outline: none;
+  border-bottom-color: var(--maroon);
+  box-shadow: 0 1px 0 0 var(--maroon);
+}
+/* The native arrow sits oddly on a ruled line */
+.panel--rsvp .form--compact select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold-deep) 50%),
+                    linear-gradient(135deg, var(--gold-deep) 50%, transparent 50%);
+  background-size: 5px 5px, 5px 5px;
+  background-position: calc(100% - 9px) 55%, calc(100% - 4px) 55%;
+  background-repeat: no-repeat;
+}
+.panel--rsvp .form--compact .form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  align-items: end;
+}
+/* Gold-outline pills on the cream, filling maroon when chosen */
+.panel--rsvp .form--compact .choices { gap: 0.4rem; }
+.panel--rsvp .form--compact .choices label {
+  min-height: 2.75rem;
+  font-size: 0.85rem;
+  font-family: var(--serif);
+  color: var(--maroon);
+  background: transparent;
+  border: 1px solid rgba(138, 90, 20, 0.55);
+  border-radius: 2rem;
+}
+.panel--rsvp .form--compact .choices label:has(input:checked) {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: #F6E7C6;
+}
+
+.panel--rsvp .form--compact .btn {
+  min-height: 2.75rem;
+  margin-top: 0.3rem;
+  /* The arch tapers again by the time the button is reached (64% → 20–75%),
+     so it stays narrower than the fields above it. */
+  max-width: 74%;
+  margin-inline: auto;
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  padding-inline: 0.6rem;
+  white-space: nowrap;
+  background: var(--maroon);
+  border-color: var(--maroon);
+  border-radius: 2rem;
+  color: #F6E7C6;
+}
+@media (hover: hover) {
+  .panel--rsvp .form--compact .btn:hover { background: #8E463C; border-color: #8E463C; }
+}
+
+/* Small ornament between the heading and the card */
+.rule-orn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0 auto 0.55rem;
+  max-width: 9rem;
+  color: var(--gold-deep);
+}
+.rule-orn span { flex: 1; height: 1px; background: currentColor; opacity: 0.5; }
+.rule-orn i { font-style: normal; font-size: 0.55rem; }
+/* No reserved strip — it only takes height once there is a message */
+.panel--rsvp .form--compact .form__status { min-height: 0; text-align: center; font-size: 0.78rem; }
+
+/* ====================== MEET THE COUPLE ======================
+   The gopuram occupies the whole middle of this painting, so nothing can
+   be read over it. The heading takes the clear blue sky at the top; the
+   writing sits on an opaque card, which is free to overlap the temple. */
+
+.meet {
+  position: relative;
+  background: #7FB8E0;          /* the sky tone, while the image loads */
+}
+
+/* Shown whole, never cropped */
+.meet__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 945 / 1665;
+}
+
+/* ---- Clouds over the sky ---- */
+
+/* Clipped to the sky band, so nothing spills onto the temple base and the
+   clouds appear to drift in from off-screen. Sits above the painting but
+   below the heading, which follows it in the DOM. */
+.meet__sky {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 42%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  left: 0;                      /* travel is done entirely by the transform */
+  height: auto;
+  will-change: transform;
+  animation-name: crossSky;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* All three drift the same way, as real clouds do under one wind. Different
+   speeds and negative delays stagger them, so the sky is never empty and
+   they never line up. */
+.cloud--a { top: 0;   width: 46%; opacity: 0.80; animation-duration: 70s;  animation-delay: 0s; }
+.cloud--b { top: 12%; width: 38%; opacity: 0.72; animation-duration: 95s;  animation-delay: -38s; }
+.cloud--c { top: 30%; width: 30%; opacity: 0.50; animation-duration: 120s; animation-delay: -80s; }
+
+/* -100% is the cloud's own width, so it starts fully off the left edge
+   whatever its size; 100vw puts its left edge at the right edge. The
+   parent clips, so this can never widen the page. */
+@keyframes crossSky {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100vw); }
+}
+
+/* ---- The couple, on the steps ---- */
+
+.couple-figure {
+  position: absolute;
+  left: 50%;
+  /* Starts at the top of the painting; the script walks it down the whole
+     height as the section scrolls, and past the bottom edge behind the
+     next section. */
+  top: 4%;
+  bottom: auto;
+  width: 46%;                   /* the couple are the subject here */
+  height: auto;
+  transform: translate3d(-50%, 0, 0);
+  will-change: transform;
+  pointer-events: none;
+  /* Lighter, tighter shadow: this element's transform changes every scroll
+     frame, and a wide drop-shadow blur is the costliest part to re-raster on
+     weak GPUs. A smaller radius keeps the depth for far less work. */
+  filter: drop-shadow(0 5px 8px rgba(70, 45, 20, 0.26));
+}
+
+/* Whatever section comes next must paint ABOVE the couple, so the figure
+   slides down behind it as the page scrolls. Without this the couple wins:
+   it is a positioned element, and those paint over the plain backgrounds
+   of later siblings. */
+.meet { z-index: 0; }
+.meet + * { position: relative; z-index: 1; }
+
+.meet__title {
+  position: absolute;
+  top: 4%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(19rem, 82%);
+  text-align: center;
+  /* Light type on blue: a soft dark drop, not the cream halo used elsewhere */
+  text-shadow: 0 1px 3px rgba(18, 52, 84, 0.45), 0 2px 18px rgba(18, 52, 84, 0.35);
+}
+.meet__title .script { color: #FBEFD6; }
+.meet__title .h2 { color: #FFFFFF; margin-bottom: 0; }
+
+.meet__card {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: min(19rem, 84%);
+  padding: 0.95rem 1.1rem 1.05rem;
+  text-align: center;
+  background: rgba(252, 248, 240, 0.95);
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 3px rgba(252, 248, 240, 0.5),
+    0 12px 34px rgba(40, 60, 90, 0.28);
+}
+
+.person > p { margin: 0; }
+
+.person__name {
+  font-family: var(--title);
+  font-size: clamp(1.3rem, 1.1rem + 0.95vw, 1.9rem);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: var(--maroon);
+}
+
+.person__role {
+  margin-top: 0.15rem !important;
+  font-family: var(--title);
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.person__bio {
+  margin-top: 0.5rem !important;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #5C4326;
+}
+
+.person__knot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.85rem auto;
+  max-width: 10rem;
+  color: var(--gold);
+}
+.person__knot span { flex: 1; height: 1px; background: currentColor; opacity: 0.55; }
+.person__knot i { font-style: normal; font-size: 0.58rem; }
+
+.meet__how {
+  margin: 1.1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(194, 149, 60, 0.35);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--gold-deep);
+}
+
+/* ======================= CELEBRATIONS ========================
+   The richest of the three paintings — deities, gold pillars, waterfall.
+   Only the sky between the pillars is calm enough to carry type, so it
+   holds the title alone and the timeline runs on cream underneath. */
+
+.celebrate {
+  position: relative;
+  background: #9E3A2A;          /* matches the artwork while it loads */
+}
+
+/* No object-fit, no cropping — the image sets the section's own height,
+   so the whole painting is always on screen exactly as supplied. */
+.celebrate__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 941 / 1670;     /* reserves the space before it loads */
+}
+
+/* This painting is open sky with flowers only in the four corners, so
+   the words can sit centred in the middle rather than crowding the top. */
+.celebrate__inner {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  translate: 0 -50%;            /* vertical only — horizontal is margin auto */
+  width: min(19rem, 78%);
+  text-align: center;
+  text-shadow:
+    0 0 3px rgba(255, 250, 240, 1),
+    0 0 9px rgba(255, 250, 240, 1),
+    0 0 20px rgba(255, 250, 240, 0.95),
+    0 0 42px rgba(255, 250, 240, 0.8);
+}
+
+/* A plaque, matching the event cards. The new artwork is ornamented edge
+   to edge with no calm ground, so a glyph halo alone cannot hold the type. */
+.celebrate__head {
+  margin-bottom: 0.9rem;
+  padding: 0.55rem 0.9rem 0.65rem;
+  background: rgba(252, 248, 240, 0.94);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 3px rgba(252, 248, 240, 0.5),
+    0 8px 24px rgba(60, 20, 20, 0.28);
+  text-shadow: none;            /* the plaque replaces the halo */
+}
+
+.celebrate__inner .script { color: #8A5A14; margin-bottom: 0.1rem; }
+.celebrate__inner .h2 { margin-bottom: 0; }
+
+.celebrate__rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.8rem auto;
+  max-width: 11rem;
+  color: var(--gold-deep);
+}
+.celebrate__rule span { flex: 1; height: 1px; background: currentColor; opacity: 0.5; }
+.celebrate__rule i { font-style: normal; font-size: 0.58rem; }
+
+/* ---- The five days, one at a time, inside the sky ---- */
+
+.carousel { margin-top: 0.2rem; }
+
+.carousel__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;   /* swiping the deck must not scroll the page */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track:focus-visible { outline: 1px solid var(--gold); outline-offset: 6px; border-radius: 2px; }
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  padding: 0 0.1rem;
+}
+
+/* ---- The event card ---- */
+
+.ecard {
+  padding: var(--pad);
+  text-align: left;
+  background: rgba(252, 248, 240, 0.94);
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 3px rgba(252, 248, 240, 0.55),   /* the inner/outer double frame */
+    0 10px 30px rgba(110, 42, 36, 0.18);
+  /* The card is its own surface, so the halo used elsewhere would smudge it */
+  text-shadow: none;
+}
+
+.ecard__photo {
+  height: var(--photo-h);
+  border-radius: 10px;
+  background-color: #EBD3A0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.ecard__photo::after {
+  display: none !important;
+  content: none !important;
+}
+
+.ecard__photo[data-event="nichayathartham"] { background-image: url("assets/events/nichayathartham.webp"); }
+.ecard__photo[data-event="mehendi"]         { background-image: url("assets/events/mehendi.webp"); }
+.ecard__photo[data-event="sangeet"]         { background-image: url("assets/events/sangeet.webp"); }
+.ecard__photo[data-event="muhurtham"]       { background-image: url("assets/events/muhurtham.webp"); }
+.ecard__photo[data-event="reception"]       { background-image: url("assets/events/reception.webp"); }
+
+.ecard__name {
+  margin: 0.75rem 0 0;
+  font-family: var(--title);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.6rem);
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: var(--maroon);
+}
+
+.ecard__meta,
+.ecard__where,
+.ecard__note { margin: 0.45rem 0 0; }
+
+.ecard__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  font-size: 0.88rem;
+  color: #6B4A1C;
+}
+.ecard__meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+.ecard__where {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: #6B4A1C;
+}
+
+/* Shared icon sizing for the calendar, clock and pin */
+.ecard .i {
+  flex: 0 0 auto;
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: var(--gold-deep);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ecard__where .i { margin-top: 0.15rem; }
+
+.ecard__note {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #5C4326;
+}
+
+.ecard__btn {
+  display: block;
+  margin-top: 0.8rem;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 2rem;
+  background: var(--maroon);
+  color: var(--cream);
+  font-family: var(--title);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.15s;
+}
+.ecard__btn:active { transform: scale(0.98); }
+@media (hover: hover) { .ecard__btn:hover { background: #8E463C; } }
+
+/* The muhurtham — the hour the whole thing turns on */
+.ecard--key { border-width: 2px; }
+.ecard--key .ecard__name::after {
+  content: "❖";
+  font-size: 0.5em;
+  color: var(--gold-deep);
+  vertical-align: 0.3em;
+  margin-left: 0.5em;
+}
+
+/* ---- Arrows and dots, sat on the picture ---- */
+
+/* Declared here so the card and the nav offset share one source of truth */
+.carousel {
+  position: relative;
+  --pad: 0.7rem;
+  --photo-h: 11.5rem;
+}
+
+.carousel__nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* card padding + picture height − the control's own height */
+  top: calc(var(--pad) + var(--photo-h) - 3.45rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.15rem;
+  pointer-events: none;          /* only the controls themselves catch taps */
+}
+.carousel__arrows { display: flex; gap: 0.4rem; }
+
+.carousel__arrow,
+.carousel__dots { pointer-events: auto; }
+
+.carousel__arrow {
+  width: 2.75rem;               /* full thumb target */
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(194, 149, 60, 0.6);
+  border-radius: 50%;
+  background: rgba(252, 248, 240, 0.92);
+  color: var(--maroon);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(110, 42, 36, 0.18);
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+}
+.carousel__arrow:active { transform: scale(0.9); }
+.carousel__arrow[disabled] { opacity: 0.35; cursor: default; }
+.carousel__arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+@media (hover: hover) { .carousel__arrow:not([disabled]):hover { background: #fff; } }
+
+.carousel__dots {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  border-radius: 2rem;
+  background: rgba(252, 248, 240, 0.85);
+  box-shadow: 0 2px 8px rgba(110, 42, 36, 0.14);
+}
+/* The <li> wrappers must not sit between the flex row and its buttons */
+.carousel__dots li { display: contents; }
+
+/* The visible dot is small, but the button around it carries a 24px target —
+   an 8px hit area is unusable with a thumb and below the minimum. The dot
+   itself is drawn as a pseudo-element so the target can grow without the
+   indicator getting heavier. */
+.carousel__dots button {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.carousel__dots button::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2rem;
+  background: rgba(138, 90, 20, 0.35);
+  transition: width 0.28s, background 0.28s;
+}
+.carousel__dots button[aria-current="true"]::before {
+  width: 1.35rem;               /* the active dot stretches to a pill */
+  background: var(--maroon);
+}
+.carousel__dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 2px; }
+
+/* ========================== TIMELINE ========================== */
+
+.timeline {
+  /* --col: date column, --gap: gutter, --rail: the vertical line.
+     The dots derive from --rail too, so the two can never drift apart. */
+  --col: 4.25rem;
+  --gap: 0.9rem;
+  --rail: calc(var(--col) + var(--gap) / 2);
+  --dot: 0.55rem;
+
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  text-align: left;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem; bottom: 0.5rem;
+  left: var(--rail);
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-lite) 12%, var(--gold-lite) 88%, transparent);
+}
+
+.event { display: grid; grid-template-columns: var(--col) 1fr; gap: var(--gap); padding-bottom: 2.25rem; }
+.event:last-child { padding-bottom: 0; }
+
+.event__when {
+  position: relative;
+  text-align: right;
+  padding-right: 0.25rem;
+  font-family: var(--title);
+  line-height: 1.25;
+}
+.event__when b { display: block; font-weight: 400; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); }
+.event__when span { display: block; font-size: 0.95rem; color: var(--maroon); }
+.event__when::after {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  /* Centre the dot on the rail (the column's left edge is the row origin) */
+  left: calc(var(--rail) - var(--dot) / 2);
+  width: var(--dot); height: var(--dot);
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+}
+
+.event__body h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--title);
+  font-weight: 400;
+  font-size: var(--step-1);
+  color: var(--maroon);
+  line-height: 1.15;
+}
+.event__meta {
+  margin: 0 0 0.5rem;
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  color: var(--gold-deep);
+}
+.event__body p:last-child { margin: 0; color: var(--ink-soft); font-size: var(--step--1); line-height: 1.7; }
+
+.event--primary .event__when::after { background: var(--gold); box-shadow: 0 0 0 3px rgba(194, 149, 60, 0.2); }
+.event--primary .event__body {
+  padding: 1rem 1.1rem;
+  margin-top: -0.9rem;
+  background: rgba(227, 197, 131, 0.16);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 3px 3px 0;
+}
+
+/* =========================== NOTES =========================== */
+
+.notes { margin: 2.5rem 0 0; text-align: left; display: grid; gap: 1.25rem; }
+.notes dt {
+  font-family: var(--title);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-lite);
+  margin-bottom: 0.25rem;
+}
+.notes dd { margin: 0; font-size: var(--step--1); line-height: 1.7; color: rgba(251, 246, 236, 0.8); }
+
+/* =========================== BUTTONS =========================== */
+
+.btn-row { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.75rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;               /* comfortable thumb target */
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: var(--gold);
+  color: #2E1A10;
+  font-family: var(--title);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.15s;
+}
+.btn:active { transform: scale(0.98); }
+.btn--ghost { background: transparent; color: var(--gold-lite); }
+.btn--full { width: 100%; }
+
+@media (hover: hover) {
+  .btn:hover { background: var(--gold-lite); }
+  .btn--ghost:hover { background: rgba(227, 197, 131, 0.14); }
+}
+
+/* ============================ FORM ============================ */
+
+.form { margin-top: 2rem; text-align: left; display: grid; gap: 1.1rem; }
+
+.field { display: grid; gap: 0.4rem; border: 0; padding: 0; margin: 0; }
+.field > span, .field legend {
+  font-family: var(--title);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  padding: 0;
+}
+.field > span i { text-transform: none; letter-spacing: 0.04em; opacity: 0.7; }
+
+.field input[type="text"],
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.85rem;
+  font-family: var(--serif);
+  font-size: 1rem;               /* 16px — stops iOS zoom-on-focus */
+  color: var(--ink);
+  background: #FFFDF8;
+  border: 1px solid rgba(138, 102, 32, 0.3);
+  border-radius: 2px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.field textarea { min-height: 5.5rem; resize: vertical; }
+
+.field :is(input, select, textarea):focus-visible {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(194, 149, 60, 0.18);
+}
+
+/* Tappable chips beat a native <select multiple> on a phone. */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.15rem; }
+.chips label {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.5rem 0.9rem;
+  background: #FFFDF8;
+  border: 1px solid rgba(138, 102, 32, 0.3);
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: var(--step--1);
+  text-align: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips label:has(input:checked) {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--cream);
+}
+.chips label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(194, 149, 60, 0.25); }
+
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.15rem; }
+.choices label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.5rem;
+  background: #FFFDF8;
+  border: 1px solid rgba(138, 102, 32, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: var(--step--1);
+}
+.choices input { position: absolute; opacity: 0; pointer-events: none; }
+.choices label:has(input:checked) {
+  background: rgba(227, 197, 131, 0.35);
+  border-color: var(--gold);
+  color: var(--maroon);
+}
+.choices label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(194, 149, 60, 0.18); }
+
+.form__status { margin: 0; min-height: 1.4rem; font-size: var(--step--1); color: var(--leaf); }
+.form__status[data-state="error"] { color: #A33A2E; }
+
+/* =========================== FOOTER =========================== */
+
+.footer {
+  padding: 3.5rem var(--pad) calc(2.5rem + env(safe-area-inset-bottom));
+  text-align: center;
+  background: var(--cream-deep);
+  border-top: var(--rule);
+}
+.footer__mark { margin: 0 0 0.75rem; color: var(--gold); font-size: 0.8rem; }
+/* Great Vibes joins tightly around the ampersand — give it air */
+.footer__names { margin: 0 0 0.5rem; font-family: var(--script); font-size: clamp(1.2rem, 1rem + 1vw, 1.8rem); letter-spacing: 0.06em; color: var(--maroon); line-height: 1.35; }
+.footer__line { margin: 0 0 1.5rem; font-size: var(--step--1); color: var(--ink-soft); }
+.footer__top {
+  font-family: var(--title);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  display: inline-block;
+  padding: 0.9rem 0.5rem;          /* keeps the tap target ≥44px tall */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.4em;
+}
+
+/* =========================== REVEAL =========================== */
+
+/* The lines inside a block rise in turn rather than the block moving as one.
+   The container itself is never transformed — several of these blocks are
+   absolutely positioned inside their artwork, and a transform on the parent
+   fights that placement.
+
+   Everything is gated behind .js, added by the script on boot: with no
+   JavaScript the observer never runs, and without this gate the text would
+   stay invisible forever. */
+.js .reveal > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(.2, .7, .3, 1);
+}
+.js .reveal.is-in > * { opacity: 1; transform: none; }
+
+/* Staggered so the eye is led down the block */
+.js .reveal.is-in > *:nth-child(1) { transition-delay: 0s; }
+.js .reveal.is-in > *:nth-child(2) { transition-delay: 0.09s; }
+.js .reveal.is-in > *:nth-child(3) { transition-delay: 0.18s; }
+.js .reveal.is-in > *:nth-child(4) { transition-delay: 0.27s; }
+.js .reveal.is-in > *:nth-child(5) { transition-delay: 0.36s; }
+.js .reveal.is-in > *:nth-child(6) { transition-delay: 0.45s; }
+
+/* One level deeper for the lists, so the two households and the four
+   countdown units arrive one at a time too */
+.js .reveal :is(.house, .count) > li {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2, .7, .3, 1);
+}
+.js .reveal.is-in :is(.house, .count) > li { opacity: 1; transform: none; }
+.js .reveal.is-in :is(.house, .count) > li:nth-child(1) { transition-delay: 0.20s; }
+.js .reveal.is-in :is(.house, .count) > li:nth-child(2) { transition-delay: 0.30s; }
+.js .reveal.is-in :is(.house, .count) > li:nth-child(3) { transition-delay: 0.40s; }
+.js .reveal.is-in :is(.house, .count) > li:nth-child(4) { transition-delay: 0.50s; }
+
+/* ===================== LARGER SCREENS ONLY ===================== */
+
+/* ===================== LARGER SCREENS ONLY ===================== */
+
+@media (min-width: 600px) {
+  .families__inner { width: min(30rem, 80%); }
+  .house__knot::before, .house__knot::after { width: 4rem; }
+
+  .count { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .btn-row { flex-direction: row; justify-content: center; }
+  .notes { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .timeline { --col: 6rem; --gap: 1.5rem; }   /* --rail and the dots follow */
+}
+
+@media (min-width: 900px) {
+  /* The artwork is portrait — rather than crop it to a letterbox,
+     hold it as a centred panel and let the cream page breathe. */
+  .hero { justify-content: center; padding: 3vh 0; background: var(--cream); }
+  .hero__img {
+    position: relative;
+    inset: auto;
+    width: min(46vw, 34rem);
+    height: 94svh;
+    border-radius: 4px;
+    box-shadow: 0 2rem 5rem rgba(110, 42, 36, 0.22);
+    object-position: 50% 50%;
+  }
+  .hero__veil {
+    width: min(46vw, 34rem);
+    height: 94svh;
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 4px;
+  }
+  .hero__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 0 var(--pad);
+    /* Sit in the open sky inside the arch */
+    margin-top: -14svh;
+  }
+  .hero__names { font-size: clamp(3.4rem, 5vw, 4.6rem); }
+  .verse { padding: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  /* Show everything outright — no rise, no stagger */
+  .js .reveal > *,
+  .js .reveal :is(.house, .count) > li { opacity: 1; transform: none; transition-delay: 0s !important; }
+}
+
+/* ========================== FLOATING CONTROLS ==========================
+   Two fixed, frosted-glass controls that ride above all content: a music
+   toggle (bottom-left) and a "Made by" Instagram credit (bottom-right).
+   Shared look: translucent white, blurred backdrop, soft gold hairline border,
+   soft shadow. Accent is a muted mauve-brown with antique-gold on hover.
+   Corners use max(1rem, env(safe-area-inset-*)) so they clear the iPhone
+   home-bar / notch under viewport-fit=cover. */
+:root {
+  --frost-size:   34px;                        /* shared height — both sit on one line */
+  /* Translucent solid, NOT backdrop-filter: a live blur on a fixed element
+     re-samples everything behind it on every scroll frame and is a major
+     jank source on weak mobile GPUs. A more opaque white reads as frosted
+     glass over the artwork at zero per-frame cost. */
+  --frost-bg:     rgba(255, 252, 247, 0.9);
+  --frost-border: rgba(176, 141, 87, 0.45);   /* antique gold #B08D57 */
+  --frost-ink:    #87605A;                     /* muted mauve-brown */
+  --frost-gold:   #B08D57;
+  --frost-shadow: 0 3px 12px rgba(58, 46, 35, 0.14);
+  --frost-shadow-hover: 0 5px 16px rgba(58, 46, 35, 0.2);
+}
+
+.music-toggle,
+.credit {
+  position: fixed;
+  bottom: max(1.8rem, calc(env(safe-area-inset-bottom) + 1.2rem));
+  z-index: 99999;
+  box-sizing: border-box;
+  height: 36px;                                /* equal height aligns them */
+  background: rgba(255, 252, 247, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(176, 141, 87, 0.45);  /* antique gold #B08D57 */
+  box-shadow: 0 4px 14px rgba(58, 46, 35, 0.16);
+  color: var(--frost-ink);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  pointer-events: auto;
+}
+
+/* ---- Music toggle (bottom-left) ---- */
+.music-toggle {
+  left: max(1.25rem, calc(env(safe-area-inset-left) + 0.85rem));
+  width: 36px;                                 /* square -> perfect circle */
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #B08D57;                              /* warm antique gold matching image */
+}
+.music-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(58, 46, 35, 0.22); }
+.music-toggle:active { transform: scale(0.94); }
+.music-toggle:focus-visible { outline: 2px solid #B08D57; outline-offset: 3px; }
+.music-toggle svg { width: 18px; height: 18px; display: block; stroke: currentColor; }
+
+/* Show the state that matches the button: off by default, on when playing */
+.music-toggle .icon-on  { display: none; }
+.music-toggle.is-playing .icon-on  { display: block; }
+.music-toggle.is-playing .icon-off { display: none; }
+.music-toggle.is-playing { color: #B08D57; }
+
+/* ---- Made-by credit (bottom-right) ---- */
+.credit {
+  right: max(1.25rem, calc(env(safe-area-inset-right) + 0.85rem));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.8rem 0 0.65rem;
+  border-radius: 999px;
+  font-family: var(--title);                   /* Cinzel eyebrow style */
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  color: #87605A;
+  max-width: calc(100vw - 90px);
+}
+.credit:hover,
+.credit:focus-visible { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(58, 46, 35, 0.22); color: #B08D57; }
+.credit:focus-visible { outline: 2px solid #B08D57; outline-offset: 3px; }
+.credit svg { width: 14px; height: 14px; flex: none; stroke: currentColor; }
+.credit__name { white-space: nowrap; }
+
+/* Dedicated mobile phone screen safety (elevates above system bottom bars & notches) */
+@media (max-width: 480px) {
+  .music-toggle,
+  .credit {
+    bottom: max(2.3rem, calc(env(safe-area-inset-bottom) + 1.6rem));
+    height: 35px;
+  }
+  .music-toggle {
+    left: max(1.2rem, calc(env(safe-area-inset-left) + 0.75rem));
+    width: 35px;
+  }
+  .credit {
+    right: max(1.2rem, calc(env(safe-area-inset-right) + 0.75rem));
+    padding: 0 0.7rem 0 0.55rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle, .credit { transition: none; }
+  .music-toggle:hover, .music-toggle:active, .credit:hover, .credit:focus-visible { transform: none; }
+}
+
+/* ============================ INTRO / SPLASH ============================
+   A full-screen film intro shown first: the crisp first frame as a poster ->
+   tap to play the video -> on end, a ~1s blur then a dissolve into the
+   homepage. Shown only with JS; a <noscript> block hides it so a no-JS
+   visitor is never left staring at a dead cover. The backdrop cream matches
+   the envelope's own edge so `contain` letterboxing is invisible. */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e2ccaf;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+.intro__video,
+.intro__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;          /* whole envelope always visible, never cropped */
+  object-position: center;
+}
+.intro__video { z-index: 1; background: #e2ccaf; }
+.intro__poster { z-index: 2; transition: opacity 0.4s ease; }
+.intro.is-playing .intro__poster { opacity: 0; }
+
+/* Middle MA Wax Seal Button Target */
+.intro__seal {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  width: min(140px, 34vw);
+  height: min(140px, 34vw);
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 4;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+.intro__seal-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(176, 141, 87, 0.65);
+  box-shadow: 0 0 16px rgba(176, 141, 87, 0.4);
+  animation: sealPulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes sealPulse {
+  0% { transform: scale(0.92); opacity: 0.85; }
+  60% { transform: scale(1.16); opacity: 0; }
+  100% { transform: scale(1.16); opacity: 0; }
+}
+.intro.is-playing .intro__seal { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* The tap affordance is just an elegant line of script, sitting a little below
+   the wax seal on the envelope (no button chrome). */
+.intro__play {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64%;
+  margin-inline: auto;
+  z-index: 3;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.3s ease;
+}
+.intro.is-playing .intro__play { opacity: 0; visibility: hidden; }
+.intro__hint {
+  font-family: 'Allura', cursive;
+  font-size: 2.7rem;
+  line-height: 1;
+  color: #8a6620;
+  /* soft light halo so the thin script stays legible on the pale envelope */
+  text-shadow: 0 1px 12px rgba(255, 250, 242, 0.85), 0 1px 2px rgba(255, 250, 242, 0.95);
+  animation: introHint 2.6s ease-in-out infinite;
+}
+@keyframes introHint { 0%, 100% { opacity: 0.72; } 50% { opacity: 1; } }
+.intro__play:active .intro__hint { transform: scale(0.97); }
+.intro__skip {
+  position: absolute;
+  right: max(0.9rem, env(safe-area-inset-right));
+  bottom: max(0.9rem, env(safe-area-inset-bottom));
+  z-index: 3;
+  font-family: var(--title);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b4a3a;
+  background: rgba(255, 252, 247, 0.82);
+  border: 1px solid rgba(176, 141, 87, 0.4);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+/* End of film: the whole overlay fades out, revealing the hero beneath. */
+.intro--done { opacity: 0; visibility: hidden; pointer-events: none; }
+
+body.intro-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .intro, .intro__poster, .intro__play { transition: none; }
+  .intro__hint { animation: none; opacity: 1; }
+}
+
+
+/* ============================================================
+   Floating Language Switcher Capsule Pill
+   ============================================================ */
+.lang-pill {
+  position: fixed !important;
+  top: max(1rem, calc(env(safe-area-inset-top) + 0.8rem)) !important;
+  right: 1.1rem !important;
+  z-index: 9998 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(198, 163, 95, 0.45) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12) !important;
+  padding: 3px !important;
+  gap: 2px !important;
+  user-select: none !important;
+}
+
+body.intro-open .lang-pill {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.lang-pill__btn {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 4px 10px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  color: #7a1222 !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  line-height: 1.2 !important;
+}
+
+.lang-pill__btn:hover {
+  background: rgba(122, 18, 34, 0.08) !important;
+}
+
+.lang-pill__btn.is-active {
+  background: #7a1222 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(122, 18, 34, 0.35) !important;
+}

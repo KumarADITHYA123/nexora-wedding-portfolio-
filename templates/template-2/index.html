@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Nexora Enterprise Security & Anti-Leak Shield -->
+<script>
+(function(){
+  // Frame-buster redirect (Prevent direct standalone scraping)
+  if (window.top === window.self) {
+    var p = window.location.pathname;
+    var seg = p.split('/').filter(Boolean);
+    var tName = seg.length > 1 ? seg[seg.length - 2] : '';
+    window.location.replace('/' + (tName ? '?preview=' + encodeURIComponent(tName) : ''));
+  }
+  // Disable context menu
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, {capture:true});
+  // Disable DevTools shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) || (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, {capture:true});
+  // Anti-debugging loop
+  setInterval(function(){ try { (function(){}).constructor("debugger")(); } catch(e){} }, 1200);
+})();
+</script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Venkata Chandra Sekhar &amp; Varsha — 23 August 2026</title>
+  <meta name="description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+  <meta name="theme-color" content="#1a0907" />
+
+  <!-- Link preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Venkata Chandra Sekhar &amp; Varsha — 23 August 2026" />
+  <meta property="og:description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+
+  <!-- Local Fonts & Styles (100% Offline) -->
+  <link rel="stylesheet" href="assets/fonts.css" />
+  <link rel="preload" as="image" href="assets/intro.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="intro-open">
+
+  <!-- Ambient 3D Gold Dust & Diya Sparkle Canvas -->
+  <canvas id="luxuryCanvas" class="luxury-canvas" aria-hidden="true"></canvas>
+
+  <!-- Scroll Progress Gold Ribbon -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Floating Language Switcher -->
+  <nav class="lang-pill" aria-label="Language selector">
+    <button type="button" class="lang-pill__btn is-active" data-lang="en">EN</button>
+    <button type="button" class="lang-pill__btn" data-lang="te">TE</button>
+    <button type="button" class="lang-pill__btn" data-lang="hi">HI</button>
+  </nav>
+
+  <!-- ══════════ INTRO / SPLASH ══════════ -->
+  <div id="intro" class="intro" role="button" tabindex="0" aria-label="Tap to open the invitation">
+    <div class="intro__stage">
+      <img class="intro__cover" src="assets/intro.webp" alt="Wedding envelope with wax seal" />
+      <video class="intro__video" src="assets/intro.mp4" playsinline webkit-playsinline muted preload="auto"></video>
+      <div class="intro__vignette" aria-hidden="true"></div>
+    </div>
+
+    <button class="intro__seal" id="introSeal" type="button" aria-label="Open wedding invitation">
+      <span class="intro__seal-aura" aria-hidden="true"></span>
+      <span class="intro__seal-ring" aria-hidden="true"></span>
+      <svg class="intro__seal-mandala" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="0.75" stroke-dasharray="3 3" />
+        <circle cx="60" cy="60" r="44" fill="none" stroke="currentColor" stroke-width="1" />
+        <path d="M60 6 L66 24 L84 14 L78 32 L98 30 L84 44 L104 50 L86 60 L104 70 L84 76 L98 90 L78 88 L84 106 L66 96 L60 114 L54 96 L36 106 L42 88 L22 90 L36 76 L16 70 L34 60 L16 50 L36 44 L22 30 L42 32 L36 14 L54 24 Z" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.65" />
+      </svg>
+      <span class="intro__seal-monogram" aria-hidden="true">V &amp; V</span>
+    </button>
+
+    <p class="intro__hint" id="introPlay" data-i18n="intro_hint">Tap Seal to Open Invitation</p>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__media">
+      <video class="hero__vid" id="heroVid" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/hero.webp" aria-hidden="true">
+        <source src="assets/gujrati hero vedio.mp4" type="video/mp4" />
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__halo" aria-hidden="true"></div>
+    <div class="hero__particles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero__content" data-tilt-layer>
+      <header class="hero__top reveal-3d">
+        <span class="hero__ik" aria-hidden="true" data-i18n="hero_ik">॥ ఓం ॥</span>
+        <p class="hero__eyebrow" data-i18n="hero_eyebrow">Together with our families</p>
+      </header>
+
+      <div class="hero__main reveal-3d">
+        <h1 class="hero__names">
+          <span class="hero__name" data-i18n="groom_name">Venkata Chandra Sekhar</span>
+          <span class="hero__amp" aria-hidden="true">&amp;</span>
+          <span class="hero__name" data-i18n="bride_name">Varsha</span>
+        </h1>
+        <div class="hero__rule" aria-hidden="true">
+          <span class="hero__rule-line"></span>
+          <span class="hero__rule-gem"></span>
+          <span class="hero__rule-line"></span>
+        </div>
+        <p class="hero__date"><time datetime="2026-08-23">23 &middot; 08 &middot; 2026</time></p>
+        <p class="hero__venue" data-i18n="hero_venue">Sunday &middot; Muhurtham 5:45 AM</p>
+      </div>
+
+      <footer class="hero__bottom reveal-3d">
+        <a class="hero__cue" href="#invite" aria-label="Scroll to the invitation">
+          <span class="hero__cue-label" data-i18n="hero_cue">Invitation</span>
+          <span class="hero__cue-mouse" aria-hidden="true">
+            <span class="hero__cue-wheel"></span>
+          </span>
+          <span class="hero__cue-line" aria-hidden="true"></span>
+        </a>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ══════════ THE INVITATION & CELEBRATIONS ══════════ -->
+  <section class="invite" id="invite">
+    <div class="invite__frame" data-tilt-card>
+      <img class="invite__bg" src="assets/arch.webp" alt="" width="941" height="1672" loading="lazy" decoding="async" />
+      <div class="frame-shine" aria-hidden="true"></div>
+
+      <div class="invite__inner">
+        <p class="invite__blessing reveal-3d" data-i18n="invite_blessing">॥ శ్రీరస్తు శుభమస్తు ॥</p>
+        <p class="invite__lead reveal-3d" data-i18n="invite_lead">Together with their families</p>
+
+        <!-- Family Lineage Presentation -->
+        <div class="invite__house reveal-3d">
+          <div class="house__card">
+            <p>
+              <strong data-i18n="groom_name">Venkata Chandra Sekhar</strong><br />
+              <span data-i18n="groom_parents">son of Venkata Ratnam &amp; Veera Kumari</span>
+            </p>
+          </div>
+          <div class="house__knot" aria-hidden="true">
+            <span>❖</span>
+          </div>
+          <div class="house__card">
+            <p>
+              <strong data-i18n="bride_name">Varsha</strong><br />
+              <span data-i18n="bride_parents">D/o Sri Vaitla Gopal Venkatachalam (Late) - Smt. Sarada</span>
+            </p>
+          </div>
+        </div>
+
+        <p class="invite__body reveal-3d" data-i18n="invite_body">invite you to celebrate with them</p>
+        <div class="invite__rule reveal-3d" aria-hidden="true"><span></span><i></i><span></span></div>
+
+        <!-- The 5 Celebrations 3D Carousel -->
+        <div class="events reveal-3d" role="group" aria-roledescription="carousel" aria-label="Wedding events">
+          <ul class="events__track">
+
+            <li class="events__card is-active" role="group" aria-roledescription="slide" aria-label="1 of 5: Nichayathartham" data-index="0">
+              <span class="events__badge">01 / 05</span>
+              <h3 class="events__name" data-i18n="event_1_name">Nichayathartham</h3>
+              <p class="events__meta"><time datetime="2026-08-20T18:00" data-i18n="event_1_time">Thu 20 Aug 2026 &middot; 6:00 pm</time></p>
+              <p class="events__venue" data-i18n="event_1_venue">Kalyana Mandapam</p>
+            </li>
+
+            <li class="events__card" role="group" aria-roledescription="slide" aria-label="2 of 5: Mehendi" data-index="1">
+              <span class="events__badge">02 / 05</span>
+              <h3 class="events__name" data-i18n="event_2_name">Mehendi &amp; Nalangu</h3>
+              <p class="events__meta"><time datetime="2026-08-21T16:00" data-i18n="event_2_time">Fri 21 Aug 2026 &middot; 4:00 pm</time></p>
+              <p class="events__venue" data-i18n="event_2_venue">Home lawn</p>
+            </li>
+
+            <li class="events__card" role="group" aria-roledescription="slide" aria-label="3 of 5: Sangeet" data-index="2">
+              <span class="events__badge">03 / 05</span>
+              <h3 class="events__name" data-i18n="event_3_name">Sangeet</h3>
+              <p class="events__meta"><time datetime="2026-08-22T19:30" data-i18n="event_3_time">Sat 22 Aug 2026 &middot; 7:30 pm</time></p>
+              <p class="events__venue" data-i18n="event_3_venue">Heritage Hall</p>
+            </li>
+
+            <li class="events__card" role="group" aria-roledescription="slide" aria-label="4 of 5: Muhurtham" data-index="3">
+              <span class="events__badge">04 / 05</span>
+              <h3 class="events__name" data-i18n="event_4_name">Muhurtham</h3>
+              <p class="events__meta"><time datetime="2026-08-23T05:45" data-i18n="event_4_time">Sun 23 Aug 2026 &middot; 5:45 am</time></p>
+              <p class="events__venue" data-i18n="event_4_venue">Sri Kalyana Venkateswara Mandapam</p>
+            </li>
+
+            <li class="events__card" role="group" aria-roledescription="slide" aria-label="5 of 5: Reception" data-index="4">
+              <span class="events__badge">05 / 05</span>
+              <h3 class="events__name" data-i18n="event_5_name">Reception</h3>
+              <p class="events__meta"><time datetime="2026-08-23T19:00" data-i18n="event_5_time">Sun 23 Aug 2026 &middot; 7:00 pm</time></p>
+              <p class="events__venue" data-i18n="event_5_venue">Grand Ballroom</p>
+            </li>
+
+          </ul>
+
+          <div class="events__nav">
+            <button class="events__arrow" type="button" data-dir="-1" aria-label="Previous event">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="events__dots" role="tablist" aria-label="Select event slide"></div>
+            <button class="events__arrow" type="button" data-dir="1" aria-label="Next event">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ THE VENUE ══════════ -->
+  <section class="venue" id="venue">
+    <div class="venue__frame" data-tilt-card>
+      <img class="venue__img" src="assets/venue.webp" alt="Wedding Venue Mandap" width="857" height="1835" loading="lazy" decoding="async" />
+      <div class="frame-shine" aria-hidden="true"></div>
+      <div class="venue__inner reveal-3d">
+        <div class="venue__card-3d">
+          <p class="venue__eyebrow" data-i18n="venue_eyebrow">The Venue</p>
+          <h2 class="venue__name" data-i18n="venue_name">Sri Kalyana Venkateswara Mandapam</h2>
+          <p class="venue__address" data-i18n="venue_address">Temple Road &middot; Kalyana Mandapam</p>
+          <a class="venue__map" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span data-i18n="venue_cta">Open in Maps</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MEET THE COUPLE (3D MULTI-LAYER DEPTH) ══════════ -->
+  <section class="couple" id="couple">
+    <div class="couple__frame" data-tilt-card>
+      <img class="couple__img" src="assets/cople section.webp" alt="" width="945" height="1665" loading="lazy" decoding="async" />
+      <div class="couple__halo" aria-hidden="true"></div>
+      <img class="couple__photo" src="assets/couple yo.webp" alt="Venkata Chandra Sekhar and Varsha" width="1024" height="1536" loading="lazy" decoding="async" />
+      <div class="frame-shine" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ CELEBRATE / GALLERY / COUNTDOWN ══════════ -->
+  <section class="celebrate" id="celebrate">
+    <div class="celebrate__frame" data-tilt-card>
+      <img class="celebrate__img" src="assets/gallery.webp" alt="" width="941" height="1672" loading="lazy" decoding="async" />
+      <div class="frame-shine" aria-hidden="true"></div>
+      <div class="celebrate__inner">
+
+        <!-- Photographs 3D Carousel (The 5 Celebrations) -->
+        <div class="gallery reveal-3d" role="group" aria-roledescription="carousel" aria-label="Photo gallery">
+          <ul class="gallery__track">
+            <li class="gallery__slide is-active" data-index="0">
+              <img src="assets/events/nichayathartham.webp" alt="Nichayathartham" width="1402" height="1122" loading="lazy" decoding="async" />
+              <span class="gallery__caption" data-i18n="event_1_name">Nichayathartham</span>
+            </li>
+            <li class="gallery__slide" data-index="1">
+              <img src="assets/events/mehendi.webp" alt="Mehendi &amp; Nalangu" width="1402" height="1122" loading="lazy" decoding="async" />
+              <span class="gallery__caption" data-i18n="event_2_name">Mehendi &amp; Nalangu</span>
+            </li>
+            <li class="gallery__slide" data-index="2">
+              <img src="assets/events/sangeet.webp" alt="Sangeet" width="1402" height="1122" loading="lazy" decoding="async" />
+              <span class="gallery__caption" data-i18n="event_3_name">Sangeet</span>
+            </li>
+            <li class="gallery__slide" data-index="3">
+              <img src="assets/events/muhurtham.webp" alt="Muhurtham" width="1402" height="1122" loading="lazy" decoding="async" />
+              <span class="gallery__caption" data-i18n="event_4_name">Muhurtham</span>
+            </li>
+            <li class="gallery__slide" data-index="4">
+              <img src="assets/events/reception.webp" alt="Reception" width="1402" height="1122" loading="lazy" decoding="async" />
+              <span class="gallery__caption" data-i18n="event_5_name">Reception</span>
+            </li>
+          </ul>
+          <div class="gallery__dots" role="tablist" aria-label="Select gallery photo"></div>
+        </div>
+
+        <p class="celebrate__eyebrow reveal-3d" data-i18n="countdown_eyebrow">Counting down to</p>
+        <p class="celebrate__rite reveal-3d" data-i18n="countdown_rite">Muhurtham</p>
+
+        <!-- The 3D Countdown Timer -->
+        <div class="countdown reveal-3d" role="timer" aria-live="off" data-date="2026-08-23T05:45:00+05:30">
+          <div class="countdown__unit">
+            <span class="countdown__num" data-unit="days">—</span>
+            <span class="countdown__label" data-i18n="unit_days">Days</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__num" data-unit="hours">—</span>
+            <span class="countdown__label" data-i18n="unit_hours">Hrs</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__num" data-unit="minutes">—</span>
+            <span class="countdown__label" data-i18n="unit_minutes">Min</span>
+          </div>
+          <div class="countdown__unit">
+            <span class="countdown__num" data-unit="seconds">—</span>
+            <span class="countdown__label" data-i18n="unit_seconds">Sec</span>
+          </div>
+        </div>
+        <p class="countdown__done" data-i18n="countdown_done" hidden>Shubha Muhurtham — Blessed Union</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FINALE ══════════ -->
+  <section class="finale" id="finale">
+    <div class="finale__frame" data-tilt-card>
+      <img class="finale__img" src="assets/finale yo.webp" alt="" width="1086" height="1448" loading="lazy" decoding="async" />
+      <div class="frame-shine" aria-hidden="true"></div>
+      <div class="finale__inner reveal-3d">
+        <p class="finale__verse" data-i18n="finale_verse">“మనసులు కలిసిన జీవనమే జీవితం”</p>
+        <p class="finale__subverse" data-i18n="finale_subverse">A life of one mind is a life indeed.</p>
+
+        <h2 class="finale__names">
+          <span data-i18n="groom_name">Venkata Chandra Sekhar</span>
+          <span class="finale__amp" aria-hidden="true">&amp;</span>
+          <span data-i18n="bride_name">Varsha</span>
+        </h2>
+
+        <div class="finale__rule" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="finale__date"><time datetime="2026-08-23">23 &middot; 08 &middot; 2026</time></p>
+        <p class="finale__note" data-i18n="finale_note">With gratitude to our elders, and to you for coming.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FLOATING CONTROLS ══════════ -->
+  <!-- Ambient Audio Track -->
+  <audio id="bgMusic" src="assets/music.mp3" loop preload="auto"></audio>
+
+  <!-- Bottom-Left Music Toggle Button -->
+  <button id="musicToggle" class="fab-music is-playing" type="button" aria-pressed="true" aria-label="Pause background music">
+    <span class="fab-music__rings" aria-hidden="true"></span>
+    <svg class="fab-music__off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H2v6h4l5 4z" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+    <svg class="fab-music__on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H2v6h4l5 4z" />
+      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+      <path d="M19 5a9 9 0 0 1 0 14" />
+    </svg>
+  </button>
+
+  <!-- Bottom-Right "MADE BY NEXORA" Badge -->
+  <a class="credit" href="#" aria-label="Made by Nexora">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" />
+    </svg>
+    <span>MADE BY NEXORA</span>
+  </a>
+
+  <!-- Script Controller -->
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

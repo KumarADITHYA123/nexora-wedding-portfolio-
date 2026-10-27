@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Nexora Enterprise Security & Anti-Leak Shield -->
+<script>
+(function(){
+  // Frame-buster redirect (Prevent direct standalone scraping)
+  if (window.top === window.self) {
+    var p = window.location.pathname;
+    var seg = p.split('/').filter(Boolean);
+    var tName = seg.length > 1 ? seg[seg.length - 2] : '';
+    window.location.replace('/' + (tName ? '?preview=' + encodeURIComponent(tName) : ''));
+  }
+  // Disable context menu
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; }, {capture:true});
+  // Disable DevTools shortcuts
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) || (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'U' || e.key === 'S'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, {capture:true});
+  // Anti-debugging loop
+  setInterval(function(){ try { (function(){}).constructor("debugger")(); } catch(e){} }, 1200);
+})();
+</script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FBF6EC" />
+  <title>Venkata Chandra Sekhar &amp; Varsha — 23 August 2026</title>
+  <meta name="description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+
+  <!-- Link preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Venkata Chandra Sekhar &amp; Varsha — 23 August 2026" />
+  <meta property="og:description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+  <meta property="og:image" content="https://visualaurastudio.com/assets/og-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Local fonts -->
+  <link rel="stylesheet" href="assets/fonts.css" />
+
+  <link rel="preload" as="image" href="assets/hero.webp" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Floating Language Switcher -->
+  <nav class="lang-pill" aria-label="Language selector">
+    <button type="button" class="lang-pill__btn is-active" data-lang="en">EN</button>
+    <button type="button" class="lang-pill__btn" data-lang="te">TE</button>
+    <button type="button" class="lang-pill__btn" data-lang="hi">HI</button>
+  </nav>
+
+
+  <!-- ══════════ INTRO / SPLASH ══════════ -->
+  <noscript><style>.intro{display:none!important}</style></noscript>
+  <div class="intro" id="intro" role="dialog" aria-label="Invitation film">
+    <video class="intro__video" id="introVideo" playsinline webkit-playsinline muted preload="auto">
+      <source src="assets/intro.mp4" type="video/mp4" />
+    </video>
+    <img class="intro__poster" id="introPoster" src="assets/intro-poster.webp"
+         alt="Ivory wedding envelope with a gold wax seal monogrammed M and A" />
+    <button class="intro__seal" id="introSeal" type="button" aria-label="Open wedding invitation">
+      <span class="intro__seal-ring"></span>
+    </button>
+    <button class="intro__play" id="introPlay" type="button" aria-label="Tap to open the invitation">
+      <span class="intro__hint">Tap to open</span>
+    </button>
+    <button class="intro__skip" id="introSkip" type="button" hidden>Skip</button>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <header class="hero" id="top">
+    <img class="hero__img" src="assets/hero.webp" alt="Watercolour of temple gopuram beside lotus lake, framed by garlanded arch" fetchpriority="high" />
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="hero__blessing" data-i18n="hero_blessing">॥ ఓం ॥</p>
+      <p class="hero__eyebrow" data-i18n="hero_eyebrow">Together with our families</p>
+
+      <h1 class="hero__names">
+        <span class="hero__name">Venkata Chandra Sekhar</span>
+        <span class="hero__amp">&amp;</span>
+        <span class="hero__name">Varsha</span>
+      </h1>
+
+      <p class="hero__tagline" data-i18n="hero_tagline">we are getting married</p>
+
+      <div class="hero__rule" aria-hidden="true">
+        <span></span><i>❖</i><span></span>
+      </div>
+
+      <!-- The date sits underneath; JS lays a gold foil over it to scratch off.
+           With no JS the foil never appears and the date is simply visible. -->
+      <div class="scratch" id="scratch">
+        <p class="hero__date scratch__content">
+          <span>Sunday</span>
+          <strong>23 · 08 · 2026</strong>
+        </p>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#invitation" aria-label="Scroll to invitation">
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
+  </header>
+
+  <!-- ══════════ THE FAMILIES ══════════ -->
+  <section class="section families" id="invitation">
+    <img class="families__img" src="assets/families.webp" alt="" aria-hidden="true" loading="lazy" width="941" height="1670" />
+
+    <div class="families__inner reveal">
+      <h2 class="h2">Two families,<br />one thread</h2>
+
+      <ul class="house">
+        <li class="house__side">
+          <p class="house__name">Venkata Chandra Sekhar</p>
+          <p class="house__of">son of Venkata Ratnam &amp; Veera Kumari</p>
+        </li>
+
+        <li class="house__knot" aria-hidden="true">❖</li>
+
+        <li class="house__side">
+          <p class="house__name">Varsha</p>
+          <p class="house__of">D/o Sri Vaitla Gopal Venkatachalam (Late) - Smt. Sarada</p>
+        </li>
+      </ul>
+
+      <p class="families__blessing">with the blessings of our elders</p>
+    </div>
+  </section>
+
+  <!-- ══════════ CELEBRATIONS ══════════ -->
+  <!-- The painting is shown whole, never cropped: the <img> sets the
+       section's height and everything is placed inside it. Flowers sit in
+       the four corners and the middle is open, so the five days run as a
+       carousel centred in the sky — one at a time, with venue and note. -->
+  <section class="celebrate" id="events">
+    <img class="celebrate__img" src="assets/celebrations.webp" alt="" aria-hidden="true" loading="lazy" width="941" height="1670" />
+
+    <div class="celebrate__inner reveal">
+      <!-- The new artwork is ornamented edge to edge with no calm ground,
+           so the title needs its own plaque rather than a glyph halo. -->
+      <div class="celebrate__head">
+        <p class="script">Four days of joy</p>
+        <h2 class="h2">The celebrations</h2>
+      </div>
+
+      <!-- A card per day: picture, name, date/time, venue, note, map link.
+           Native scroll-snap, so it swipes with no JS at all; the script
+           only syncs the dots and wires the arrows. -->
+      <div class="carousel" id="celebrations">
+        <ul class="carousel__track" tabindex="0" role="group"
+            aria-label="The five celebrations — swipe or use the arrows">
+
+          <li class="slide">
+            <article class="ecard">
+              <div class="ecard__photo" data-event="nichayathartham" role="img"
+                   aria-label="Nichayathartham"></div>
+              <h3 class="ecard__name">Nichayathartham</h3>
+              <p class="ecard__meta">
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Thu 20 Aug 2026</span>
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6:00 PM</span>
+              </p>
+              <p class="ecard__where"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Kalyana Mandapam</p>
+              <p class="ecard__note">The formal engagement, where the families exchange trays.</p>
+              <a class="ecard__btn" href="https://maps.google.com/?q=Kalyana+Mandapam" target="_blank" rel="noopener">View location</a>
+            </article>
+          </li>
+
+          <li class="slide">
+            <article class="ecard">
+              <div class="ecard__photo" data-event="mehendi" role="img"
+                   aria-label="Mehendi and Nalangu"></div>
+              <h3 class="ecard__name">Mehendi &amp; Nalangu</h3>
+              <p class="ecard__meta">
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Fri 21 Aug 2026</span>
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4:00 PM</span>
+              </p>
+              <p class="ecard__where"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Home lawn</p>
+              <p class="ecard__note">Henna, turmeric and songs. Wear something you can dance in.</p>
+              <a class="ecard__btn" href="https://maps.google.com/?q=Wedding+Venue" target="_blank" rel="noopener">View location</a>
+            </article>
+          </li>
+
+          <li class="slide">
+            <article class="ecard">
+              <div class="ecard__photo" data-event="sangeet" role="img"
+                   aria-label="Sangeet"></div>
+              <h3 class="ecard__name">Sangeet</h3>
+              <p class="ecard__meta">
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Sat 22 Aug 2026</span>
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7:30 PM</span>
+              </p>
+              <p class="ecard__where"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Heritage Hall</p>
+              <p class="ecard__note">Both sides have been rehearsing in secret. Come hungry.</p>
+              <a class="ecard__btn" href="https://maps.google.com/?q=Heritage+Hall" target="_blank" rel="noopener">View location</a>
+            </article>
+          </li>
+
+          <li class="slide">
+            <article class="ecard ecard--key">
+              <div class="ecard__photo" data-event="muhurtham" role="img"
+                   aria-label="Muhurtham"></div>
+              <h3 class="ecard__name">Muhurtham</h3>
+              <p class="ecard__meta">
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Sun 23 Aug 2026</span>
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5:45 AM</span>
+              </p>
+              <p class="ecard__where"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Sri Kalyana Venkateswara Mandapam</p>
+              <p class="ecard__note">The thaali is tied at first light. Please be seated by 5:30 AM.</p>
+              <a class="ecard__btn" href="https://maps.google.com/?q=Sri+Kalyana+Venkateswara+Mandapam" target="_blank" rel="noopener">View location</a>
+            </article>
+          </li>
+
+          <li class="slide">
+            <article class="ecard">
+              <div class="ecard__photo" data-event="reception" role="img"
+                   aria-label="Reception"></div>
+              <h3 class="ecard__name">Reception</h3>
+              <p class="ecard__meta">
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Sun 23 Aug 2026</span>
+                <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>7:00 PM</span>
+              </p>
+              <p class="ecard__where"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Grand Ballroom</p>
+              <p class="ecard__note">Dinner, photographs and a proper send-off.</p>
+              <a class="ecard__btn" href="https://maps.google.com/?q=Grand+Ballroom" target="_blank" rel="noopener">View location</a>
+            </article>
+          </li>
+        </ul>
+
+        <!-- Overlaid on the picture, as in the reference -->
+        <div class="carousel__nav">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" type="button" data-step="-1" aria-label="Previous celebration">‹</button>
+            <button class="carousel__arrow" type="button" data-step="1" aria-label="Next celebration">›</button>
+          </div>
+          <ol class="carousel__dots"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MEET THE COUPLE ══════════ -->
+  <!-- The gopuram fills the middle of this one, so the heading takes the
+       clear blue sky at the top and the writing sits on a card, the same
+       way the celebration cards work. -->
+  <section class="meet" id="couple">
+    <img class="meet__img" src="assets/couple.webp" alt="" aria-hidden="true" loading="lazy" width="945" height="1665" />
+
+    <!-- Clouds drift across the blue sky above the gopuram. The PNG is
+         genuinely transparent (alpha 0 at the corners), so it needs no
+         blend mode — it just sits over the painting. -->
+    <div class="meet__sky" aria-hidden="true">
+      <img class="cloud cloud--a" src="assets/cloud1.webp" alt="" loading="lazy" width="1536" height="1024" />
+      <img class="cloud cloud--b" src="assets/cloud1.webp" alt="" loading="lazy" width="1536" height="1024" />
+      <img class="cloud cloud--c" src="assets/cloud1.webp" alt="" loading="lazy" width="1536" height="1024" />
+    </div>
+
+    <!-- Stands on the temple steps. Drifts against the scroll and slides
+         down behind whatever section follows. -->
+    <img class="couple-figure" id="coupleFigure" src="assets/couple-figure.webp"
+         alt="The bride and groom exchanging garlands" loading="lazy"
+         width="1024" height="1536" />
+
+    <div class="meet__title reveal">
+      <p class="script">The two of them</p>
+      <h2 class="h2">Meet the couple</h2>
+    </div>
+
+    <!-- Card content to come — awaiting direction -->
+  </section>
+
+  <!-- ══════════ SECTION FIVE ══════════ -->
+  <!-- Shown whole, never cropped. The maroon-and-gold border frames a large
+       empty cream arch; .panel__inner is positioned inside that arch and is
+       waiting on content. Being the section straight after .meet, it is the
+       one the couple figure slides behind as the page scrolls. -->
+  <section class="panel" id="section-five">
+    <img class="panel__img" src="assets/section-five.webp" alt="" aria-hidden="true" loading="lazy" width="1024" height="1536" />
+
+    <div class="panel__inner reveal">
+      <!-- Same carousel component as the celebrations; the script drives
+           every .carousel on the page. -->
+      <div class="carousel gallery">
+        <ul class="carousel__track" tabindex="0" role="group"
+            aria-label="Photographs — swipe or use the arrows">
+          <li class="slide">
+            <div class="shot">
+              <div class="shot__img" data-shot="1" role="img" aria-label="Photograph one"></div>
+            </div>
+          </li>
+          <li class="slide">
+            <div class="shot">
+              <div class="shot__img" data-shot="2" role="img" aria-label="Photograph two"></div>
+            </div>
+          </li>
+          <li class="slide">
+            <div class="shot">
+              <div class="shot__img" data-shot="3" role="img" aria-label="Photograph three"></div>
+            </div>
+          </li>
+          <li class="slide">
+            <div class="shot">
+              <div class="shot__img" data-shot="4" role="img" aria-label="Photograph four"></div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="carousel__nav">
+          <div class="carousel__arrows">
+            <button class="carousel__arrow" type="button" data-step="-1" aria-label="Previous photograph">‹</button>
+            <button class="carousel__arrow" type="button" data-step="1" aria-label="Next photograph">›</button>
+          </div>
+          <ol class="carousel__dots"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ RSVP ══════════ -->
+  <!-- Shown whole, never cropped. The arch gives about 405px of usable
+       height at phone width, so only the essential fields sit inside it. -->
+  <section class="panel panel--rsvp" id="rsvp">
+    <img class="panel__img" src="assets/rsvp-frame.webp" alt="" aria-hidden="true" loading="lazy" width="933" height="1686" />
+
+    <div class="panel__inner reveal">
+      <p class="script">Please reply</p>
+      <h2 class="h2">Will you join us?</h2>
+      <div class="rule-orn" aria-hidden="true"><span></span><i>❖</i><span></span></div>
+
+      <form class="form form--compact" id="rsvpForm" novalidate>
+        <label class="field">
+          <span>Your name</span>
+          <input type="text" name="name" required autocomplete="name" placeholder="Your full name" />
+        </label>
+
+        <label class="field">
+          <span>Email or phone</span>
+          <input type="text" name="contact" required autocomplete="email" placeholder="Email or phone" />
+        </label>
+
+        <!-- Paired into one row: two stacked fields would not clear the arch -->
+        <div class="form__row">
+          <fieldset class="field field--choice">
+            <legend>Coming?</legend>
+            <div class="choices">
+              <label><input type="radio" name="attending" value="yes" checked /><span>Yes</span></label>
+              <label><input type="radio" name="attending" value="no" /><span>No</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span>Guests</span>
+            <select name="guests">
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6+</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="btn btn--full" type="submit">Send our reply</button>
+        <p class="form__status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════ COUNTDOWN ══════════ -->
+  <!-- Last before the footer: the closing beat, after they have read
+       everything and replied. -->
+  <!-- Landscape artwork: only 250px tall at phone width, so the four units
+       sit in one row rather than the 2x2 grid, and the tile boxes come off —
+       the frame is ornate enough without them. -->
+  <section class="panel panel--count" id="countdown">
+    <img class="panel__img" src="assets/countdown.webp" alt="" aria-hidden="true" loading="lazy" width="1535" height="1024" />
+
+    <div class="panel__inner reveal">
+      <p class="script">Counting the days</p>
+      <ul class="count" id="count" aria-live="polite">
+        <li><b data-unit="days">—</b><span>Days</span></li>
+        <li><b data-unit="hours">—</b><span>Hrs</span></li>
+        <li><b data-unit="minutes">—</b><span>Min</span></li>
+        <li><b data-unit="seconds">—</b><span>Sec</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <!-- Soft cream relief, calm enough to carry the type directly. The floral
+       carving holds the left and right edges and the balustrade closes the
+       bottom, so the closing lines sit in the clear middle. -->
+  <footer class="panel panel--last">
+    <img class="panel__img" src="assets/last.webp" alt="" aria-hidden="true" loading="lazy" width="1205" height="1306" />
+
+    <div class="panel__inner reveal">
+      <p class="verse">
+        “మనసులు కలిసిన జీవనమే జీవితం” <br />
+        <em>A life of one mind is a life indeed.</em>
+      </p>
+
+      <p class="footer__mark" aria-hidden="true">❖</p>
+      <p class="footer__names">Venkata Chandra Sekhar &amp; Varsha</p>
+      <p class="footer__line">With gratitude to our elders, and to you for coming.</p>
+      <a class="footer__top" href="#top">Back to the top</a>
+    </div>
+  </footer>
+
+  <!-- ══════════ Floating controls ══════════ -->
+  <!-- Background music. preload="auto" so it never touches page-load weight;
+       the track only fetches when the visitor turns it on. Drop your file at
+       assets/music.mp3 (add an <source> for .ogg too if you want wider reach). -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3?v=new" type="audio/mpeg" />
+  </audio>
+
+  <button id="musicToggle" class="music-toggle is-playing" type="button"
+          aria-pressed="true" aria-label="Turn sound off">
+    <!-- Sound OFF (muted) -->
+    <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H2v6h4l5 4z" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+    <!-- Sound ON (playing) -->
+    <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H2v6h4l5 4z" />
+      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+      <path d="M19 5a9 9 0 0 1 0 14" />
+    </svg>
+  </button>
+
+  <a class="credit" href="#"
+     aria-label="Made by Nexora">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+    <span class="credit__name">MADE BY NEXORA</span>
+  </a>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
