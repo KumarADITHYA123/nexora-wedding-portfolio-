@@ -1738,17 +1738,96 @@
       height: 32px;
     }
 
-    /* Interactive Preview Modal */
+        /* ==========================================================================
+       FLOATING DUAL ACTION DOCK (PREVIEW DEMO + BUY NOW)
+       ========================================================================== */
+    .card-action-dock {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(232, 224, 215, 0.95);
+      z-index: 10;
+      width: max-content;
+      max-width: 95%;
+    }
+
+    .btn-preview-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #FFFFFF;
+      color: var(--color-burgundy);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.52rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1.5px solid rgba(94, 20, 36, 0.22);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .btn-preview-demo:hover {
+      background: var(--color-burgundy-subtle);
+      border-color: var(--color-burgundy);
+      transform: translateY(-1px);
+    }
+
+    .btn-preview-demo svg {
+      width: 14px;
+      height: 14px;
+      color: var(--color-burgundy);
+    }
+
+    .btn-buy-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--color-burgundy);
+      color: #FFFFFF !important;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.52rem 1.1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-burgundy);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-buy-card:hover {
+      background: var(--color-burgundy-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(94, 20, 36, 0.3);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE SMARTPHONE LIVE DEMO SIMULATOR MODAL
+       ========================================================================== */
     .preview-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(35, 27, 28, 0.7);
-      backdrop-filter: blur(10px);
+      background: rgba(25, 18, 20, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space-md);
+      padding: 0.75rem;
       opacity: 0;
       visibility: hidden;
       transition: all var(--transition-normal);
@@ -1759,68 +1838,677 @@
       visibility: visible;
     }
 
-    .preview-modal-dialog {
+    .simulator-modal-container {
       position: relative;
-      background: #FFFFFF;
-      border-radius: var(--radius-xl);
-      width: min(92vw, 420px);
-      max-height: 90vh;
+      background: #FAF7F2;
+      border-radius: 28px;
+      width: min(96vw, 440px);
+      max-height: 94vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--color-border);
     }
 
-    .preview-modal-header {
-      padding: var(--space-md) var(--space-lg);
+    /* Simulator Top Control Bar */
+    .simulator-top-bar {
+      padding: 0.75rem 1rem;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--color-border);
+      gap: 0.5rem;
+    }
+
+    .simulator-title-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .simulator-badge {
+      font-family: var(--font-heading);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-burgundy);
+    }
+
+    .simulator-template-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.1;
+    }
+
+    /* Simulator Mode Pills (Website vs Save the Date) */
+    .simulator-mode-pills {
+      display: inline-flex;
+      background: var(--color-bg);
+      padding: 3px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+    }
+
+    .sim-mode-btn {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-full);
+      color: var(--color-text-muted);
+      transition: all var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .sim-mode-btn.active {
+      background: var(--color-burgundy);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(94, 20, 36, 0.2);
     }
 
     .modal-close-round {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--color-bg-secondary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--color-text);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .modal-close-round:hover {
+      background: var(--color-border);
+    }
+
+    /* Device Showcase Stage */
+    .simulator-device-stage {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.75rem;
+      display: flex;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 20%, #FFFDF9 0%, #F5ECE3 100%);
+    }
+
+    /* Smartphone Device Frame */
+    .demo-phone-device {
+      width: 100%;
+      max-width: 340px;
+      background: #FFFFFF;
+      border-radius: 36px;
+      border: 7px solid #231B1C;
+      box-shadow: 0 16px 40px rgba(94, 20, 36, 0.18), 0 0 0 2px #C5A059;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 520px;
+    }
+
+    /* Notch & Camera */
+    .device-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 18px;
+      background: #231B1C;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .notch-camera {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .notch-speaker {
+      width: 30px;
+      height: 3px;
+      border-radius: 2px;
+      background: #2D2526;
+    }
+
+    /* Phone Status Bar */
+    .device-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 1rem 0.2rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #231B1C;
+      background: #FAF7F2;
+      border-bottom: 1px solid rgba(232, 224, 215, 0.5);
+      z-index: 40;
+    }
+
+    .device-audio-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: rgba(94, 20, 36, 0.08);
+      color: var(--color-burgundy);
+      font-size: 0.6rem;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    .preview-modal-body {
-      padding: var(--space-lg);
+    .audio-waves {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 1.5px;
+      height: 10px;
+    }
+
+    .audio-waves span {
+      width: 2px;
+      height: 8px;
+      background: var(--color-burgundy);
+      border-radius: 1px;
+      animation: waveBar 0.8s ease-in-out infinite alternate;
+    }
+
+    .audio-waves span:nth-child(2) { height: 10px; animation-delay: 0.2s; }
+    .audio-waves span:nth-child(3) { height: 6px; animation-delay: 0.4s; }
+
+    @keyframes waveBar {
+      0% { height: 3px; }
+      100% { height: 10px; }
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #231B1C;
+    }
+
+    /* Device Scrollable Screen */
+    .device-scroll-screen {
+      flex: 1;
       overflow-y: auto;
+      scrollbar-width: thin;
+      background: #FAF7F2;
+      padding-bottom: 24px;
+    }
+
+    .device-scroll-screen::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .device-scroll-screen::-webkit-scrollbar-thumb {
+      background: var(--color-border);
+      border-radius: 2px;
+    }
+
+    /* SCREEN 1: COVER */
+    .sim-screen-cover {
+      padding: 1.8rem 1rem 1.4rem;
       text-align: center;
-      background: var(--color-bg);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 100%);
+      border-bottom: 1px solid var(--color-border);
     }
 
-    .preview-modal-footer {
-      padding: var(--space-md) var(--space-lg);
-      border-top: 1px solid var(--color-border);
+    .sim-crest-seal {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--color-gold);
+      background: linear-gradient(135deg, var(--color-burgundy-dark), var(--color-burgundy));
+      color: #FAF7F2;
+      font-family: var(--font-brand);
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.6rem;
+      box-shadow: 0 4px 12px rgba(94, 20, 36, 0.2);
+    }
+
+    .sim-blessing-text {
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .sim-invite-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .sim-couple-headline {
+      font-family: var(--font-serif);
+      font-size: 1.95rem;
+      font-weight: 600;
+      color: var(--color-burgundy);
+      line-height: 1.15;
+      margin-bottom: 0.35rem;
+    }
+
+    .sim-parents-text {
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .sim-gold-divider {
+      width: 38px;
+      height: 2px;
+      background: var(--color-gold);
+      margin: 0.6rem auto;
+      border-radius: 1px;
+    }
+
+    .sim-event-date-loc {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--color-text);
+      text-transform: uppercase;
+    }
+
+    .sim-scroll-hint {
+      margin-top: 1rem;
+      font-size: 0.62rem;
+      color: var(--color-text-dim);
+      animation: pulse 1.5s infinite;
+    }
+
+    /* SCREEN 2: COUNTDOWN */
+    .sim-screen-countdown {
+      padding: 1.25rem 1rem;
+      text-align: center;
       background: #FFFFFF;
+      margin: 0.6rem 0.6rem;
+      border-radius: 18px;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
 
-    .btn-modal-order-wa {
+    .sim-section-label {
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-burgundy);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .sim-countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.35rem;
+    }
+
+    .sim-time-box {
+      background: var(--color-bg);
+      padding: 0.5rem 0.2rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .time-val {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-burgundy);
+      line-height: 1;
+    }
+
+    .time-lbl {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    /* SCREEN 3: ITINERARY */
+    .sim-screen-itinerary {
+      padding: 1.25rem 0.8rem;
+      text-align: center;
+    }
+
+    .sim-itinerary-heading {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.8rem;
+    }
+
+    .sim-event-card {
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 0.75rem 0.85rem;
+      margin-bottom: 0.55rem;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .sim-event-card.highlight {
+      border: 1.5px solid var(--color-gold);
+      background: #FFFDF9;
+    }
+
+    .sim-event-badge {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 0.25rem 0.45rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .sim-event-badge.gold {
+      background: var(--color-burgundy);
+      color: #FFFFFF;
+    }
+
+    .sim-event-details h4 {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 2px;
+    }
+
+    .sim-event-time {
+      font-size: 0.68rem;
+      color: var(--color-burgundy);
+      font-weight: 600;
+    }
+
+    .sim-event-attire {
+      font-size: 0.62rem;
+      color: var(--color-text-muted);
+    }
+
+    .sim-action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .sim-btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      border: none;
+    }
+
+    .sim-btn-action.map {
+      background: #FFFFFF;
+      color: var(--color-burgundy);
+      border: 1px solid var(--color-border);
+    }
+
+    .sim-btn-action.calendar {
+      background: var(--color-burgundy);
+      color: #FFFFFF;
+    }
+
+    /* SCREEN 4: RSVP */
+    .sim-screen-rsvp {
+      padding: 1.25rem 0.8rem;
+      background: #FFFFFF;
+      margin: 0.6rem 0.6rem;
+      border-radius: 18px;
+      border: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .sim-rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .sim-input {
       width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      background: var(--color-bg);
+      color: var(--color-text);
+      outline: none;
+    }
+
+    .sim-btn-rsvp-submit {
+      width: 100%;
+      background: var(--color-wa-green);
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.65rem;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    /* SCREEN 5: REGISTRY / BLESSINGS */
+    .sim-screen-registry {
+      padding: 1rem 0.8rem;
+      text-align: center;
+    }
+
+    .sim-shagun-pill {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: #FFF8E7;
+      border: 1px dashed var(--color-gold);
+      font-size: 0.68rem;
+      color: #8C6A18;
+      font-weight: 600;
+    }
+
+    /* VIEW B: SAVE THE DATE SCREEN */
+    .sim-view-savedate {
+      padding: 1.5rem 0.85rem;
+      text-align: center;
+    }
+
+    .sim-savedate-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 2rem 1.2rem;
+      border: 2px solid var(--color-gold);
+      box-shadow: 0 8px 25px rgba(94, 20, 36, 0.08);
+    }
+
+    .sim-std-flourish {
+      color: var(--color-gold);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sim-std-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: var(--color-burgundy);
+      display: block;
+    }
+
+    .sim-std-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin: 0.35rem 0 0.6rem;
+    }
+
+    .sim-std-couple {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--color-burgundy);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .sim-std-calendar-box {
+      width: 110px;
+      margin: 0 auto 1.2rem;
+      background: var(--color-bg);
+      border-radius: 16px;
+      border: 2px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    .std-month {
       background: var(--color-burgundy);
       color: #FFFFFF;
       font-family: var(--font-heading);
-      font-size: 0.92rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 0.85rem;
-      border-radius: var(--radius-full);
+      letter-spacing: 0.15em;
+      padding: 0.3rem 0;
       display: block;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(94, 20, 36, 0.25);
     }
 
-    .btn-modal-order-wa:hover {
+    .std-day {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--color-text);
+      line-height: 1.15;
+      display: block;
+      padding-top: 4px;
+    }
+
+    .std-year {
+      font-size: 0.72rem;
+      color: var(--color-gold);
+      font-weight: 700;
+      padding-bottom: 6px;
+      display: block;
+    }
+
+    .sim-std-location {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .sim-std-note {
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    /* Simulator Sticky Bottom Bar */
+    .simulator-bottom-bar {
+      padding: 0.75rem 1rem;
+      background: #FFFFFF;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+    }
+
+    .sim-bottom-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sim-bottom-tier {
+      font-size: 0.62rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    .sim-bottom-price {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-burgundy);
+      line-height: 1;
+    }
+
+    .btn-sim-order-wa {
+      background: var(--color-burgundy);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.68rem 1.25rem;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(94, 20, 36, 0.28);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-sim-order-wa:hover {
       background: var(--color-burgundy-dark);
+      transform: translateY(-1px);
     }
   </style>
 </head>
@@ -2087,9 +2775,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Royal', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Royal', currentPrice, currentCatalogType)" aria-label="Preview Royal live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_Royal" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Royal.</strong> Blush, gold and candlelight &mdash; a soft, cinematic mandap romance, endlessly loved.</p>
@@ -2131,9 +2825,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Amalfi Coast', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Amalfi Coast', currentPrice, currentCatalogType)" aria-label="Preview Amalfi Coast live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_AmalfiCoast" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Amalfi Coast%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Amalfi Coast.</strong> Lemon groves, blue-and-white toile and the shimmering Mediterranean &mdash; a sun-soaked coastal romance.</p>
@@ -2173,9 +2873,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Crimson Heritage', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Crimson Heritage', currentPrice, currentCatalogType)" aria-label="Preview Crimson Heritage live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_CrimsonHeritage" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Crimson Heritage%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Crimson Heritage.</strong> Royal Banarasi crimson, intricate gold zari filigree, and grand Jaipur palace courtyards.</p>
@@ -2215,9 +2921,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Noor Mahal', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Noor Mahal', currentPrice, currentCatalogType)" aria-label="Preview Noor Mahal live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_NoorMahal" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Noor Mahal%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Noor Mahal.</strong> Regal Mughal jharokhas, whispered night jasmine, and starlit royal Nikah celebrations.</p>
@@ -2257,9 +2969,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Pastel Blooms', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Pastel Blooms', currentPrice, currentCatalogType)" aria-label="Preview Pastel Blooms live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_PastelBlooms" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Pastel Blooms%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Pastel Blooms.</strong> Soft French hydrangeas, satin blush bows, and modern Parisian garden romance.</p>
@@ -2299,9 +3017,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Golden Mandala', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Golden Mandala', currentPrice, currentCatalogType)" aria-label="Preview Golden Mandala live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_GoldenMandala" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Golden Mandala%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Golden Mandala.</strong> Sacred gold geometry, divine blessings, and opulent South Indian silk splendor.</p>
@@ -2340,9 +3064,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Shahi Darbar', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Shahi Darbar', currentPrice, currentCatalogType)" aria-label="Preview Shahi Darbar live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_ShahiDarbar" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi Darbar%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Shahi Darbar.</strong> Imperial Rajasthan fortresses, royal velvet banners, and timeless maharani elegance.</p>
@@ -2381,9 +3111,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Traditional Kalyanam', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Traditional Kalyanam', currentPrice, currentCatalogType)" aria-label="Preview Traditional Kalyanam live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_TraditionalKalyanam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Traditional Kalyanam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Traditional Kalyanam.</strong> South Indian temple bells, fresh mallipoo garlands, and pure golden kanjivaram.</p>
@@ -2422,9 +3158,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Jashn-e-Bahar', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Jashn-e-Bahar', currentPrice, currentCatalogType)" aria-label="Preview Jashn-e-Bahar live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_JashneBahar" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Jashn-e-Bahar%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Jashn-e-Bahar.</strong> Floral moonlit pergolas, Sufi melodies, and regal emerald grandeur.</p>
@@ -2464,9 +3206,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Eternal Ring', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Eternal Ring', currentPrice, currentCatalogType)" aria-label="Preview Eternal Ring live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_EternalRing" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Eternal Ring%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Eternal Ring.</strong> Interlocking infinity rings in warm sunset bokeh, and modern cocktail party elegance.</p>
@@ -2506,9 +3254,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Shubh Gruhapravesam', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Shubh Gruhapravesam', currentPrice, currentCatalogType)" aria-label="Preview Shubh Gruhapravesam live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_ShubhGruhapravesam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shubh Gruhapravesam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Shubh Gruhapravesam.</strong> Auspicious brass kalash, sacred threshold mango leaves, and new beginnings.</p>
@@ -2547,9 +3301,15 @@
                   </div>
                 </div>
               </div>
-              <button class="btn-buy-card" onclick="openTemplateDemo('Vedic Upanayanam', 10000)">
-                Buy now &mdash; &#8377;10,000
-              </button>
+              <div class="card-action-dock">
+                <button class="btn-preview-demo" onclick="openTemplateDemo('Vedic Upanayanam', currentPrice, currentCatalogType)" aria-label="Preview Vedic Upanayanam live demo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span>Preview Demo</span>
+                </button>
+                <a class="btn-buy-card" id="btnBuy_VedicUpanayanam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Vedic Upanayanam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                </a>
+              </div>
             </div>
             <div class="card-caption-editorial">
               <p><strong>Vedic Upanayanam.</strong> Sacred thread ceremony, Gayatri mantra script, and timeless Vedic heritage.</p>
@@ -2881,29 +3641,220 @@
     </svg>
   </a>
 
-  <!-- Interactive Template Demo Modal -->
+    <!-- Interactive Smartphone Live Demo Simulator Modal -->
   <div class="preview-modal-backdrop" id="previewModal" aria-hidden="true">
-    <div class="preview-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTemplateTitle">
-      <div class="preview-modal-header">
-        <div>
-          <h3 id="modalTemplateTitle" style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-burgundy);">Royal Edition</h3>
-          <span id="modalTemplateRate" style="font-size: 0.75rem; color: var(--color-gold); font-weight: 700;">Fixed Price: &#8377;10,000</span>
+    <div class="simulator-modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTemplateTitle">
+      
+      <!-- Modal Top Control Bar -->
+      <div class="simulator-top-bar">
+        <div class="simulator-title-group">
+          <span class="simulator-badge" id="modalTemplateBadge">LIVE DEMO SIMULATOR</span>
+          <h3 id="modalTemplateTitle" class="simulator-template-name">Royal Edition</h3>
         </div>
-        <button class="modal-close-round" onclick="closeTemplateDemo()" aria-label="Close modal">&times;</button>
+
+        <!-- Mode Switcher: Wedding Website vs Save the Date -->
+        <div class="simulator-mode-pills">
+          <button class="sim-mode-btn active" id="btnSimModeWebsite" onclick="setSimMode('website')">
+            💍 Website
+          </button>
+          <button class="sim-mode-btn" id="btnSimModeSaveDate" onclick="setSimMode('savedate')">
+            📅 Save Date
+          </button>
+        </div>
+
+        <button class="modal-close-round" onclick="closeTemplateDemo()" aria-label="Close demo simulator">&times;</button>
       </div>
-      <div class="preview-modal-body">
-        <div style="background: #FFFFFF; border-radius: 24px; padding: 24px 16px; border: 2px solid var(--color-border); box-shadow: 0 10px 25px rgba(0,0,0,0.06); margin-bottom: 12px;">
-          <span style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-burgundy); font-weight: 700;">Nexora Mobile Invitation Experience</span>
-          <h2 id="modalInviteCouple" style="font-family: var(--font-serif); font-size: 1.8rem; margin: 8px 0; color: var(--color-text);">Aarav &amp; Meera</h2>
-          <p style="font-family: var(--font-heading); font-size: 0.85rem; color: var(--color-gold); letter-spacing: 0.1em; text-transform: uppercase;">14 DECEMBER 2026 &bull; UDAIPUR</p>
+
+      <!-- Phone Frame Container -->
+      <div class="simulator-device-stage">
+        
+        <!-- Realistic Smartphone Frame -->
+        <div class="demo-phone-device">
           
-          <div style="margin: 18px 0; padding: 14px; background: var(--color-bg); border-radius: 14px; text-align: left; font-size: 0.85rem;">
-            <p><strong>&#127963; Venue:</strong> The Leela Palace, Lake Pichola</p>
-            <p><strong>&#9200; Muhurtham:</strong> 10:30 AM | <strong>Reception:</strong> 07:00 PM</p>
-            <p><strong>&#128172; Interactive Features:</strong> One-tap WhatsApp RSVP, Add to Google Calendar, Live GPS Directions, Background Shehnai Audio.</p>
+          <!-- Dynamic Island / Speaker Notch -->
+          <div class="device-notch">
+            <span class="notch-camera"></span>
+            <span class="notch-speaker"></span>
           </div>
+
+          <!-- Phone Status Bar -->
+          <div class="device-status-bar">
+            <span class="status-time">9:41</span>
+            <div class="device-audio-control" onclick="toggleDemoAudio()" id="demoAudioBtn" title="Toggle Shehnai sound">
+              <span class="audio-waves" id="audioWaves">
+                <span></span><span></span><span></span>
+              </span>
+              <span class="audio-label" id="audioLabel">Sound ON</span>
+            </div>
+            <div class="status-icons">
+              <svg width="14" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.5 3 3.6 4.9 1 8l11 13L23 8c-2.6-3.1-6.5-5-11-5z"/></svg>
+              <svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="7" width="12" height="10" rx="1"/><rect x="21" y="9" width="2" height="6" rx="1"/></svg>
+            </div>
+          </div>
+
+          <!-- Scrollable Phone Screen Content -->
+          <div class="device-scroll-screen" id="deviceScrollScreen">
+            
+            <!-- VIEW A: WEDDING INVITATION WEBSITE VIEW -->
+            <div class="sim-view-wedding" id="simViewWedding">
+              
+              <!-- Screen 1: Grand Royal Cover -->
+              <div class="sim-screen-cover" id="simCoverSection">
+                <div class="sim-crest-seal">
+                  <span id="simCoupleMonogram">A &bull; M</span>
+                </div>
+                <span class="sim-blessing-text" id="simBlessingText">&#10022; SHREE GANESHAYA NAMAH &#10022;</span>
+                <p class="sim-invite-tagline">Cordially invite you to celebrate the wedding of</p>
+                <h1 class="sim-couple-headline" id="simCoupleHeadline">Aarav &amp; Meera</h1>
+                <p class="sim-parents-text">Son of Dr. &amp; Mrs. Sharma &bull; Daughter of Mr. &amp; Mrs. Kapoor</p>
+                <div class="sim-gold-divider"></div>
+                <p class="sim-event-date-loc" id="simDateLoc">14 DECEMBER 2026 &bull; THE LEELA PALACE, UDAIPUR</p>
+                <div class="sim-scroll-hint">&#8595; Scroll down for celebration &bull; RSVP</div>
+              </div>
+
+              <!-- Screen 2: Live Countdown Timer -->
+              <div class="sim-screen-countdown">
+                <span class="sim-section-label">COUNTING DOWN THE MOMENTS</span>
+                <div class="sim-countdown-grid">
+                  <div class="sim-time-box"><span class="time-val" id="cdDays">248</span><span class="time-lbl">Days</span></div>
+                  <div class="sim-time-box"><span class="time-val" id="cdHours">14</span><span class="time-lbl">Hours</span></div>
+                  <div class="sim-time-box"><span class="time-val" id="cdMins">32</span><span class="time-lbl">Mins</span></div>
+                  <div class="sim-time-box"><span class="time-val" id="cdSecs">45</span><span class="time-lbl">Secs</span></div>
+                </div>
+              </div>
+
+              <!-- Screen 3: Wedding Itinerary & Events -->
+              <div class="sim-screen-itinerary">
+                <span class="sim-section-label">THE WEDDING CELEBRATIONS</span>
+                <h3 class="sim-itinerary-heading">Events Itinerary</h3>
+
+                <div class="sim-event-card">
+                  <div class="sim-event-badge">DAY 1</div>
+                  <div class="sim-event-details">
+                    <h4>Haldi &amp; Mehendi</h4>
+                    <p class="sim-event-time">&#9200; 11:00 AM onwards &bull; Courtyard</p>
+                    <p class="sim-event-attire">Dress Code: Sunshine Yellow &bull; Bohemian</p>
+                  </div>
+                </div>
+
+                <div class="sim-event-card">
+                  <div class="sim-event-badge">DAY 1</div>
+                  <div class="sim-event-details">
+                    <h4>Sangeet &amp; Cocktails</h4>
+                    <p class="sim-event-time">&#9200; 07:00 PM &bull; The Grand Ballroom</p>
+                    <p class="sim-event-attire">Dress Code: Indo-Western Glamour</p>
+                  </div>
+                </div>
+
+                <div class="sim-event-card highlight">
+                  <div class="sim-event-badge gold">DAY 2</div>
+                  <div class="sim-event-details">
+                    <h4>Vedic Muhurtham (Pheras)</h4>
+                    <p class="sim-event-time">&#9200; 10:30 AM &bull; Lakeview Mandap</p>
+                    <p class="sim-event-attire">Dress Code: Traditional Royal Attire</p>
+                  </div>
+                </div>
+
+                <div class="sim-event-card">
+                  <div class="sim-event-badge">DAY 2</div>
+                  <div class="sim-event-details">
+                    <h4>Grand Royal Reception</h4>
+                    <p class="sim-event-time">&#9200; 07:30 PM &bull; Palace Lawns</p>
+                    <p class="sim-event-attire">Dress Code: Black Tie / Royal Sherwani</p>
+                  </div>
+                </div>
+
+                <!-- Interactive Map & Calendar Action Buttons -->
+                <div class="sim-action-buttons">
+                  <a href="https://maps.google.com/?q=The+Leela+Palace+Udaipur" target="_blank" rel="noopener" class="sim-btn-action map">
+                    <span>&#128205;</span> Open in Google Maps
+                  </a>
+                  <button class="sim-btn-action calendar" onclick="triggerSimCalendar()">
+                    <span>&#128197;</span> Add to Calendar
+                  </button>
+                </div>
+              </div>
+
+              <!-- Screen 4: Interactive RSVP Form -->
+              <div class="sim-screen-rsvp">
+                <span class="sim-section-label">KINDLY RESPOND</span>
+                <h3 class="sim-itinerary-heading">Will You Attend?</h3>
+                <p style="font-size: 0.76rem; color: var(--color-text-muted); margin-bottom: 12px;">Please RSVP by 1st November 2026 to help us seat you comfortably.</p>
+                
+                <form class="sim-rsvp-form" onsubmit="handleSimRSVP(event)">
+                  <input type="text" class="sim-input" id="simRsvpName" placeholder="Your Full Name(s)" required>
+                  <select class="sim-input" id="simRsvpAttending">
+                    <option value="Joyfully Attending">Joyfully Attending (Yes)</option>
+                    <option value="Regretfully Decline">Regretfully Decline (No)</option>
+                  </select>
+                  <select class="sim-input" id="simRsvpCount">
+                    <option value="1 Guest">1 Guest</option>
+                    <option value="2 Guests">2 Guests</option>
+                    <option value="3 Guests">3 Guests</option>
+                    <option value="4+ Family">4+ Family Members</option>
+                  </select>
+                  <button type="submit" class="sim-btn-rsvp-submit">
+                    <span>&#9993;</span> Submit RSVP to WhatsApp
+                  </button>
+                </form>
+              </div>
+
+              <!-- Screen 5: Digital Shagun & Blessings -->
+              <div class="sim-screen-registry">
+                <span class="sim-section-label">WARM WISHES</span>
+                <p style="font-size: 0.8rem; font-style: italic; color: var(--color-text-muted);">"Your presence and blessings at our wedding are the greatest gift of all."</p>
+                <div class="sim-shagun-pill">&#10024; Digital Blessings &amp; Shagun Envelope &#10024;</div>
+              </div>
+
+            </div>
+
+            <!-- VIEW B: SAVE THE DATE ANNOUNCEMENT VIEW -->
+            <div class="sim-view-savedate" id="simViewSaveDate" style="display: none;">
+              <div class="sim-savedate-card">
+                <div class="sim-std-flourish">&#10022; &#10022; &#10022;</div>
+                <span class="sim-std-eyebrow">SAVE THE DATE</span>
+                <p class="sim-std-sub">FOR THE WEDDING CELEBRATION OF</p>
+                <h2 class="sim-std-couple" id="simStdCoupleName">Aarav &amp; Meera</h2>
+                
+                <div class="sim-std-calendar-box">
+                  <span class="std-month">DECEMBER</span>
+                  <span class="std-day">14</span>
+                  <span class="std-year">2026</span>
+                </div>
+
+                <p class="sim-std-location">&#127963; UDAIPUR, RAJASTHAN</p>
+                <p class="sim-std-note">Formal wedding invitation website to follow shortly.</p>
+
+                <div class="sim-action-buttons" style="margin-top: 18px;">
+                  <button class="sim-btn-action calendar" onclick="triggerSimCalendar()" style="width: 100%;">
+                    <span>&#128197;</span> Add 14 Dec to Calendar
+                  </button>
+                  <a class="sim-btn-action map" href="https://wa.me/?text=Save%20the%20date%20for%20Aarav%20%26%20Meera's%20wedding%20on%2014%20Dec%202026!" target="_blank" rel="noopener" style="width: 100%;">
+                    <span>&#128172;</span> Share on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+
       </div>
+
+      <!-- Simulator Bottom Sticky Order Bar -->
+      <div class="simulator-bottom-bar">
+        <div class="sim-bottom-info">
+          <span class="sim-bottom-tier" id="simBottomTier">Bespoke Wedding Website Suite</span>
+          <span class="sim-bottom-price" id="simBottomPrice">&#8377;10,000</span>
+        </div>
+        <a class="btn-sim-order-wa" id="btnSimOrderWa" href="https://wa.me/919032684083" target="_blank" rel="noopener">
+          Order This Design &mdash; <span id="simOrderWaPrice">&#8377;10,000</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
       <div class="preview-modal-footer">
         <a class="btn-modal-order-wa" id="btnModalOrder" href="https://wa.me/919032684083" target="_blank" rel="noopener">
           Order This Design on WhatsApp &mdash; &#8377;10,000
@@ -3009,6 +3960,7 @@
       // 6. 3-Segment Switcher: 1. Wedding Invitations | 2. AI Videos | 3. Save the Dates
       let currentPrice = 10000;
       window.switchCatalogType = function (type) {
+        currentCatalogType = type || 'wedding';
         const tabInvites = document.getElementById('tabInvites');
         const tabAIVideos = document.getElementById('tabAIVideos');
         const tabSaveDates = document.getElementById('tabSaveDates');
@@ -3018,6 +3970,7 @@
         const aiGrid = document.getElementById('aiVideosCatalogGrid');
         const controls = document.getElementById('catalogControlsRow');
         const pricePills = document.querySelectorAll('.card-price-pill');
+        const cardBtnPrices = document.querySelectorAll('.card-btn-price');
         const buyBtns = document.querySelectorAll('.btn-buy-card');
 
         // Reset tab highlights
@@ -3039,8 +3992,32 @@
           if (aiGrid) aiGrid.style.display = 'none';
           if (controls) controls.style.display = 'flex';
           pricePills.forEach(p => p.innerHTML = '<span class="strike">₹8,000</span>₹5,000');
-          buyBtns.forEach(b => b.textContent = 'Buy now — ₹5,000');
+          cardBtnPrices.forEach(p => p.innerHTML = '&#8377;5,000');
+          buyBtns.forEach(b => {
+            const currentHref = b.getAttribute('href');
+            if (currentHref) {
+              b.setAttribute('href', currentHref.replace('%E2%82%B910,000', '%E2%82%B95,000').replace('wedding%20invitation', 'Save%20the%20Date'));
+            }
+          });
         } else {
+          // Default: Wedding Invitations
+          currentPrice = 10000;
+          tabInvites.classList.add('active');
+          headTitle.textContent = 'Our digital wedding invitation websites.';
+          headSub.textContent = 'Each website hand-crafted at fixed ₹10,000 — personalized to your love story and designed to be unforgettable.';
+          if (grid) grid.style.display = 'grid';
+          if (aiGrid) aiGrid.style.display = 'none';
+          if (controls) controls.style.display = 'flex';
+          pricePills.forEach(p => p.innerHTML = '<span class="strike">₹15,000</span>₹10,000');
+          cardBtnPrices.forEach(p => p.innerHTML = '&#8377;10,000');
+          buyBtns.forEach(b => {
+            const currentHref = b.getAttribute('href');
+            if (currentHref) {
+              b.setAttribute('href', currentHref.replace('%E2%82%B95,000', '%E2%82%B910,000').replace('Save%20the%20Date', 'wedding%20invitation'));
+            }
+          });
+        }
+      }; else {
           // Default: Wedding Invitations
           currentPrice = 10000;
           tabInvites.classList.add('active');
@@ -3054,29 +4031,158 @@
         }
       };
 
-      // 7. Interactive Demo Modal
-      const previewModal = document.getElementById('previewModal');
-      const modalTitle = document.getElementById('modalTemplateTitle');
-      const modalCouple = document.getElementById('modalInviteCouple');
-      const modalRate = document.getElementById('modalTemplateRate');
-      const btnModalOrder = document.getElementById('btnModalOrder');
+      // 7. Interactive Smartphone Live Demo Simulator Logic
+      let currentCatalogType = 'wedding'; // 'wedding' | 'savedates' | 'aivideos'
+      let activeDemoTemplate = 'Royal';
+      let activeSimMode = 'website'; // 'website' | 'savedate'
+      let countdownInterval = null;
 
-      window.openTemplateDemo = function (templateName, price) {
+      // Template couple data
+      const templateData = {
+        'Royal': { couple: 'Aarav & Meera', date: '14 DECEMBER 2026', loc: 'THE LEELA PALACE, UDAIPUR', city: 'Udaipur, Rajasthan', blessing: 'SHREE GANESHAYA NAMAH', day: '14', month: 'DECEMBER', year: '2026' },
+        'Amalfi Coast': { couple: 'Kabir & Ananya', date: '18 OCTOBER 2026', loc: 'VILLA CIMBRONE, RAVELLO', city: 'Ravello, Italy', blessing: 'CELEBRATING LOVE & DESTINY', day: '18', month: 'OCTOBER', year: '2026' },
+        'Crimson Heritage': { couple: 'Rohan & Sanjana', date: '22 NOVEMBER 2026', loc: 'RAMBAGH PALACE, JAIPUR', city: 'Jaipur, Rajasthan', blessing: 'SHREE GANESHAYA NAMAH', day: '22', month: 'NOVEMBER', year: '2026' },
+        'Noor Mahal': { couple: 'Zayd & Fatima', date: '08 DECEMBER 2026', loc: 'TAJ FALAKNUMA PALACE, HYDERABAD', city: 'Hyderabad, Telangana', blessing: 'IN THE NAME OF ALLAH, THE MOST MERCIFUL', day: '08', month: 'DECEMBER', year: '2026' },
+        'Pastel Blooms': { couple: 'Vivaan & Rhea', date: '05 FEBRUARY 2027', loc: 'THE ROSEATE GANGES, RISHIKESH', city: 'Rishikesh, Uttarakhand', blessing: 'TWO SOULS, ONE BEAUTIFUL JOURNEY', day: '05', month: 'FEBRUARY', year: '2027' },
+        'Golden Mandala': { couple: 'Aditya & Pooja', date: '19 DECEMBER 2026', loc: 'ITC GRAND CHOLA, CHENNAI', city: 'Chennai, Tamil Nadu', blessing: 'SHREE LAKSHMI NARAYANA PRASANNA', day: '19', month: 'DECEMBER', year: '2026' },
+        'Shahi Darbar': { couple: 'Vikram & Radhika', date: '28 JANUARY 2027', loc: 'UMAID BHAWAN PALACE, JODHPUR', city: 'Jodhpur, Rajasthan', blessing: 'SHREE GANESHAYA NAMAH', day: '28', month: 'JANUARY', year: '2027' },
+        'Traditional Kalyanam': { couple: 'Karthik & Deepa', date: '12 NOVEMBER 2026', loc: 'TEMPLE BAY MANDAPAM, MAHABALIPURAM', city: 'Mahabalipuram, Tamil Nadu', blessing: 'SUBHAMASTU &bull; SHREE VENKATESHAYA NAMAH', day: '12', month: 'NOVEMBER', year: '2026' },
+        'Jashn-e-Bahar': { couple: 'Farhan & Alizeh', date: '15 JANUARY 2027', loc: 'LALIT GRAND PALACE, SRINAGAR', city: 'Srinagar, Kashmir', blessing: 'BISMILLAHIR RAHMANIR RAHIM', day: '15', month: 'JANUARY', year: '2027' },
+        'Eternal Ring': { couple: 'Neil & Tanya', date: '20 FEBRUARY 2027', loc: 'ALILA DIWA, SOUTH GOA', city: 'Goa, India', blessing: 'WE BEGIN OUR FOREVER', day: '20', month: 'FEBRUARY', year: '2027' },
+        'Shubh Gruhapravesam': { couple: 'Rao Family Residence', date: '10 NOVEMBER 2026', loc: 'VILLA 42, JUBILEE HILLS, HYDERABAD', city: 'Hyderabad, Telangana', blessing: 'SHUBH VAASTU PUJA &amp; GRUHAPRAVESAM', day: '10', month: 'NOVEMBER', year: '2026' },
+        'Vedic Upanayanam': { couple: 'Chi. Vignesh', date: '25 DECEMBER 2026', loc: 'VEDIC BRAHMANA SABHA, BANGALORE', city: 'Bangalore, Karnataka', blessing: 'GAYATRI MANTRA DEEKSHA &bull; UPANAYANAM', day: '25', month: 'DECEMBER', year: '2026' }
+      };
+
+      window.openTemplateDemo = function (templateName, price, type) {
+        const previewModal = document.getElementById('previewModal');
         if (!previewModal) return;
-        const finalPrice = price || currentPrice;
-        modalTitle.textContent = templateName + ' Edition';
-        modalCouple.textContent = templateName + ' Invitation';
-        modalRate.textContent = 'Fixed Price: ₹' + finalPrice.toLocaleString('en-IN');
-        btnModalOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + templateName + ' digital wedding invitation for ₹' + finalPrice.toLocaleString('en-IN') + '.');
-        btnModalOrder.textContent = 'Order ' + templateName + ' on WhatsApp — ₹' + finalPrice.toLocaleString('en-IN');
+        activeDemoTemplate = templateName || 'Royal';
+        const data = templateData[activeDemoTemplate] || templateData['Royal'];
+
+        // Title and badges
+        document.getElementById('modalTemplateTitle').textContent = activeDemoTemplate + ' Edition';
+        document.getElementById('simCoupleHeadline').textContent = data.couple;
+        document.getElementById('simStdCoupleName').textContent = data.couple;
+        document.getElementById('simCoupleMonogram').innerHTML = data.couple.split('&')[0].trim().charAt(0) + ' &bull; ' + (data.couple.split('&')[1] ? data.couple.split('&')[1].trim().charAt(0) : 'N');
+        document.getElementById('simDateLoc').innerHTML = data.date + ' &bull; ' + data.loc;
+        document.getElementById('simBlessingText').innerHTML = '&#10022; ' + data.blessing + ' &#10022;';
+        
+        // Save date specifics
+        const stdMonth = document.querySelector('.std-month');
+        const stdDay = document.querySelector('.std-day');
+        const stdYear = document.querySelector('.std-year');
+        if (stdMonth) stdMonth.textContent = data.month;
+        if (stdDay) stdDay.textContent = data.day;
+        if (stdYear) stdYear.textContent = data.year;
+
+        // Set mode based on active catalog switcher tab or type argument
+        if (type === 'savedates' || currentCatalogType === 'savedates') {
+          setSimMode('savedate');
+        } else {
+          setSimMode('website');
+        }
+
+        // Start live ticking countdown
+        startLiveCountdown();
+
         previewModal.classList.add('active');
         document.body.style.overflow = 'hidden';
       };
 
       window.closeTemplateDemo = function () {
+        const previewModal = document.getElementById('previewModal');
         if (!previewModal) return;
         previewModal.classList.remove('active');
         document.body.style.overflow = '';
+        if (countdownInterval) clearInterval(countdownInterval);
+      };
+
+      window.setSimMode = function (mode) {
+        activeSimMode = mode;
+        const btnWeb = document.getElementById('btnSimModeWebsite');
+        const btnStd = document.getElementById('btnSimModeSaveDate');
+        const viewWeb = document.getElementById('simViewWedding');
+        const viewStd = document.getElementById('simViewSaveDate');
+        const bottomTier = document.getElementById('simBottomTier');
+        const bottomPrice = document.getElementById('simBottomPrice');
+        const orderPrice = document.getElementById('simOrderWaPrice');
+        const btnOrder = document.getElementById('btnSimOrderWa');
+
+        if (mode === 'savedate') {
+          btnStd.classList.add('active');
+          btnWeb.classList.remove('active');
+          viewStd.style.display = 'block';
+          viewWeb.style.display = 'none';
+          bottomTier.textContent = 'Digital Save The Date Card';
+          bottomPrice.innerHTML = '&#8377;5,000';
+          orderPrice.innerHTML = '&#8377;5,000';
+          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Save the Date card for ₹5,000.');
+        } else {
+          btnWeb.classList.add('active');
+          btnStd.classList.remove('active');
+          viewWeb.style.display = 'block';
+          viewStd.style.display = 'none';
+          bottomTier.textContent = 'Bespoke Wedding Website Suite';
+          bottomPrice.innerHTML = '&#8377;10,000';
+          orderPrice.innerHTML = '&#8377;10,000';
+          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Wedding Website for ₹10,000.');
+        }
+      };
+
+      function startLiveCountdown() {
+        if (countdownInterval) clearInterval(countdownInterval);
+        let seconds = 45;
+        let mins = 32;
+        let hours = 14;
+        let days = 248;
+
+        countdownInterval = setInterval(() => {
+          seconds--;
+          if (seconds < 0) {
+            seconds = 59;
+            mins--;
+            if (mins < 0) { mins = 59; hours--; }
+          }
+          const s = document.getElementById('cdSecs');
+          const m = document.getElementById('cdMins');
+          const h = document.getElementById('cdHours');
+          const d = document.getElementById('cdDays');
+          if (s) s.textContent = seconds < 10 ? '0' + seconds : seconds;
+          if (m) m.textContent = mins < 10 ? '0' + mins : mins;
+          if (h) h.textContent = hours < 10 ? '0' + hours : hours;
+          if (d) d.textContent = days;
+        }, 1000);
+      }
+
+      window.toggleDemoAudio = function () {
+        const waves = document.getElementById('audioWaves');
+        const label = document.getElementById('audioLabel');
+        if (waves.style.opacity === '0.3') {
+          waves.style.opacity = '1';
+          label.textContent = 'Sound ON';
+        } else {
+          waves.style.opacity = '0.3';
+          label.textContent = 'Sound OFF';
+        }
+      };
+
+      window.triggerSimCalendar = function () {
+        alert('📅 Calendar Event Added:
+Aarav & Meera Wedding
+14 Dec 2026 at The Leela Palace, Udaipur
+Reminder set for 1 day prior.');
+      };
+
+      window.handleSimRSVP = function (e) {
+        e.preventDefault();
+        const name = document.getElementById('simRsvpName').value || 'Guest';
+        const att = document.getElementById('simRsvpAttending').value;
+        const count = document.getElementById('simRsvpCount').value;
+        const text = encodeURIComponent('RSVP Confirmation for ' + activeDemoTemplate + ' Wedding:
+Name: ' + name + '
+Status: ' + att + '
+Guests: ' + count);
+        window.open('https://wa.me/919032684083?text=' + text, '_blank');
       };
 
       window.openVideoOrder = function (styleName) {
