@@ -3927,18 +3927,6 @@
             }
           });
         }
-      }; else {
-          // Default: Wedding Invitations
-          currentPrice = 10000;
-          tabInvites.classList.add('active');
-          headTitle.textContent = 'Our digital wedding invitation websites.';
-          headSub.textContent = 'Each website hand-crafted at fixed ₹10,000 — personalized to your love story and designed to be unforgettable.';
-          if (grid) grid.style.display = 'grid';
-          if (aiGrid) aiGrid.style.display = 'none';
-          if (controls) controls.style.display = 'flex';
-          pricePills.forEach(p => p.innerHTML = '<span class="strike">₹15,000</span>₹10,000');
-          buyBtns.forEach(b => b.textContent = 'Buy now — ₹10,000');
-        }
       };
 
       // 7. Interactive Smartphone Live Demo Simulator Logic
@@ -4077,10 +4065,7 @@
       };
 
       window.triggerSimCalendar = function () {
-        alert('📅 Calendar Event Added:
-Aarav & Meera Wedding
-14 Dec 2026 at The Leela Palace, Udaipur
-Reminder set for 1 day prior.');
+        alert('Calendar Event Added:\nAarav & Meera Wedding\n14 Dec 2026 at The Leela Palace, Udaipur\nReminder set for 1 day prior.');
       };
 
       window.handleSimRSVP = function (e) {
@@ -4088,10 +4073,7 @@ Reminder set for 1 day prior.');
         const name = document.getElementById('simRsvpName').value || 'Guest';
         const att = document.getElementById('simRsvpAttending').value;
         const count = document.getElementById('simRsvpCount').value;
-        const text = encodeURIComponent('RSVP Confirmation for ' + activeDemoTemplate + ' Wedding:
-Name: ' + name + '
-Status: ' + att + '
-Guests: ' + count);
+        const text = encodeURIComponent('RSVP Confirmation for ' + activeDemoTemplate + ' Wedding:\nName: ' + name + '\nStatus: ' + att + '\nGuests: ' + count);
         window.open('https://wa.me/919032684083?text=' + text, '_blank');
       };
 
@@ -4126,13 +4108,23 @@ Guests: ' + count);
       const expandBtnLabel = document.getElementById('expandBtnLabel');
 
       window.openNexoraViewer = function (templateKey) {
-        if (!nexoraViewer) return;
-        const info = templateRegistry[templateKey] || templateRegistry['template-0'];
-        const rate = (currentCatalogType === 'savedates') ? 5000 : 10000;
+        const nexoraViewer = document.getElementById('nexoraFrameViewer');
+        const frameLiveTitle = document.getElementById('frameLiveTitle');
+        const previewIframe = document.getElementById('previewTemplateIframe');
+        const frameWaOrderBtn = document.getElementById('frameWaOrderBtn');
+        const frameWaOrderText = document.getElementById('frameWaOrderText');
         
-        frameLiveTitle.textContent = 'LIVE PREVIEW \u2022 ' + info.name.toUpperCase();
-        frameWaOrderText.textContent = 'Book ' + info.name + ' \u2022 \u20b9' + rate.toLocaleString('en-IN');
-        frameWaOrderBtn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I am previewing the ' + info.name + ' template and want to order it for \u20b9' + rate.toLocaleString('en-IN') + '.');
+        if (!nexoraViewer || !previewIframe) {
+          console.error("Nexora Frame Viewer DOM elements not found.");
+          return;
+        }
+
+        const info = templateRegistry[templateKey] || templateRegistry['template-0'];
+        const rate = (typeof currentCatalogType !== 'undefined' && currentCatalogType === 'savedates') ? 5000 : 10000;
+        
+        if (frameLiveTitle) frameLiveTitle.textContent = 'LIVE PREVIEW \u2022 ' + info.name.toUpperCase();
+        if (frameWaOrderText) frameWaOrderText.textContent = 'Book ' + info.name + ' \u2022 \u20b9' + rate.toLocaleString('en-IN');
+        if (frameWaOrderBtn) frameWaOrderBtn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I am previewing the ' + info.name + ' template and want to order it for \u20b9' + rate.toLocaleString('en-IN') + '.');
         
         previewIframe.src = info.url;
         nexoraViewer.classList.add('active');
@@ -4225,7 +4217,7 @@ Guests: ' + count);
         <div class="preview-watermark-overlay" id="previewWatermarkOverlay" aria-hidden="true"></div>
         
         <!-- Live Template Embedded IFrame (Protected against inspection / standalone opening) -->
-        <iframe class="preview-template-iframe" id="previewTemplateIframe" src="about:blank" title="Nexora Live Wedding Invitation Preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe>
+        <iframe class="preview-template-iframe" id="previewTemplateIframe" src="about:blank" title="Nexora Live Wedding Invitation Preview" ></iframe>
       </div>
 
     </div>
