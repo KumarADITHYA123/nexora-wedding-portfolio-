@@ -1109,6 +1109,25 @@
       z-index: 10;
     }
 
+        .mockup-screen-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 20px;
+      transition: transform var(--transition-slow);
+    }
+
+    .editorial-card:hover .mockup-screen-img {
+      transform: scale(1.05);
+    }
+
+    .mini-screen-body.has-media {
+      padding: 0;
+      background: #111116;
+    }
+
     .mini-screen-body {
       width: 100%;
       height: 100%;
@@ -2952,582 +2971,258 @@
           </div>
         </div>
 
-        <!-- 12 DUAL-PHONE MOCKUP CARDS GRID (EXACT LAYOUT AS IMAGE 3) -->
+                <!-- 7 REAL WEDDING INVITATION TEMPLATES (WITH DUAL-PHONE MOCKUP: INTRO ON LEFT, HERO ON RIGHT) -->
         <div class="catalog-grid" id="catalogGrid">
-          
-          <!-- Card 1: Royal (Best Seller) -->
+
+          <!-- Card 1: Template 0 - Royal Heritage (Bestseller) -->
           <article class="editorial-card" data-category="hindu" data-tag="bestseller">
             <div class="card-phone-stage theme-royal">
               <span class="card-badge-pill">BEST SELLER</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
-                <!-- Phone Left: Cover Screen -->
+                <!-- Left Phone: Intro Video Start Image / Wax Seal Envelope -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #5E1424; letter-spacing: 0.1em; text-align: center;">Wedding Website</span>
-                    <h4 class="mini-cover-title">Aarav &amp; Meera</h4>
-                    <p class="mini-cover-date">14 DEC 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto; opacity: 0.85;" fill="none" stroke="#5E1424" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="22" stroke="#C5A059" fill="#FFFDF9" opacity="0.6"/>
-                      <path d="M35 50 Q50 25 65 50 M42 40 Q50 32 58 40" stroke="#5E1424"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-0/assets/intro-poster.webp" alt="Royal Heritage Intro Video Start" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
-                <!-- Phone Right: Details & RSVP Screen -->
+                <!-- Right Phone: Hero Screen Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title">The Itinerary</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Muhurtham:</strong> 10:30 AM</p>
-                      <p class="mini-event-row"><strong>Reception:</strong> 07:00 PM</p>
-                      <p class="mini-event-row" style="color: #C5A059; margin-top: 2px;">The Leela Palace</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp">Submit RSVP &rarr;</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-0/assets/hero.webp" alt="Royal Heritage Hero Celebration" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Royal', currentPrice, currentCatalogType)" aria-label="Preview Royal live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-0')" aria-label="Preview Royal Heritage live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_Royal" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template0" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Royal.</strong> Blush, gold and candlelight &mdash; a soft, cinematic mandap romance, endlessly loved.</p>
+              <p><strong>Royal Heritage.</strong> Grand South Indian Mandap with temple bells, brass lamps, and traditional royal Carnatic Nadaswaram.</p>
             </div>
           </article>
 
-          <!-- Card 2: Amalfi Coast (New & Exclusive) -->
-          <article class="editorial-card" data-category="hindu" data-tag="new">
-            <div class="card-phone-stage theme-amalfi">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
+          <!-- Card 2: Ram Mandir Divine Theme (KEPT IN 2ND PLACE AS REQUESTED!) -->
+          <article class="editorial-card" data-category="hindu" data-tag="exclusive">
+            <div class="card-phone-stage" style="background: linear-gradient(145deg, #FFF6E5 0%, #FAF0D9 100%); border: 1.5px solid #E6C875;">
+              <span class="card-badge-pill" style="background: #C57D29; color: #FFF;">AYODHYA DIVINE</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
-                <!-- Phone Left -->
-                <div class="mini-mockup-phone phone-left">
+                <!-- Left Phone: Ram Mandir Ornate Gate Start Image -->
+                <div class="mini-mockup-phone phone-left" style="border-color: #C57D29;">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #1B4F72; letter-spacing: 0.1em; text-align: center;">Capri Wedding</span>
-                    <h4 class="mini-cover-title">Kabir &amp; Ananya</h4>
-                    <p class="mini-cover-date" style="color: #B7950B;">18 OCT 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#2980B9" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="18" fill="#FDFEFE" opacity="0.8"/>
-                      <path d="M30 40 Q50 20 70 40 M40 50 Q50 35 60 50" stroke="#1B4F72"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/rammandir/framerusercontent.com/images/TUkRvFIUDwblbb4eewkBlJzZwJwa37a.png" alt="Ram Mandir Divine Gate Intro" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
-                <!-- Phone Right -->
-                <div class="mini-mockup-phone phone-right">
+                <!-- Right Phone: Ram Mandir Golden Temple Hero Image -->
+                <div class="mini-mockup-phone phone-right" style="border-color: #C57D29;">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #1B4F72;">The Celebration</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Sunset Cocktails:</strong> 5 PM</p>
-                      <p class="mini-event-row"><strong>Gala Dinner:</strong> 8 PM</p>
-                      <p class="mini-event-row" style="color: #2980B9; margin-top: 2px;">Villa Cimbrone, Ravello</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #1B4F72;">RSVP Online &rarr;</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/rammandir/framerusercontent.com/images/TUkRvFIUDwblbb4eewkBlJzZwJwb4c0.png" alt="Ram Mandir Golden Sanctum Hero" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Amalfi Coast', currentPrice, currentCatalogType)" aria-label="Preview Amalfi Coast live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('rammandir')" aria-label="Preview Ram Mandir Divine live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_AmalfiCoast" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Amalfi Coast%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_rammandir" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Ram%20Mandir%20Divine%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Amalfi Coast.</strong> Lemon groves, blue-and-white toile and the shimmering Mediterranean &mdash; a sun-soaked coastal romance.</p>
+              <p><strong>Ram Mandir Divine.</strong> Sacred Ayodhya temple architectural theme with golden sanctum engravings, Vedic shlokas, and divine blessings.</p>
             </div>
           </article>
 
-          <!-- Card 3: Crimson Heritage (Best Seller) -->
-          <article class="editorial-card" data-category="hindu" data-tag="bestseller">
-            <div class="card-phone-stage theme-banarasi">
-              <span class="card-badge-pill">BEST SELLER</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
-              <div class="duo-phones-wrapper">
-                <div class="mini-mockup-phone phone-left">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #5E1424; letter-spacing: 0.1em; text-align: center;">Shubh Vivah</span>
-                    <h4 class="mini-cover-title">Rohan &amp; Diya</h4>
-                    <p class="mini-cover-date">21 NOV 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#5E1424" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="20" stroke="#C5A059" fill="#FFFDF9" opacity="0.7"/>
-                      <path d="M40 45 L50 30 L60 45 Z" fill="#5E1424"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="mini-mockup-phone phone-right">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title">Jaipur Courtyard</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Baraat:</strong> 04:00 PM</p>
-                      <p class="mini-event-row"><strong>Pheras:</strong> 07:00 PM</p>
-                      <p class="mini-event-row" style="color: #C5A059; margin-top: 2px;">Rambagh Palace</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp">Confirm Attendance</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Crimson Heritage', currentPrice, currentCatalogType)" aria-label="Preview Crimson Heritage live demo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Preview Demo</span>
-                </button>
-                <a class="btn-buy-card" id="btnBuy_CrimsonHeritage" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Crimson Heritage%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-caption-editorial">
-              <p><strong>Crimson Heritage.</strong> Royal Banarasi crimson, intricate gold zari filigree, and grand Jaipur palace courtyards.</p>
-            </div>
-          </article>
-
-          <!-- Card 4: Noor Mahal (New & Exclusive) -->
-          <article class="editorial-card" data-category="muslim" data-tag="new">
-            <div class="card-phone-stage theme-mughal">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
-              <div class="duo-phones-wrapper">
-                <div class="mini-mockup-phone phone-left">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #145A32; letter-spacing: 0.1em; text-align: center;">Nikah Mubarak</span>
-                    <h4 class="mini-cover-title">Asad &amp; Zoya</h4>
-                    <p class="mini-cover-date" style="color: #B7950B;">05 DEC 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#145A32" stroke-width="1.2">
-                      <path d="M50 15 C40 25 40 45 50 60 C58 50 58 25 50 15Z" fill="#D4EFDF" opacity="0.8"/>
-                      <circle cx="50" cy="38" r="3" fill="#B7950B"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="mini-mockup-phone phone-right">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #145A32;">Walima Banquet</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Nikah:</strong> 06:00 PM</p>
-                      <p class="mini-event-row"><strong>Dawat:</strong> 08:30 PM</p>
-                      <p class="mini-event-row" style="color: #145A32; margin-top: 2px;">Taj Falaknuma Palace</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #145A32;">Submit RSVP &rarr;</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Noor Mahal', currentPrice, currentCatalogType)" aria-label="Preview Noor Mahal live demo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Preview Demo</span>
-                </button>
-                <a class="btn-buy-card" id="btnBuy_NoorMahal" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Noor Mahal%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-caption-editorial">
-              <p><strong>Noor Mahal.</strong> Regal Mughal jharokhas, whispered night jasmine, and starlit royal Nikah celebrations.</p>
-            </div>
-          </article>
-
-          <!-- Card 5: Pastel Blooms (Best Seller) -->
-          <article class="editorial-card" data-category="hindu" data-tag="bestseller">
-            <div class="card-phone-stage theme-pastel">
-              <span class="card-badge-pill">BEST SELLER</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
-              <div class="duo-phones-wrapper">
-                <div class="mini-mockup-phone phone-left">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #6C3483; letter-spacing: 0.1em; text-align: center;">Garden Wedding</span>
-                    <h4 class="mini-cover-title">Aryan &amp; Natasha</h4>
-                    <p class="mini-cover-date">28 NOV 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#7D3C98" stroke-width="1.2">
-                      <circle cx="45" cy="40" r="14" fill="#FADBD8" opacity="0.7"/>
-                      <circle cx="55" cy="40" r="14" fill="#E8DAEF" opacity="0.7"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="mini-mockup-phone phone-right">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #6C3483;">Brunch &amp; Pheras</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>High Tea:</strong> 04:00 PM</p>
-                      <p class="mini-event-row"><strong>Sunset Vows:</strong> 05:30 PM</p>
-                      <p class="mini-event-row" style="color: #6C3483; margin-top: 2px;">Alila Diwa, Goa</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #6C3483;">RSVP Here &rarr;</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Pastel Blooms', currentPrice, currentCatalogType)" aria-label="Preview Pastel Blooms live demo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Preview Demo</span>
-                </button>
-                <a class="btn-buy-card" id="btnBuy_PastelBlooms" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Pastel Blooms%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-caption-editorial">
-              <p><strong>Pastel Blooms.</strong> Soft French hydrangeas, satin blush bows, and modern Parisian garden romance.</p>
-            </div>
-          </article>
-
-          <!-- Card 6: Golden Mandala -->
-          <article class="editorial-card" data-category="hindu" data-tag="bestseller">
-            <div class="card-phone-stage theme-mandala">
-              <span class="card-badge-pill">BEST SELLER</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
-              <div class="duo-phones-wrapper">
-                <div class="mini-mockup-phone phone-left">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #7D6608; letter-spacing: 0.1em; text-align: center;">Kalyana Mahotsavam</span>
-                    <h4 class="mini-cover-title">Vikram &amp; Pooja</h4>
-                    <p class="mini-cover-date">10 JAN 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#B7950B" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="22" stroke="#B7950B" stroke-dasharray="3,2"/>
-                      <circle cx="50" cy="40" r="10" fill="#FCF3CF"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="mini-mockup-phone phone-right">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #7D6608;">Vedic Muhurtham</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Lagnam:</strong> 09:15 AM</p>
-                      <p class="mini-event-row"><strong>Kalyanam:</strong> 11:30 AM</p>
-                      <p class="mini-event-row" style="color: #B7950B; margin-top: 2px;">ITC Grand Chola</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #7D6608;">Send RSVP &rarr;</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Golden Mandala', currentPrice, currentCatalogType)" aria-label="Preview Golden Mandala live demo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Preview Demo</span>
-                </button>
-                <a class="btn-buy-card" id="btnBuy_GoldenMandala" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Golden Mandala%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-caption-editorial">
-              <p><strong>Golden Mandala.</strong> Sacred gold geometry, divine blessings, and opulent South Indian silk splendor.</p>
-            </div>
-          </article>
-
-          <!-- Card 7: Shahi Darbar (New) -->
-          <article class="editorial-card" data-category="hindu" data-tag="new">
-            <div class="card-phone-stage theme-shahi">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
-              <div class="duo-phones-wrapper">
-                <div class="mini-mockup-phone phone-left">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #5E1424; letter-spacing: 0.1em; text-align: center;">Royal Pavilion</span>
-                    <h4 class="mini-cover-title">Dev &amp; Sanjana</h4>
-                    <p class="mini-cover-date">16 DEC 2026</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#5E1424" stroke-width="1.2">
-                      <path d="M25 45 C35 30 65 30 75 45 L70 55 L30 55 Z" fill="#FADBD8"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="mini-mockup-phone phone-right">
-                  <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title">Sangeet &amp; Pheras</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Sangeet:</strong> 07:30 PM</p>
-                      <p class="mini-event-row"><strong>Imperial Feast:</strong> 09 PM</p>
-                      <p class="mini-event-row" style="color: #5E1424; margin-top: 2px;">Umaid Bhawan Palace</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp">RSVP Directly</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Shahi Darbar', currentPrice, currentCatalogType)" aria-label="Preview Shahi Darbar live demo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                  <span>Preview Demo</span>
-                </button>
-                <a class="btn-buy-card" id="btnBuy_ShahiDarbar" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi Darbar%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
-                </a>
-              </div>
-            </div>
-            <div class="card-caption-editorial">
-              <p><strong>Shahi Darbar.</strong> Imperial Rajasthan fortresses, royal velvet banners, and timeless maharani elegance.</p>
-            </div>
-          </article>
-
-          <!-- Card 8: Traditional Kalyanam -->
+          <!-- Card 3: Template 1 - Traditional Kalyanam -->
           <article class="editorial-card" data-category="hindu" data-tag="bestseller">
             <div class="card-phone-stage theme-kalyanam">
-              <span class="card-badge-pill">BEST SELLER</span>
+              <span class="card-badge-pill">SOUTH INDIAN</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
+                <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #7D6608; letter-spacing: 0.1em; text-align: center;">Divine Vivaha</span>
-                    <h4 class="mini-cover-title">Aditya &amp; Nithya</h4>
-                    <p class="mini-cover-date">02 FEB 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#7D6608" stroke-width="1.2">
-                      <path d="M50 15 L35 50 L65 50 Z" stroke="#B7950B" fill="#FCF3CF"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-1/assets/intro-poster.webp" alt="Traditional Kalyanam Intro Start" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
+                <!-- Right Phone: Hero Screen Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #7D6608;">Thali Kettu</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Muhurtham:</strong> 06:45 AM</p>
-                      <p class="mini-event-row"><strong>Kalyana Sadhya:</strong> 12 PM</p>
-                      <p class="mini-event-row" style="color: #7D6608; margin-top: 2px;">Temple Bay Resort</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #7D6608;">Submit Response</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-1/assets/hero.webp" alt="Traditional Kalyanam Hero" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Traditional Kalyanam', currentPrice, currentCatalogType)" aria-label="Preview Traditional Kalyanam live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-1')" aria-label="Preview Traditional Kalyanam live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_TraditionalKalyanam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Traditional Kalyanam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template1" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Traditional%20Kalyanam%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Traditional Kalyanam.</strong> South Indian temple bells, fresh mallipoo garlands, and pure golden kanjivaram.</p>
+              <p><strong>Traditional Kalyanam.</strong> Authentic South Indian wedding celebration with banana leaf motifs, lotus garlands, and sacred muhurtham rituals.</p>
             </div>
           </article>
 
-          <!-- Card 9: Jashn-e-Bahar (Muslim Wedding) -->
-          <article class="editorial-card" data-category="muslim" data-tag="new">
-            <div class="card-phone-stage theme-jashn">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
+          <!-- Card 4: Template 2 - Golden Mandap -->
+          <article class="editorial-card" data-category="hindu" data-tag="popular">
+            <div class="card-phone-stage" style="background: linear-gradient(145deg, #FDF9EE 0%, #F5ECDF 100%);">
+              <span class="card-badge-pill" style="background: var(--color-gold); color: #231B1C;">ROYAL MANDAP</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
+                <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #1E8449; letter-spacing: 0.1em; text-align: center;">Dawat-e-Walima</span>
-                    <h4 class="mini-cover-title">Faizan &amp; Sana</h4>
-                    <p class="mini-cover-date" style="color: #1E8449;">12 JAN 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#1E8449" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="18" fill="#E8F8F5"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-2/assets/intro.webp" alt="Golden Mandap Intro Start" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
+                <!-- Right Phone: Hero Screen Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #1E8449;">Celebration Night</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Istaqbaal:</strong> 07:00 PM</p>
-                      <p class="mini-event-row"><strong>Walima:</strong> 08:30 PM</p>
-                      <p class="mini-event-row" style="color: #1E8449; margin-top: 2px;">Hyatt Regency</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #1E8449;">RSVP On WhatsApp</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-2/sec_hero.png" alt="Golden Mandap Hero Celebration" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Jashn-e-Bahar', currentPrice, currentCatalogType)" aria-label="Preview Jashn-e-Bahar live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-2')" aria-label="Preview Golden Mandap live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_JashneBahar" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Jashn-e-Bahar%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template2" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Golden%20Mandap%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Jashn-e-Bahar.</strong> Floral moonlit pergolas, Sufi melodies, and regal emerald grandeur.</p>
+              <p><strong>Golden Mandap.</strong> Gleaming golden arches, royal palace courtyards, and starlit Sangeet banquet celebrations.</p>
             </div>
           </article>
 
-          <!-- Card 10: Eternal Ring (Modern) -->
-          <article class="editorial-card" data-category="hindu" data-tag="bestseller">
-            <div class="card-phone-stage theme-eternal">
-              <span class="card-badge-pill">BEST SELLER</span>
+          <!-- Card 5: Template 3 - Crimson Royal -->
+          <article class="editorial-card" data-category="hindu" data-tag="exclusive">
+            <div class="card-phone-stage" style="background: linear-gradient(145deg, #FBF0F2 0%, #F5E6E8 100%);">
+              <span class="card-badge-pill" style="background: var(--color-burgundy); color: #FFF;">PALACE SUITE</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
+                <!-- Left Phone: Velvet Wax Seal Envelope Start Image -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #2C3E50; letter-spacing: 0.1em; text-align: center;">Together Forever</span>
-                    <h4 class="mini-cover-title">Siddharth &amp; Riya</h4>
-                    <p class="mini-cover-date">20 FEB 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#2C3E50" stroke-width="1.2">
-                      <circle cx="44" cy="40" r="14" stroke="#B76E79"/>
-                      <circle cx="56" cy="40" r="14" stroke="#D4AF37"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-3/assets/intro-image.webp" alt="Crimson Royal Envelope Intro" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
+                <!-- Right Phone: Grand Palace Mandap Hero Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #2C3E50;">Cocktails &amp; Dinner</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Toasts:</strong> 06:30 PM</p>
-                      <p class="mini-event-row"><strong>Dancing:</strong> 08:00 PM</p>
-                      <p class="mini-event-row" style="color: #2C3E50; margin-top: 2px;">The St. Regis Mumbai</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #2C3E50;">Confirm RSVP</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-3/verification_shots/sec_hero.png" alt="Crimson Royal Hero" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Eternal Ring', currentPrice, currentCatalogType)" aria-label="Preview Eternal Ring live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-3')" aria-label="Preview Crimson Royal live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_EternalRing" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Eternal Ring%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template3" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Crimson%20Royal%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Eternal Ring.</strong> Interlocking infinity rings in warm sunset bokeh, and modern cocktail party elegance.</p>
+              <p><strong>Crimson Royal.</strong> Deep crimson velvet, regal gold embossing, and majestic Rajasthani fort courtyard elegance.</p>
             </div>
           </article>
 
-          <!-- Card 11: Shubh Gruhapravesam (Housewarming) -->
-          <article class="editorial-card" data-category="housewarming" data-tag="new">
-            <div class="card-phone-stage theme-gruha">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
+          <!-- Card 6: Template 4 - Vedic Mangalyam -->
+          <article class="editorial-card" data-category="hindu" data-tag="traditional">
+            <div class="card-phone-stage theme-mandala">
+              <span class="card-badge-pill">SACRED VOWS</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
+                <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #B7950B; letter-spacing: 0.1em; text-align: center;">Housewarming</span>
-                    <h4 class="mini-cover-title">The Sharma Family</h4>
-                    <p class="mini-cover-date">15 MAR 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#B7950B" stroke-width="1.2">
-                      <circle cx="50" cy="45" r="16" fill="#FCF3CF"/>
-                      <path d="M40 32 L50 20 L60 32 Z" fill="#B7950B"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-4/assets/intro poster.webp" alt="Vedic Mangalyam Intro Start" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
+                <!-- Right Phone: Sacred Pheras Hero Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #B7950B;">Vastu Puja</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Puja Timings:</strong> 09:00 AM</p>
-                      <p class="mini-event-row"><strong>Lunch:</strong> 01:00 PM</p>
-                      <p class="mini-event-row" style="color: #B7950B; margin-top: 2px;">Villa 42, Palm Meadows</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #B7950B;">Get Directions &rarr;</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-4/assets/date image.webp" alt="Vedic Mangalyam Hero" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Shubh Gruhapravesam', currentPrice, currentCatalogType)" aria-label="Preview Shubh Gruhapravesam live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-4')" aria-label="Preview Vedic Mangalyam live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_ShubhGruhapravesam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shubh Gruhapravesam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template4" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Vedic%20Mangalyam%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Shubh Gruhapravesam.</strong> Auspicious brass kalash, sacred threshold mango leaves, and new beginnings.</p>
+              <p><strong>Vedic Mangalyam.</strong> Seven sacred pheras, Vedic mantras, Jeelakarra Bellam rituals, and timeless family blessings in rich ceremonial style.</p>
             </div>
           </article>
 
-          <!-- Card 12: Vedic Upanayanam -->
-          <article class="editorial-card" data-category="upanayanam" data-tag="new">
-            <div class="card-phone-stage theme-upanayanam">
-              <span class="card-badge-pill">NEW &bull; EXCLUSIVE</span>
+          <!-- Card 7: Template 5 - Shahi Darbar Nikah -->
+          <article class="editorial-card" data-category="muslim" data-tag="exclusive">
+            <div class="card-phone-stage" style="background: linear-gradient(145deg, #EEF7F2 0%, #E3EFE9 100%);">
+              <span class="card-badge-pill" style="background: #1B5E3C; color: #FFF;">ROYAL NIKAH</span>
               <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
+                <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body phone-cover-art">
-                    <span style="font-size: 0.45rem; text-transform: uppercase; color: #A04000; letter-spacing: 0.1em; text-align: center;">Upanayana Mahotsav</span>
-                    <h4 class="mini-cover-title">Chi. Raghav</h4>
-                    <p class="mini-cover-date">26 APR 2027</p>
-                    <svg viewBox="0 0 100 80" style="margin-top: auto;" fill="none" stroke="#A04000" stroke-width="1.2">
-                      <circle cx="50" cy="40" r="18" fill="#EDBB99" opacity="0.6"/>
-                    </svg>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-5/assets/intro-poster-new-BU7qGwfU.jpg" alt="Shahi Darbar Intro Start" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
+                <!-- Right Phone: Royal Banquet Hero Image -->
                 <div class="mini-mockup-phone phone-right">
                   <div class="mini-notch"></div>
-                  <div class="mini-screen-body" style="background: #FFFFFF;">
-                    <span class="mini-details-title" style="color: #A04000;">Brahmopadesham</span>
-                    <div class="mini-details-box">
-                      <p class="mini-event-row"><strong>Homam:</strong> 08:30 AM</p>
-                      <p class="mini-event-row"><strong>Maha Prasadam:</strong> 12:30 PM</p>
-                      <p class="mini-event-row" style="color: #A04000; margin-top: 2px;">Sankara Hall, Chennai</p>
-                    </div>
-                    <div style="margin-top: auto; text-align: center;">
-                      <span class="mini-btn-rsvp" style="background: #A04000;">Bless The Vatu &rarr;</span>
-                    </div>
+                  <div class="mini-screen-body has-media">
+                    <img src="templates/template-5/assets/gallery-1-CndRyTXZ-v3.jpg" alt="Shahi Darbar Hero" class="mockup-screen-img" loading="lazy">
                   </div>
                 </div>
               </div>
               <div class="card-action-dock">
-                <button class="btn-preview-demo" onclick="openTemplateDemo('Vedic Upanayanam', currentPrice, currentCatalogType)" aria-label="Preview Vedic Upanayanam live demo">
+                <button class="btn-preview-demo" onclick="openNexoraViewer('template-5')" aria-label="Preview Shahi Darbar Nikah live demo">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_VedicUpanayanam" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Vedic Upanayanam%20wedding%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                <a class="btn-buy-card" id="btnBuy_template5" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi%20Darbar%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                   Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
                 </a>
               </div>
             </div>
             <div class="card-caption-editorial">
-              <p><strong>Vedic Upanayanam.</strong> Sacred thread ceremony, Gayatri mantra script, and timeless Vedic heritage.</p>
+              <p><strong>Shahi Darbar Nikah.</strong> Moonlit marble jalis, fragrant rose petals, emerald velvet, and Sufi qawwali Walima celebration.</p>
             </div>
           </article>
 
