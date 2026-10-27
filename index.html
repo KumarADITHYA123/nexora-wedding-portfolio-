@@ -995,14 +995,15 @@
       position: relative;
       background: #F4EFEB;
       border-radius: var(--radius-lg);
-      padding: var(--space-lg) var(--space-md) var(--space-xl);
-      border: 1px solid rgba(232, 224, 215, 0.8);
+      padding: 24px 16px 20px;
+      border: 1px solid rgba(232, 224, 215, 0.85);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       overflow: hidden;
-      min-height: 375px;
+      height: 385px;
+      box-sizing: border-box;
       box-shadow: 0 4px 20px rgba(94, 20, 36, 0.04);
       transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
     }
@@ -1140,34 +1141,7 @@
       overflow: hidden;
     }
 
-    /* Floating Center Button */
-    .btn-buy-card {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #FFFFFF;
-      color: var(--color-text);
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.55rem 1.35rem;
-      border-radius: var(--radius-full);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(232, 224, 215, 0.8);
-      white-space: nowrap;
-      z-index: 10;
-      transition: all var(--transition-fast);
-      cursor: pointer;
-    }
-
-    .btn-buy-card:hover {
-      background: var(--color-burgundy);
-      color: #FFFFFF;
-      border-color: var(--color-burgundy);
-      transform: translateX(-50%) translateY(-2px);
-      box-shadow: 0 8px 22px rgba(94, 20, 36, 0.28);
-    }
+    /* Obsolete floating button removed to prevent dock overlap */
 
     /* Editorial Caption Below Card (Image 3) */
     .card-caption-editorial {
@@ -1973,79 +1947,104 @@
     }
 
     /* ==========================================================================
-       FLOATING DUAL ACTION DOCK (PREVIEW DEMO + BUY NOW)
+       FLOATING DUAL ACTION DOCK (PREVIEW DEMO + BUY NOW SIDE-BY-SIDE)
        ========================================================================== */
     .card-action-dock {
       position: absolute;
-      bottom: 12px;
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 4px;
-      border-radius: var(--radius-full);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(232, 224, 215, 0.95);
-      z-index: 10;
-      width: max-content;
-      max-width: 95%;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      background: rgba(255, 255, 255, 0.96) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      padding: 5px 8px !important;
+      border-radius: var(--radius-full) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+      border: 1px solid rgba(232, 224, 215, 0.95) !important;
+      z-index: 20 !important;
+      width: max-content !important;
+      max-width: 95% !important;
+      pointer-events: auto !important;
     }
 
-    .btn-preview-demo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: #FFFFFF;
-      color: var(--color-burgundy);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.52rem 1rem;
-      border-radius: var(--radius-full);
-      border: 1.5px solid rgba(94, 20, 36, 0.22);
-      white-space: nowrap;
-      transition: all var(--transition-fast);
-      cursor: pointer;
+    .card-action-dock .btn-preview-demo {
+      position: static !important;
+      left: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      background: #FFFFFF !important;
+      color: var(--color-burgundy) !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      padding: 0.52rem 0.95rem !important;
+      border-radius: var(--radius-full) !important;
+      border: 1.5px solid rgba(94, 20, 36, 0.25) !important;
+      white-space: nowrap !important;
+      transition: all var(--transition-fast) !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+      text-decoration: none !important;
+      line-height: 1 !important;
     }
 
-    .btn-preview-demo:hover {
-      background: var(--color-burgundy-subtle);
-      border-color: var(--color-burgundy);
-      transform: translateY(-1px);
-    }
-
-    .btn-preview-demo svg {
-      width: 14px;
-      height: 14px;
-      color: var(--color-burgundy);
-    }
-
-    .btn-buy-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: var(--color-burgundy);
+    .card-action-dock .btn-preview-demo:hover {
+      background: var(--color-burgundy) !important;
       color: #FFFFFF !important;
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.52rem 1.1rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--color-burgundy);
-      white-space: nowrap;
-      transition: all var(--transition-fast);
-      cursor: pointer;
-      text-decoration: none;
+      border-color: var(--color-burgundy) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(94, 20, 36, 0.2) !important;
     }
 
-    .btn-buy-card:hover {
-      background: var(--color-burgundy-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(94, 20, 36, 0.3);
+    .card-action-dock .btn-preview-demo:hover svg {
+      stroke: #FFFFFF !important;
+    }
+
+    .card-action-dock .btn-preview-demo svg {
+      width: 14px !important;
+      height: 14px !important;
+      color: currentColor !important;
+      stroke: currentColor !important;
+      flex-shrink: 0 !important;
+    }
+
+    .card-action-dock .btn-buy-card {
+      position: static !important;
+      left: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      background: var(--color-burgundy) !important;
+      color: #FFFFFF !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.78rem !important;
+      font-weight: 600 !important;
+      padding: 0.52rem 1.05rem !important;
+      border-radius: var(--radius-full) !important;
+      border: 1px solid var(--color-burgundy) !important;
+      white-space: nowrap !important;
+      transition: all var(--transition-fast) !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 12px rgba(94, 20, 36, 0.25) !important;
+      line-height: 1 !important;
+    }
+
+    .card-action-dock .btn-buy-card:hover {
+      background: var(--color-burgundy-dark) !important;
+      border-color: var(--color-burgundy-dark) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 6px 16px rgba(94, 20, 36, 0.35) !important;
     }
 
     /* ==========================================================================
