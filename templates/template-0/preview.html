@@ -535,82 +535,157 @@
       pointer-events: none; z-index: 2;
     }
 
-    /* Light Theme Contrast Controls for Ivory Panels */
+        /* Light Theme Contrast Controls for Ivory Panels */
     .panel--rsvp .panel__inner {
-      position: absolute; top: 11.5%; left: 0; right: 0; bottom: auto;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      padding: 0 0.75rem; text-align: center; z-index: 4;
+      position: absolute;
+      top: 15.5%;
+      left: 0;
+      right: 0;
+      bottom: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 1rem;
+      text-align: center;
+      z-index: 4;
     }
     .panel--rsvp .script {
-      font-size: clamp(1.25rem, 3.6vw, 1.5rem);
-      margin-bottom: 0px; line-height: 1.1;
+      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+      margin-bottom: 0px;
+      line-height: 1.1;
       color: var(--maroon-royal);
       text-shadow: 0 1px 2px rgba(255,255,255,0.7), 0 0 1px rgba(212,175,55,0.5);
     }
     .panel--rsvp .h2 {
-      font-size: clamp(1.05rem, 3vw, 1.25rem);
-      margin-bottom: 0.15rem; line-height: 1.1;
-      letter-spacing: 0.12em;
-      color: var(--maroon-royal); font-family: var(--font-display);
+      font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+      margin: 1px 0 0.4rem;
+      line-height: 1.1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--maroon-royal);
+      font-family: var(--font-display);
       text-shadow: 0 1px 3px rgba(255,255,255,0.8), 0 0 1px rgba(212,175,55,0.4);
     }
     .panel--rsvp .rule-orn { display: none; }
 
-    /* RSVP Form Container - Compactly sized to clear the temple below */
+    /* RSVP Form Container - Fitted strictly inside the cream color */
     .form--compact {
-      width: min(290px, 86%);
-      background: linear-gradient(165deg, rgba(42, 6, 6, 0.94) 0%, rgba(20, 2, 2, 0.98) 100%);
-      backdrop-filter: blur(14px);
-      padding: 0.6rem 0.9rem; border-radius: 14px;
-      border: 1.5px solid rgba(212,175,55,0.65);
-      display: flex; flex-direction: column; gap: 0.35rem; text-align: left;
-      box-shadow: 0 14px 35px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.2);
+      width: min(240px, 62%);
+      background: linear-gradient(165deg, rgba(42, 6, 6, 0.95) 0%, rgba(20, 2, 2, 0.98) 100%);
+      backdrop-filter: blur(12px);
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      border: 1.2px solid rgba(212, 175, 55, 0.65);
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.15);
+      box-sizing: border-box;
     }
     .panel--rsvp .field {
-      display: flex; flex-direction: column; gap: 2px; width: 100%;
-      font-family: var(--font-sans); font-size: 0.62rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-light);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5px;
+      width: 100%;
+      font-family: var(--font-sans);
+      font-size: 0.56rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
     }
     .panel--rsvp .field input[type="text"],
     .panel--rsvp .field select {
       width: 100%;
-      background: rgba(255,255,255,0.12);
-      border: 1.2px solid rgba(212,175,55,0.5);
-      border-radius: 6px; padding: 5px 8px;
-      color: #fff; font-family: var(--font-sans); font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 5px;
+      padding: 4px 6px;
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      line-height: 1.2;
+      box-sizing: border-box;
       transition: 0.25s border-color, 0.25s box-shadow;
     }
     .panel--rsvp .field input[type="text"]:focus,
     .panel--rsvp .field select:focus {
-      outline: none; border-color: var(--gold-light);
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-      background: rgba(255,255,255,0.18);
+      outline: none;
+      border-color: var(--gold-light);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+      background: rgba(255, 255, 255, 0.18);
     }
-    .panel--rsvp .field input::placeholder { color: rgba(252, 246, 186, 0.6); font-size: 0.82rem; }
-    .panel--rsvp .field select option { background-color: #2a0404; color: #fff; }
-    .panel--rsvp .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; align-items: end; }
-    fieldset.field { border: none; padding: 0; margin: 0; }
+    .panel--rsvp .field input::placeholder {
+      color: rgba(252, 246, 186, 0.55);
+      font-size: 0.7rem;
+    }
+    .panel--rsvp .field select option {
+      background-color: #2a0404;
+      color: #fff;
+    }
+    .panel--rsvp .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+      align-items: end;
+    }
+    fieldset.field {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
     fieldset.field legend {
-      font-family: var(--font-sans); font-size: 0.68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-light); margin-bottom: 3px;
+      font-family: var(--font-sans);
+      font-size: 0.56rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      margin-bottom: 1.5px;
     }
-    .choices { display: flex; gap: 0.85rem; padding-top: 2px; }
+    .choices {
+      display: flex;
+      gap: 0.55rem;
+      padding-top: 1px;
+    }
     .choices label {
-      display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
-      font-size: 0.8rem; color: var(--gold-light); font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      font-size: 0.7rem;
+      color: var(--gold-light);
+      font-weight: 600;
     }
     .choices input[type="radio"] {
-      appearance: none; -webkit-appearance: none;
-      width: 16px; height: 16px; border: 2px solid var(--gold-primary);
-      border-radius: 50%; outline: none; margin: 0; cursor: pointer;
-      position: relative; background: rgba(30,4,4,0.8);
+      appearance: none;
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 50%;
+      outline: none;
+      margin: 0;
+      cursor: pointer;
+      position: relative;
+      background: rgba(30, 4, 4, 0.8);
     }
     .choices input[type="radio"]:checked {
       border-color: var(--gold-light);
       background: radial-gradient(circle, var(--gold-light) 45%, #2a0404 55%);
-      box-shadow: 0 0 10px rgba(212,175,55,0.6);
+      box-shadow: 0 0 6px rgba(212, 175, 55, 0.6);
     }
-    .btn--full { width: 100%; margin-top: 0.15rem; padding: 6.5px 16px; font-size: 0.72rem; letter-spacing: 0.12em; border-radius: 999px; }
+    .btn--full {
+      width: 100%;
+      margin-top: 0.15rem;
+      padding: 5.5px 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      border-radius: 999px;
+      font-weight: 700;
+    }
 
     /* Countdown Panel (Landscape ornate temple frame) */
     .panel--count {
