@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Nexora Wedding Invite — Bespoke Digital Wedding Invitations &amp; AI Videos</title>
   <meta name="description" content="Personalized to your love story — living digital wedding invitation websites (₹10,000), Save the Dates (₹5,000), and cinematic AI wedding invitation videos (₹10,000) by Nexora Wedding Invite.">
   <meta name="keywords" content="Nexora Wedding Invite, digital wedding invitations, wedding invitation websites, AI wedding videos, Indian wedding invite, RSVP website, luxury wedding card">
   <meta name="author" content="Nexora Wedding Invite">
+
+  <!-- Progressive Web App (PWA) Manifest & Standalone App Meta -->
+  <script src="https://www.youtube.com/iframe_api" async></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Nexora">
+  <meta name="application-name" content="Nexora">
+  <meta name="msapplication-TileColor" content="#FAF7F2">
   <meta name="theme-color" content="#FAF7F2">
   
-  <!-- Favicon -->
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/jpeg" href="images/nexora-logo.jpg">
-  <link rel="apple-touch-icon" href="images/nexora-logo.jpg">
 
   <!-- OpenGraph & Social Sharing Meta -->
   <meta property="og:type" content="website">
@@ -2654,18 +2666,18 @@
     }
 
             /* ==========================================================================
-       NEXORA ENTERPRISE IN-FRAME LIVE PREVIEW VIEWER (EXACT REFERENCE REPLICATION)
+       NEXORA ENTERPRISE DIRECT FULL PREVIEW VIEWER (MATCHING REFERENCE IMAGE 2)
        ========================================================================== */
     .nexora-frame-viewer {
       position: fixed;
       inset: 0;
-      background: #3C271C;
+      background: #000000 !important;
       z-index: 100000;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem;
+      padding: 0 !important;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
@@ -2679,213 +2691,68 @@
       visibility: visible;
     }
 
-    /* Outer Shell simulating the reference image frame */
+    /* Outer Shell: 100vw x 100vh on mobile, clean phone aspect on desktop */
     .frame-viewer-shell {
-      width: min(94vw, 410px);
-      height: min(90vh, 790px);
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
       background: #FAF7F2;
-      border-radius: 28px;
+      border-radius: 0 !important;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      box-shadow: none !important;
       position: relative;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .frame-viewer-shell.expanded {
-      width: min(98vw, 860px);
-      height: min(92vh, calc(100vh - 65px));
-      border-radius: 18px;
+    @media (min-width: 641px) {
+      .frame-viewer-shell {
+        width: min(100vw, 460px) !important;
+        box-shadow: 0 0 70px rgba(0, 0, 0, 0.8) !important;
+      }
     }
 
-    /* Top Bar inside Frame: [🟢 LIVE PREVIEW · NAME] [← EXIT] */
+    /* Top Bar completely removed for all templates */
     .frame-top-bar {
-      height: 48px;
-      padding: 0 1rem;
-      background: #FFFFFF;
-      border-bottom: 1px solid rgba(232, 224, 215, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-      z-index: 30;
+      display: none !important;
     }
 
-    .frame-live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #25D366;
-      box-shadow: 0 0 8px #25D366;
-      display: inline-block;
-      animation: pulseLive 1.8s infinite;
-    }
-
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    .live-text {
-      font-family: var(--font-heading);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #5A4E48;
-    }
-
-    .frame-exit-btn {
-      background: rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-family: var(--font-body);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--color-text);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .frame-exit-btn:hover {
-      background: var(--color-burgundy);
-      color: #FFFFFF;
-      border-color: var(--color-burgundy);
-    }
-
-    /* Live Preview Stage with Watermark Shield */
+    /* Live Preview Stage with Protected Watermark Overlay Shield */
     .frame-stage-wrapper {
-      flex: 1;
       position: relative;
+      width: 100%;
+      height: 100% !important;
+      flex: 1 1 100% !important;
       background: #FAF7F2;
       overflow: hidden;
     }
 
-    /* Nexora Watermark Overlay Pattern (Non-intrusive diagonal repeating pattern matching reference) */
-    .preview-watermark-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      user-select: none;
-      -webkit-user-select: none;
-      z-index: 20;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='140' viewBox='0 0 280 140'%3E%3Ctext x='20' y='80' font-family='serif' font-size='13' font-weight='600' fill='%23C5A059' opacity='0.16' transform='rotate(-25 140 70)' letter-spacing='2'%3ENexora Wedding Studio%3C/text%3E%3C/svg%3E");
-      background-repeat: repeat;
-      mix-blend-mode: multiply;
-    }
-
-    /* Template iFrame */
     .preview-template-iframe {
       width: 100%;
       height: 100%;
-      border: none;
+      border: 0;
       display: block;
       background: #FAF7F2;
     }
 
-    /* Bottom Control Strip below the frame */
-    .frame-bottom-bar {
-      width: min(94vw, 410px);
-      padding: 0.75rem 0.25rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .frame-viewer-shell.expanded ~ .frame-bottom-bar,
-    .nexora-frame-viewer.is-expanded .frame-bottom-bar {
-      width: min(98vw, 860px);
-    }
-
-    .frame-hint-text {
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: #D6A87C;
-      letter-spacing: 0.02em;
-    }
-
-    .frame-expand-btn {
-      background: transparent;
-      border: 1px solid rgba(214, 168, 124, 0.45);
-      color: #F5EFEB;
-      font-family: var(--font-heading);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 5px 13px;
-      border-radius: 9999px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all var(--transition-fast);
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .frame-expand-btn:hover {
-      background: rgba(214, 168, 124, 0.15);
-      border-color: #D6A87C;
-    }
-
-    .frame-expand-btn svg,
-    .frame-expand-btn span,
-    .frame-exit-btn * {
+    /* Watermark pattern protection */
+    .preview-watermark-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
       pointer-events: none;
+      background-image: repeating-linear-gradient(
+        -32deg,
+        transparent,
+        transparent 110px,
+        rgba(180, 140, 100, 0.055) 110px,
+        rgba(180, 140, 100, 0.055) 112px
+      );
     }
 
-    /* Mobile Edge-to-Edge Full View when Expanded */
-    @media (max-width: 640px) {
-      .nexora-frame-viewer.is-expanded {
-        padding: 0 !important;
-        background: #000000 !important;
-      }
-      .nexora-frame-viewer.is-expanded .frame-viewer-shell {
-        width: 100vw !important;
-        height: 100vh !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-      }
-    }
-
-    /* ==========================================================================
-       FULL PREVIEW MODE (EXPANDED WATERMARK MINIMAL VIEW - MOBILE & DESKTOP)
-       ========================================================================== */
-    .nexora-frame-viewer.is-expanded {
-      padding: 0 !important;
-      background: #000000 !important;
-    }
-
-    /* Completely hide top bar in full preview mode (removes 'LIVE PREVIEW · NAME' and '← EXIT') */
-    .nexora-frame-viewer.is-expanded .frame-top-bar {
-      display: none !important;
-    }
-
-    /* Expand stage wrapper to 100% full immersion */
-    .nexora-frame-viewer.is-expanded .frame-stage-wrapper {
-      height: 100% !important;
-      flex: 1 1 100% !important;
-    }
-
-    /* Floating watermark minimize button dock */
-    .nexora-frame-viewer.is-expanded .frame-bottom-bar {
+    /* Floating Minimal Watermark Close Button Dock (Image 2) */
+    .frame-bottom-bar {
       position: fixed !important;
       bottom: 22px !important;
       left: 50% !important;
@@ -2893,39 +2760,20 @@
       width: auto !important;
       max-width: none !important;
       background: transparent !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
       border: none !important;
       box-shadow: none !important;
       padding: 0 !important;
       z-index: 100020 !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
       pointer-events: none;
     }
 
-    .nexora-frame-viewer.is-expanded .frame-bottom-controls {
-      pointer-events: auto;
-      gap: 0 !important;
-    }
-
-    /* Hide WhatsApp icon button in full preview mode */
-    .nexora-frame-viewer.is-expanded .frame-wa-icon-btn {
-      display: none !important;
-    }
-
-    /* Hide 'COLLAPSE' text label completely */
-    .nexora-frame-viewer.is-expanded #expandBtnLabel {
-      display: none !important;
-    }
-
-    /* Hide hint text in full preview mode */
-    .nexora-frame-viewer.is-expanded .frame-hint-text {
-      display: none !important;
-    }
-
     /* Sleek Watermark Floating Minimize Button */
-    .nexora-frame-viewer.is-expanded .frame-expand-btn {
-      width: 44px;
-      height: 44px;
+    .frame-expand-btn {
+      width: 44px !important;
+      height: 44px !important;
       padding: 0 !important;
       border-radius: 50% !important;
       display: inline-flex !important;
@@ -2938,12 +2786,14 @@
       color: rgba(255, 255, 255, 0.85) !important;
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
       opacity: 0.72;
-      transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
       cursor: pointer;
+      pointer-events: auto !important;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .nexora-frame-viewer.is-expanded .frame-expand-btn:hover,
-    .nexora-frame-viewer.is-expanded .frame-expand-btn:active {
+    .frame-expand-btn:hover,
+    .frame-expand-btn:active {
       opacity: 1 !important;
       transform: scale(1.08);
       background: rgba(18, 14, 12, 0.82) !important;
@@ -2951,18 +2801,12 @@
       color: #FFFFFF !important;
     }
 
-    .nexora-frame-viewer.is-expanded .frame-expand-btn svg {
+    .frame-expand-btn svg {
       width: 18px;
       height: 18px;
       stroke-width: 2.4;
       stroke: currentColor;
-    }
-
-    .frame-bottom-controls {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+      pointer-events: none;
     }
 
     /* Icon-only WhatsApp Order Button in Live Preview (No Text) */
@@ -4291,11 +4135,10 @@
                 <!-- High-Performance Embedded 4K Cinema Player -->
                 <iframe id="ytPlayerAbove"
                         class="youtube-player-frame"
-                        src="https://www.youtube-nocookie.com/embed/xuqC-vlhIm0?enablejsapi=1&autoplay=0&mute=0&loop=1&playlist=xuqC-vlhIm0&playsinline=1&controls=1&modestbranding=1&rel=0"
+                        src="https://www.youtube-nocookie.com/embed/xuqC-vlhIm0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=xuqC-vlhIm0&playsinline=1&controls=1&modestbranding=1&rel=0"
                         title="Royal Heritage 4K Film"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
-                        loading="lazy"
                         style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;">
                 </iframe>
               </div>
@@ -4324,11 +4167,10 @@
                 <!-- High-Performance Embedded HD Cinema Player -->
                 <iframe id="ytPlayerBelow"
                         class="youtube-player-frame"
-                        src="https://www.youtube-nocookie.com/embed/HUvLSSmMcsA?enablejsapi=1&autoplay=0&mute=0&loop=1&playlist=HUvLSSmMcsA&playsinline=1&controls=1&modestbranding=1&rel=0"
+                        src="https://www.youtube-nocookie.com/embed/HUvLSSmMcsA?enablejsapi=1&autoplay=0&mute=1&loop=1&playlist=HUvLSSmMcsA&playsinline=1&controls=1&modestbranding=1&rel=0"
                         title="Shahi Jashn Wedding Reel"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
-                        loading="lazy"
                         style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;">
                 </iframe>
               </div>
@@ -5339,13 +5181,17 @@
         }
       });
 
-      // =========================================================================
-      // DEDICATED AI VIDEO CINEMA COORDINATOR (YouTube Iframe API PostMessage)
-      // Mutual Exclusivity + Default Unmuted Audio (Sound ON) + Viewport Awareness
+            // =========================================================================
+      // DEDICATED AI VIDEO CINEMA COORDINATOR (YouTube Iframe API & PostMessage)
+      // Default Autoplay + Strict 1-Player Mutual Exclusivity + Viewport Awareness
       // =========================================================================
       let activeYTPlayerId = null;
       let hasUserInteracted = false;
+      let playerAbove = null;
+      let playerBelow = null;
+      let ytObserver = null;
 
+      // Safe postMessage wrapper for YouTube Iframe
       function sendYTCommand(iframeEl, func, args) {
         if (!iframeEl || !iframeEl.contentWindow) return;
         try {
@@ -5357,40 +5203,116 @@
         } catch(e) {}
       }
 
-      window.playAndUnmuteYT = function(playerId) {
+      // Initialize YouTube API players when API is ready
+      window.onYouTubeIframeAPIReady = function() {
+        initYTPlayerInstances();
+      };
+
+      function initYTPlayerInstances() {
+        if (typeof YT === 'undefined' || !YT.Player) return;
+        try {
+          if (!playerAbove && document.getElementById('ytPlayerAbove')) {
+            playerAbove = new YT.Player('ytPlayerAbove', {
+              events: {
+                'onReady': function(e) {
+                  if (currentCatalogType === 'aivideos' && activeYTPlayerId !== 'ytPlayerBelow') {
+                    window.playYTVideo('ytPlayerAbove');
+                  }
+                },
+                'onStateChange': function(e) {
+                  // If Video 1 starts playing (state === 1), instantly stop Video 2!
+                  if (e.data === 1) {
+                    activeYTPlayerId = 'ytPlayerAbove';
+                    if (playerBelow && typeof playerBelow.pauseVideo === 'function') {
+                      playerBelow.pauseVideo();
+                    } else {
+                      const ifr2 = document.getElementById('ytPlayerBelow');
+                      if (ifr2) sendYTCommand(ifr2, 'pauseVideo');
+                    }
+                  }
+                }
+              }
+            });
+          }
+          if (!playerBelow && document.getElementById('ytPlayerBelow')) {
+            playerBelow = new YT.Player('ytPlayerBelow', {
+              events: {
+                'onReady': function(e) {},
+                'onStateChange': function(e) {
+                  // If Video 2 starts playing (state === 1), instantly stop Video 1!
+                  if (e.data === 1) {
+                    activeYTPlayerId = 'ytPlayerBelow';
+                    if (playerAbove && typeof playerAbove.pauseVideo === 'function') {
+                      playerAbove.pauseVideo();
+                    } else {
+                      const ifr1 = document.getElementById('ytPlayerAbove');
+                      if (ifr1) sendYTCommand(ifr1, 'pauseVideo');
+                    }
+                  }
+                }
+              }
+            });
+          }
+        } catch(e) {}
+      }
+
+      // Universal play video function with strict mutual exclusivity
+      window.playYTVideo = function(playerId, unmute) {
         const targetIframe = document.getElementById(playerId);
         if (!targetIframe) return;
 
         const otherId = (playerId === 'ytPlayerAbove') ? 'ytPlayerBelow' : 'ytPlayerAbove';
         const otherIframe = document.getElementById(otherId);
 
-        // 1. Strict single-player mutual exclusivity: pause other video immediately
+        // 1. STRICT SINGLE-PLAYER MUTUAL EXCLUSIVITY:
+        // Remind: if 1 video is playing, the other MUST be stopped immediately!
         if (otherIframe) {
           sendYTCommand(otherIframe, 'pauseVideo');
+        }
+        if (otherId === 'ytPlayerBelow' && playerBelow && typeof playerBelow.pauseVideo === 'function') {
+          playerBelow.pauseVideo();
+        } else if (otherId === 'ytPlayerAbove' && playerAbove && typeof playerAbove.pauseVideo === 'function') {
+          playerAbove.pauseVideo();
+        }
+
+        // Also stop modal video if active
+        const modalPlayer = document.getElementById('aiVideoPlayer');
+        if (modalPlayer && !modalPlayer.paused) {
+          modalPlayer.pause();
         }
 
         activeYTPlayerId = playerId;
 
-        // 2. Play target video with unmuted full volume
-        sendYTCommand(targetIframe, 'unMute');
-        sendYTCommand(targetIframe, 'setVolume', [100]);
-        sendYTCommand(targetIframe, 'playVideo');
-
-        // Reinforce unmute to override browser autoplay mute fallback
-        setTimeout(function() {
-          sendYTCommand(targetIframe, 'unMute');
-          sendYTCommand(targetIframe, 'setVolume', [100]);
-        }, 120);
-        setTimeout(function() {
-          sendYTCommand(targetIframe, 'unMute');
-          sendYTCommand(targetIframe, 'setVolume', [100]);
-        }, 350);
+        // 2. Play target video (guaranteed autoplay)
+        const targetPlayer = (playerId === 'ytPlayerAbove') ? playerAbove : playerBelow;
+        if (targetPlayer && typeof targetPlayer.playVideo === 'function') {
+          targetPlayer.playVideo();
+          if (unmute || hasUserInteracted) {
+            try {
+              targetPlayer.unMute();
+              targetPlayer.setVolume(100);
+            } catch(e) {}
+          }
+        } else {
+          sendYTCommand(targetIframe, 'playVideo');
+          if (unmute || hasUserInteracted) {
+            sendYTCommand(targetIframe, 'unMute');
+            sendYTCommand(targetIframe, 'setVolume', [100]);
+          }
+        }
       };
+
+      // Backwards-compatible alias
+      window.playAndUnmuteYT = window.playYTVideo;
 
       window.pauseYT = function(playerId) {
         const iframe = document.getElementById(playerId);
         if (iframe) {
           sendYTCommand(iframe, 'pauseVideo');
+        }
+        const pl = (playerId === 'ytPlayerAbove') ? playerAbove : playerBelow;
+        if (pl && typeof pl.pauseVideo === 'function') {
+          pl.pauseVideo();
         }
         if (activeYTPlayerId === playerId) {
           activeYTPlayerId = null;
@@ -5402,11 +5324,14 @@
         const iframeBelow = document.getElementById('ytPlayerBelow');
         if (iframeAbove) sendYTCommand(iframeAbove, 'pauseVideo');
         if (iframeBelow) sendYTCommand(iframeBelow, 'pauseVideo');
+        if (playerAbove && typeof playerAbove.pauseVideo === 'function') playerAbove.pauseVideo();
+        if (playerBelow && typeof playerBelow.pauseVideo === 'function') playerBelow.pauseVideo();
         activeYTPlayerId = null;
       };
 
-      // Listen to YouTube postMessage events for state changes
-      // If user taps play directly on one iframe, instantly pause the other!
+      // Secondary postMessage safety net:
+      // Even if user taps play directly on YouTube iframe's native controls,
+      // instantly kill the other player!
       window.addEventListener('message', function(event) {
         try {
           const iframeAbove = document.getElementById('ytPlayerAbove');
@@ -5423,16 +5348,15 @@
                             (data.event === 'infoDelivery' && data.info && data.info.playerState === 1);
 
           if (isPlaying) {
+            hasUserInteracted = true;
             if (event.source === iframeAbove.contentWindow) {
               activeYTPlayerId = 'ytPlayerAbove';
               sendYTCommand(iframeBelow, 'pauseVideo');
-              sendYTCommand(iframeAbove, 'unMute');
-              sendYTCommand(iframeAbove, 'setVolume', [100]);
+              if (playerBelow && typeof playerBelow.pauseVideo === 'function') playerBelow.pauseVideo();
             } else if (event.source === iframeBelow.contentWindow) {
               activeYTPlayerId = 'ytPlayerBelow';
               sendYTCommand(iframeAbove, 'pauseVideo');
-              sendYTCommand(iframeBelow, 'unMute');
-              sendYTCommand(iframeBelow, 'setVolume', [100]);
+              if (playerAbove && typeof playerAbove.pauseVideo === 'function') playerAbove.pauseVideo();
             }
           }
         } catch(e) {}
@@ -5446,29 +5370,70 @@
             sendYTCommand(iframe, 'listening');
           }
         });
+        initYTPlayerInstances();
       }
 
-      // Unlock browser audio permission on user interaction
+      // Mark user interaction
       function markUserInteraction() {
         hasUserInteracted = true;
         initYTIframeSubscribers();
-        if (currentCatalogType === 'aivideos' && activeYTPlayerId) {
-          const activeIframe = document.getElementById(activeYTPlayerId);
-          if (activeIframe) {
-            sendYTCommand(activeIframe, 'unMute');
-            sendYTCommand(activeIframe, 'setVolume', [100]);
-          }
-        }
       }
       ['click', 'touchstart', 'touchend', 'keydown'].forEach(function(ev) {
         window.addEventListener(ev, markUserInteraction, { passive: true });
       });
 
-      // Viewport Scroll Coordinator: Coordinates playback between Video 1 (above) and Video 2 (down)
-      let ytScrollRaf = null;
+      // IntersectionObserver for automatic autoplay on scroll & viewport entry:
+      // As soon as Video 1 is in view, it autoplays and Video 2 is stopped.
+      // When user scrolls down to Video 2, Video 2 autoplays and Video 1 is stopped.
+      function setupYTIntersectionObserver() {
+        if (!('IntersectionObserver' in window)) return;
+        if (ytObserver) ytObserver.disconnect();
+
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.35 // Trigger when at least 35% visible
+        };
+
+        ytObserver = new IntersectionObserver(function(entries) {
+          if (currentCatalogType !== 'aivideos') return;
+
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              if (entry.target.id === 'aiVideoCardAbove') {
+                window.playYTVideo('ytPlayerAbove');
+              } else if (entry.target.id === 'aiVideoCardBelow') {
+                window.playYTVideo('ytPlayerBelow');
+              }
+            } else {
+              // If this card left the view and was the active one, check if both are out
+              if (entry.target.id === 'aiVideoCardAbove' && activeYTPlayerId === 'ytPlayerAbove') {
+                const cardBelow = document.getElementById('aiVideoCardBelow');
+                const rect2 = cardBelow ? cardBelow.getBoundingClientRect() : null;
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                if (!rect2 || rect2.top > vh || rect2.bottom < 0) {
+                  window.pauseYT('ytPlayerAbove');
+                }
+              } else if (entry.target.id === 'aiVideoCardBelow' && activeYTPlayerId === 'ytPlayerBelow') {
+                const cardAbove = document.getElementById('aiVideoCardAbove');
+                const rect1 = cardAbove ? cardAbove.getBoundingClientRect() : null;
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                if (!rect1 || rect1.top > vh || rect1.bottom < 0) {
+                  window.pauseYT('ytPlayerBelow');
+                }
+              }
+            }
+          });
+        }, options);
+
+        const card1 = document.getElementById('aiVideoCardAbove');
+        const card2 = document.getElementById('aiVideoCardBelow');
+        if (card1) ytObserver.observe(card1);
+        if (card2) ytObserver.observe(card2);
+      }
+
       function coordinateYTPlaybackOnScroll() {
         if (currentCatalogType !== 'aivideos') return;
-
         const cardAbove = document.getElementById('aiVideoCardAbove');
         const cardBelow = document.getElementById('aiVideoCardBelow');
         if (!cardAbove || !cardBelow) return;
@@ -5478,40 +5443,33 @@
         const vh = window.innerHeight || document.documentElement.clientHeight;
         const mid = vh / 2;
 
-        // Visible vertical height of each card in viewport
         const vis1 = Math.max(0, Math.min(rect1.bottom, vh) - Math.max(rect1.top, 0));
         const vis2 = Math.max(0, Math.min(rect2.bottom, vh) - Math.max(rect2.top, 0));
-
         const ratio1 = rect1.height > 0 ? (vis1 / rect1.height) : 0;
         const ratio2 = rect2.height > 0 ? (vis2 / rect2.height) : 0;
 
-        // If neither card is sufficiently visible (user scrolled away from AI videos section)
         if (ratio1 < 0.25 && ratio2 < 0.25) {
-          if (activeYTPlayerId) {
-            window.pauseAllYT();
-          }
+          if (activeYTPlayerId) window.pauseAllYT();
           return;
         }
 
-        // Determine which card center is closer to the viewport center line
         const center1 = (rect1.top + rect1.bottom) / 2;
         const center2 = (rect2.top + rect2.bottom) / 2;
         const dist1 = Math.abs(center1 - mid);
         const dist2 = Math.abs(center2 - mid);
 
         if (ratio1 >= 0.25 && dist1 <= dist2) {
-          // Video 1 (Above) is dominant in user's view
           if (activeYTPlayerId !== 'ytPlayerAbove') {
-            window.playAndUnmuteYT('ytPlayerAbove');
+            window.playYTVideo('ytPlayerAbove');
           }
         } else if (ratio2 >= 0.25 && dist2 < dist1) {
-          // Video 2 (Down) is dominant in user's view
           if (activeYTPlayerId !== 'ytPlayerBelow') {
-            window.playAndUnmuteYT('ytPlayerBelow');
+            window.playYTVideo('ytPlayerBelow');
           }
         }
       }
 
+      let ytScrollRaf = null;
       function onYTScrollThrottled() {
         if (ytScrollRaf) cancelAnimationFrame(ytScrollRaf);
         ytScrollRaf = requestAnimationFrame(coordinateYTPlaybackOnScroll);
@@ -5552,10 +5510,12 @@
           if (aiGrid) aiGrid.style.display = 'grid';
           if (controls) controls.style.display = 'none';
 
-          // Instantly start Top Video (Royal Heritage) with sound ON, ensure Down Video is stopped!
+          // Autoplay Video 1 (Royal Heritage), setup observer & ensure Video 2 is stopped!
           initYTIframeSubscribers();
-          window.playAndUnmuteYT('ytPlayerAbove');
-          setTimeout(coordinateYTPlaybackOnScroll, 200);
+          setupYTIntersectionObserver();
+          window.playYTVideo('ytPlayerAbove', true);
+          setTimeout(function() { window.playYTVideo('ytPlayerAbove', true); }, 250);
+          setTimeout(coordinateYTPlaybackOnScroll, 350);
         } else if (type === 'savedates') {
           currentPrice = 5000;
           tabSaveDates.classList.add('active');
@@ -5740,6 +5700,7 @@
       };
 
       window.openAIVideoModal = function (videoSrc, videoTitle, orderStyleName, badgeText) {
+        if (typeof window.pauseAllYT === "function") window.pauseAllYT();
         const modal = document.getElementById('videoPlayerModal');
         const player = document.getElementById('aiVideoPlayer');
         const titleEl = document.getElementById('modalVideoTitle');
@@ -5799,10 +5760,9 @@
       };
 
       window.openNexoraViewer = function (templateKey) {
+        if (typeof window.pauseAllYT === "function") window.pauseAllYT();
         const viewer = document.getElementById('nexoraFrameViewer');
-        const title = document.getElementById('frameLiveTitle');
         const iframe = document.getElementById('previewTemplateIframe');
-        const waBtn = document.getElementById('frameWaOrderBtn');
         
         if (!viewer || !iframe) {
           console.error("Nexora Frame Viewer DOM elements not found.");
@@ -5810,19 +5770,13 @@
         }
 
         const info = templateRegistry[templateKey] || templateRegistry['template-0'];
-        const isStd = (templateKey && templateKey.startsWith('save-the-date')) || (typeof currentCatalogType !== 'undefined' && currentCatalogType === 'savedates');
-        const rate = isStd ? 5000 : 10000;
-        const itemType = isStd ? 'Save the Date' : 'Wedding Invitation';
-        
-        if (title) title.textContent = 'LIVE PREVIEW \u2022 ' + info.name.toUpperCase();
-        if (waBtn) {
-          waBtn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I am previewing the ' + info.name + ' ' + itemType + ' template and want to order it for \u20b9' + rate.toLocaleString('en-IN') + '.');
-          waBtn.setAttribute('title', 'Order ' + info.name + ' on WhatsApp');
-          waBtn.setAttribute('aria-label', 'Order ' + info.name + ' on WhatsApp');
-        }
-        
         iframe.src = info.url;
-        viewer.classList.add('active');
+
+        // Directly activate full preview mode (Image 2)
+        viewer.classList.add('active', 'is-expanded');
+        const shell = document.getElementById('frameViewerShell');
+        if (shell) shell.classList.add('expanded');
+
         document.body.style.overflow = 'hidden';
         if (window.history && window.history.pushState) {
           window.history.pushState({ nexoraViewer: true }, '');
@@ -5832,9 +5786,6 @@
       window.closeNexoraViewer = function () {
         const viewer = document.getElementById('nexoraFrameViewer');
         const iframe = document.getElementById('previewTemplateIframe');
-        const shell = document.getElementById('frameViewerShell');
-        const btnLabel = document.getElementById('expandBtnLabel');
-        const btnIcon = document.getElementById('expandBtnIcon');
 
         if (viewer) {
           viewer.classList.remove('active');
@@ -5844,36 +5795,14 @@
           iframe.src = 'about:blank'; // Stop audio and scripts in template
         }
         document.body.style.overflow = '';
-        if (shell) shell.classList.remove('expanded');
-        if (btnLabel) btnLabel.textContent = 'EXPAND';
-        if (btnIcon) {
-          btnIcon.innerHTML = '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>';
-        }
       };
 
+      // Tapping the floating watermark button closes the preview directly
       window.toggleViewerExpand = function (e) {
         if (e && e.stopPropagation) {
           e.stopPropagation();
         }
-        const shell = document.getElementById('frameViewerShell');
-        const viewer = document.getElementById('nexoraFrameViewer');
-        const btnLabel = document.getElementById('expandBtnLabel');
-        const btnIcon = document.getElementById('expandBtnIcon');
-
-        if (!shell) return;
-        const isExp = shell.classList.toggle('expanded');
-        if (viewer) viewer.classList.toggle('is-expanded', isExp);
-        if (btnLabel) btnLabel.textContent = isExp ? '' : 'EXPAND';
-        const expandBtn = document.getElementById('btnToggleExpand');
-        if (expandBtn) {
-          expandBtn.setAttribute('title', isExp ? 'Minimize preview' : 'Full view');
-          expandBtn.setAttribute('aria-label', isExp ? 'Minimize preview' : 'Full view');
-        }
-        if (btnIcon) {
-          btnIcon.innerHTML = isExp 
-            ? '<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/>' 
-            : '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>';
-        }
+        window.closeNexoraViewer();
       };
 
       // Hardware/Gesture Back Button support for mobile live preview
@@ -5896,12 +5825,17 @@
         }
       });
 
-      // Check URL query on load: ?preview=template-0 or ?preview=rammandir
+      // Check URL query on load: ?preview=template-0 or ?preview=rammandir or ?tab=aivideos
       window.addEventListener('DOMContentLoaded', function () {
+        if (typeof setupYTIntersectionObserver === 'function') setupYTIntersectionObserver();
         const urlParams = new URLSearchParams(window.location.search);
         const prevKey = urlParams.get('preview');
         if (prevKey && templateRegistry[prevKey]) {
           setTimeout(function () { openNexoraViewer(prevKey); }, 400);
+        }
+        const tabKey = urlParams.get('tab') || urlParams.get('type');
+        if (tabKey === 'aivideos' || tabKey === 'ai') {
+          setTimeout(function () { switchCatalogType('aivideos'); }, 300);
         }
       });
 
@@ -5944,51 +5878,29 @@
     })();
   </script>
   <!-- ======================================================================
-       NEXORA ENTERPRISE IN-FRAME LIVE PREVIEW VIEWER (MATCHING REFERENCE IMAGE)
+       NEXORA ENTERPRISE DIRECT FULL PREVIEW VIEWER (MATCHING REFERENCE IMAGE 2)
        ====================================================================== -->
   <div class="nexora-frame-viewer" id="nexoraFrameViewer" aria-hidden="true">
     
     <!-- Phone / Viewport Shell Frame -->
     <div class="frame-viewer-shell" id="frameViewerShell">
-      
-      <!-- Top Bar inside Frame: [🟢 LIVE PREVIEW · NAME] [← EXIT] -->
-      <div class="frame-top-bar">
-        <div class="frame-live-indicator">
-          <span class="live-dot"></span>
-          <span class="live-text" id="frameLiveTitle">LIVE PREVIEW &bull; ROYAL HERITAGE</span>
-        </div>
-        <button type="button" class="frame-exit-btn" id="btnExitPreview" onclick="closeNexoraViewer()" aria-label="Exit live preview">
-          &larr; EXIT
-        </button>
-      </div>
-
       <!-- Live Preview Stage with Protected Watermark Overlay Shield -->
       <div class="frame-stage-wrapper">
         <!-- Repeating Diagonal Watermark Pattern (Nexora Wedding Studio) -->
         <div class="preview-watermark-overlay" id="previewWatermarkOverlay" aria-hidden="true"></div>
         
-        <!-- Live Template Embedded IFrame (Protected against inspection / standalone opening) -->
+        <!-- Live Template Embedded IFrame (Full Screen Edge-to-Edge) -->
         <iframe class="preview-template-iframe" id="previewTemplateIframe" src="about:blank" title="Nexora Live Wedding Invitation Preview" allow="autoplay; fullscreen; encrypted-media"></iframe>
       </div>
-
     </div>
 
-    <!-- Bottom Action Bar below the frame -->
+    <!-- Floating Minimal Watermark Close Button (Image 2) -->
     <div class="frame-bottom-bar">
-      <span class="frame-hint-text">Interactive demo &bull; tap and explore</span>
-      <div class="frame-bottom-controls">
-        <!-- WhatsApp Icon Button (No Text - WhatsApp Logo Only) -->
-        <a class="frame-wa-icon-btn" id="frameWaOrderBtn" href="https://wa.me/919032684083" target="_blank" rel="noopener" aria-label="Order on WhatsApp" title="Order on WhatsApp">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.97.57 3.81 1.56 5.37L2 22l4.76-1.53c1.51.93 3.29 1.48 5.27 1.48 5.536 0 10.031-4.495 10.031-10.031S17.567 2 12.031 2zm0 18.25c-1.74 0-3.34-.51-4.71-1.39l-.34-.21-2.82.91.91-2.75-.23-.37c-.96-1.42-1.52-3.1-1.52-4.91 0-4.55 3.7-8.25 8.25-8.25s8.25 3.7 8.25 8.25-3.7 8.25-8.25 8.25zm4.52-6.18c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3z"/>
-          </svg>
-        </a>
-        <!-- Full View / Expand Button -->
-        <button type="button" class="frame-expand-btn" id="btnToggleExpand" onclick="toggleViewerExpand(event)" aria-label="Toggle Fullscreen Expand" title="Full View">
-          <svg id="expandBtnIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-          <span id="expandBtnLabel">EXPAND</span>
-        </button>
-      </div>
+      <button type="button" class="frame-expand-btn" id="btnToggleExpand" onclick="closeNexoraViewer()" aria-label="Close live preview" title="Close live preview">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/>
+        </svg>
+      </button>
     </div>
 
   </div>
@@ -6023,5 +5935,19 @@
       </div>
     </div>
   </div>
+  <!-- Progressive Web App Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(function(reg) {
+            console.log('[Nexora PWA] Service Worker registered:', reg.scope);
+          })
+          .catch(function(err) {
+            console.warn('[Nexora PWA] Service Worker registration failed:', err);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
