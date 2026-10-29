@@ -104,6 +104,12 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    html, body {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none;
     }
 
     html {
@@ -130,6 +136,15 @@
       color: inherit;
       text-decoration: none;
       transition: color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent !important;
+      outline: none;
+    }
+
+    a:focus,
+    a:focus-visible,
+    a:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     button {
@@ -138,6 +153,23 @@
       border: none;
       background: none;
       color: inherit;
+      outline: none !important;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    button:focus,
+    button:focus-visible,
+    button:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    button::-moz-focus-inner {
+      border: 0;
+      padding: 0;
     }
 
     ul, ol {
@@ -920,8 +952,19 @@
       white-space: nowrap;
       cursor: pointer;
       user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent !important;
+      outline: none !important;
       border: 1px solid transparent;
       background: transparent;
+    }
+
+    .type-switch-btn:focus,
+    .type-switch-btn:focus-visible,
+    .type-switch-btn:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .type-switch-btn.active {
@@ -1034,11 +1077,25 @@
       border: 1px solid var(--color-border);
       white-space: nowrap;
       transition: all var(--transition-fast);
+      cursor: pointer;
+      outline: none !important;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .filter-pill-btn:hover {
       border-color: var(--color-burgundy);
       color: var(--color-burgundy);
+    }
+
+    .filter-pill-btn:focus,
+    .filter-pill-btn:focus-visible,
+    .filter-pill-btn:active {
+      outline: none !important;
+      box-shadow: none;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .filter-pill-btn.active {
@@ -1047,6 +1104,14 @@
       border-color: var(--color-burgundy);
       font-weight: 600;
       box-shadow: 0 3px 10px rgba(94, 20, 36, 0.2);
+    }
+
+    .filter-pill-btn.active:focus,
+    .filter-pill-btn.active:focus-visible,
+    .filter-pill-btn.active:active {
+      outline: none !important;
+      box-shadow: 0 3px 10px rgba(94, 20, 36, 0.2);
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     /* Grid Layout Switcher Icons (1-col, 2-col, 3-col) - Desktop Only */
@@ -1076,6 +1141,18 @@
       justify-content: center;
       color: var(--color-text-muted);
       transition: all var(--transition-fast);
+      outline: none !important;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .grid-view-btn:focus,
+    .grid-view-btn:focus-visible,
+    .grid-view-btn:active {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .grid-view-btn.active {
@@ -2737,25 +2814,99 @@
         border-radius: 0 !important;
         box-shadow: none !important;
       }
-      .nexora-frame-viewer.is-expanded .frame-bottom-bar {
-        position: fixed !important;
-        bottom: 16px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: auto !important;
-        max-width: 90vw !important;
-        background: rgba(20, 14, 10, 0.92) !important;
-        backdrop-filter: blur(14px) !important;
-        -webkit-backdrop-filter: blur(14px) !important;
-        padding: 6px 14px !important;
-        border-radius: 9999px !important;
-        border: 1px solid rgba(214, 168, 124, 0.4) !important;
-        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6) !important;
-        z-index: 100020 !important;
-      }
-      .nexora-frame-viewer.is-expanded .frame-hint-text {
-        display: none !important;
-      }
+    }
+
+    /* ==========================================================================
+       FULL PREVIEW MODE (EXPANDED WATERMARK MINIMAL VIEW - MOBILE & DESKTOP)
+       ========================================================================== */
+    .nexora-frame-viewer.is-expanded {
+      padding: 0 !important;
+      background: #000000 !important;
+    }
+
+    /* Completely hide top bar in full preview mode (removes 'LIVE PREVIEW · NAME' and '← EXIT') */
+    .nexora-frame-viewer.is-expanded .frame-top-bar {
+      display: none !important;
+    }
+
+    /* Expand stage wrapper to 100% full immersion */
+    .nexora-frame-viewer.is-expanded .frame-stage-wrapper {
+      height: 100% !important;
+      flex: 1 1 100% !important;
+    }
+
+    /* Floating watermark minimize button dock */
+    .nexora-frame-viewer.is-expanded .frame-bottom-bar {
+      position: fixed !important;
+      bottom: 22px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: auto !important;
+      max-width: none !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      z-index: 100020 !important;
+      pointer-events: none;
+    }
+
+    .nexora-frame-viewer.is-expanded .frame-bottom-controls {
+      pointer-events: auto;
+      gap: 0 !important;
+    }
+
+    /* Hide WhatsApp icon button in full preview mode */
+    .nexora-frame-viewer.is-expanded .frame-wa-icon-btn {
+      display: none !important;
+    }
+
+    /* Hide 'COLLAPSE' text label completely */
+    .nexora-frame-viewer.is-expanded #expandBtnLabel {
+      display: none !important;
+    }
+
+    /* Hide hint text in full preview mode */
+    .nexora-frame-viewer.is-expanded .frame-hint-text {
+      display: none !important;
+    }
+
+    /* Sleek Watermark Floating Minimize Button */
+    .nexora-frame-viewer.is-expanded .frame-expand-btn {
+      width: 44px;
+      height: 44px;
+      padding: 0 !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      background: rgba(18, 14, 12, 0.42) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+      opacity: 0.72;
+      transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nexora-frame-viewer.is-expanded .frame-expand-btn:hover,
+    .nexora-frame-viewer.is-expanded .frame-expand-btn:active {
+      opacity: 1 !important;
+      transform: scale(1.08);
+      background: rgba(18, 14, 12, 0.82) !important;
+      border-color: rgba(214, 168, 124, 0.65) !important;
+      color: #FFFFFF !important;
+    }
+
+    .nexora-frame-viewer.is-expanded .frame-expand-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.4;
+      stroke: currentColor;
     }
 
     .frame-bottom-controls {
@@ -4085,14 +4236,15 @@
         <div class="catalog-grid" id="aiVideosCatalogGrid" style="display: none;">
           
           <!-- Live AI Video 1: Royal Heritage 4K Film -->
-          <article class="editorial-card">
+          <article class="editorial-card" id="aiVideoCardAbove">
             <div class="video-card-ivory">
               <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: #000000;">
                 <span class="video-quality-pill" style="pointer-events: none; z-index: 10;">4K ULTRA HD</span>
                 
                 <!-- High-Performance Embedded 4K Cinema Player -->
-                <iframe class="youtube-player-frame"
-                        src="https://www.youtube-nocookie.com/embed/xuqC-vlhIm0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=xuqC-vlhIm0&playsinline=1&controls=1&modestbranding=1&rel=0"
+                <iframe id="ytPlayerAbove"
+                        class="youtube-player-frame"
+                        src="https://www.youtube-nocookie.com/embed/xuqC-vlhIm0?enablejsapi=1&autoplay=0&mute=0&loop=1&playlist=xuqC-vlhIm0&playsinline=1&controls=1&modestbranding=1&rel=0"
                         title="Royal Heritage 4K Film"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
@@ -4119,14 +4271,15 @@
           </article>
 
           <!-- Live AI Video 2: Shahi Jashn AI Wedding Reel -->
-          <article class="editorial-card">
+          <article class="editorial-card" id="aiVideoCardBelow">
             <div class="video-card-ivory">
               <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: #000000;">
                 <span class="video-quality-pill" style="pointer-events: none; z-index: 10;">HD CINEMATIC</span>
                 
                 <!-- High-Performance Embedded HD Cinema Player -->
-                <iframe class="youtube-player-frame"
-                        src="https://www.youtube-nocookie.com/embed/HUvLSSmMcsA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=HUvLSSmMcsA&playsinline=1&controls=1&modestbranding=1&rel=0"
+                <iframe id="ytPlayerBelow"
+                        class="youtube-player-frame"
+                        src="https://www.youtube-nocookie.com/embed/HUvLSSmMcsA?enablejsapi=1&autoplay=0&mute=0&loop=1&playlist=HUvLSSmMcsA&playsinline=1&controls=1&modestbranding=1&rel=0"
                         title="Shahi Jashn Wedding Reel"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
@@ -4920,6 +5073,7 @@
       const getActiveCards = () => document.querySelectorAll('#catalogGrid .editorial-card, #saveDatesCatalogGrid .editorial-card');
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
+          if (btn && typeof btn.blur === 'function') btn.blur();
           filterBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           const filter = btn.getAttribute('data-filter');
@@ -4941,6 +5095,7 @@
       const viewBtns = document.querySelectorAll('.grid-view-btn');
 
       window.setCatalogLayout = function (layout, btnEl) {
+        if (btnEl && typeof btnEl.blur === 'function') btnEl.blur();
         viewBtns.forEach(b => b.classList.remove('active'));
         const grids = [
           document.getElementById('catalogGrid'),
@@ -5139,67 +5294,191 @@
         }
       });
 
-      // Global audio unlocker on first user interaction (touch/click/scroll)
-      let audioUnlocked = false;
-      function unlockAllCardAudio() {
-        if (audioUnlocked) return;
-        audioUnlocked = true;
-        document.querySelectorAll('video.card-inline-video').forEach(function(vid) {
-          vid.muted = false;
-          window.updateSoundButtonIcon(vid, false);
-        });
+      // =========================================================================
+      // DEDICATED AI VIDEO CINEMA COORDINATOR (YouTube Iframe API PostMessage)
+      // Mutual Exclusivity + Default Unmuted Audio (Sound ON) + Viewport Awareness
+      // =========================================================================
+      let activeYTPlayerId = null;
+      let hasUserInteracted = false;
+
+      function sendYTCommand(iframeEl, func, args) {
+        if (!iframeEl || !iframeEl.contentWindow) return;
+        try {
+          iframeEl.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: func,
+            args: args || []
+          }), '*');
+        } catch(e) {}
       }
-      ['click', 'touchstart', 'touchend', 'scroll'].forEach(function(ev) {
-        window.addEventListener(ev, unlockAllCardAudio, { passive: true, once: true });
+
+      window.playAndUnmuteYT = function(playerId) {
+        const targetIframe = document.getElementById(playerId);
+        if (!targetIframe) return;
+
+        const otherId = (playerId === 'ytPlayerAbove') ? 'ytPlayerBelow' : 'ytPlayerAbove';
+        const otherIframe = document.getElementById(otherId);
+
+        // 1. Strict single-player mutual exclusivity: pause other video immediately
+        if (otherIframe) {
+          sendYTCommand(otherIframe, 'pauseVideo');
+        }
+
+        activeYTPlayerId = playerId;
+
+        // 2. Play target video with unmuted full volume
+        sendYTCommand(targetIframe, 'unMute');
+        sendYTCommand(targetIframe, 'setVolume', [100]);
+        sendYTCommand(targetIframe, 'playVideo');
+
+        // Reinforce unmute to override browser autoplay mute fallback
+        setTimeout(function() {
+          sendYTCommand(targetIframe, 'unMute');
+          sendYTCommand(targetIframe, 'setVolume', [100]);
+        }, 120);
+        setTimeout(function() {
+          sendYTCommand(targetIframe, 'unMute');
+          sendYTCommand(targetIframe, 'setVolume', [100]);
+        }, 350);
+      };
+
+      window.pauseYT = function(playerId) {
+        const iframe = document.getElementById(playerId);
+        if (iframe) {
+          sendYTCommand(iframe, 'pauseVideo');
+        }
+        if (activeYTPlayerId === playerId) {
+          activeYTPlayerId = null;
+        }
+      };
+
+      window.pauseAllYT = function() {
+        const iframeAbove = document.getElementById('ytPlayerAbove');
+        const iframeBelow = document.getElementById('ytPlayerBelow');
+        if (iframeAbove) sendYTCommand(iframeAbove, 'pauseVideo');
+        if (iframeBelow) sendYTCommand(iframeBelow, 'pauseVideo');
+        activeYTPlayerId = null;
+      };
+
+      // Listen to YouTube postMessage events for state changes
+      // If user taps play directly on one iframe, instantly pause the other!
+      window.addEventListener('message', function(event) {
+        try {
+          const iframeAbove = document.getElementById('ytPlayerAbove');
+          const iframeBelow = document.getElementById('ytPlayerBelow');
+          if (!iframeAbove || !iframeBelow) return;
+
+          let data = event.data;
+          if (typeof data === 'string') {
+            data = JSON.parse(data);
+          }
+          if (!data) return;
+
+          const isPlaying = (data.event === 'onStateChange' && data.info === 1) ||
+                            (data.event === 'infoDelivery' && data.info && data.info.playerState === 1);
+
+          if (isPlaying) {
+            if (event.source === iframeAbove.contentWindow) {
+              activeYTPlayerId = 'ytPlayerAbove';
+              sendYTCommand(iframeBelow, 'pauseVideo');
+              sendYTCommand(iframeAbove, 'unMute');
+              sendYTCommand(iframeAbove, 'setVolume', [100]);
+            } else if (event.source === iframeBelow.contentWindow) {
+              activeYTPlayerId = 'ytPlayerBelow';
+              sendYTCommand(iframeAbove, 'pauseVideo');
+              sendYTCommand(iframeBelow, 'unMute');
+              sendYTCommand(iframeBelow, 'setVolume', [100]);
+            }
+          }
+        } catch(e) {}
       });
 
-      // Autoplay videos when scrolled near the middle of viewport (Default sound ON)
-      let videoScrollObserver = null;
-      function setupVideoAutoplayObserver() {
-        const videos = document.querySelectorAll('video.card-inline-video');
-        if (!videos.length) return;
+      // Subscribe iframes to postMessage events once ready
+      function initYTIframeSubscribers() {
+        ['ytPlayerAbove', 'ytPlayerBelow'].forEach(function(id) {
+          const iframe = document.getElementById(id);
+          if (iframe && iframe.contentWindow) {
+            sendYTCommand(iframe, 'listening');
+          }
+        });
+      }
 
-        if (videoScrollObserver) {
-          videoScrollObserver.disconnect();
+      // Unlock browser audio permission on user interaction
+      function markUserInteraction() {
+        hasUserInteracted = true;
+        initYTIframeSubscribers();
+        if (currentCatalogType === 'aivideos' && activeYTPlayerId) {
+          const activeIframe = document.getElementById(activeYTPlayerId);
+          if (activeIframe) {
+            sendYTCommand(activeIframe, 'unMute');
+            sendYTCommand(activeIframe, 'setVolume', [100]);
+          }
+        }
+      }
+      ['click', 'touchstart', 'touchend', 'keydown'].forEach(function(ev) {
+        window.addEventListener(ev, markUserInteraction, { passive: true });
+      });
+
+      // Viewport Scroll Coordinator: Coordinates playback between Video 1 (above) and Video 2 (down)
+      let ytScrollRaf = null;
+      function coordinateYTPlaybackOnScroll() {
+        if (currentCatalogType !== 'aivideos') return;
+
+        const cardAbove = document.getElementById('aiVideoCardAbove');
+        const cardBelow = document.getElementById('aiVideoCardBelow');
+        if (!cardAbove || !cardBelow) return;
+
+        const rect1 = cardAbove.getBoundingClientRect();
+        const rect2 = cardBelow.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const mid = vh / 2;
+
+        // Visible vertical height of each card in viewport
+        const vis1 = Math.max(0, Math.min(rect1.bottom, vh) - Math.max(rect1.top, 0));
+        const vis2 = Math.max(0, Math.min(rect2.bottom, vh) - Math.max(rect2.top, 0));
+
+        const ratio1 = rect1.height > 0 ? (vis1 / rect1.height) : 0;
+        const ratio2 = rect2.height > 0 ? (vis2 / rect2.height) : 0;
+
+        // If neither card is sufficiently visible (user scrolled away from AI videos section)
+        if (ratio1 < 0.25 && ratio2 < 0.25) {
+          if (activeYTPlayerId) {
+            window.pauseAllYT();
+          }
+          return;
         }
 
-        if ('IntersectionObserver' in window) {
-          videoScrollObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              const vid = entry.target;
-              if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
-                if (vid.paused) {
-                  vid.muted = false; // Default Sound ON!
-                  window.updateSoundButtonIcon(vid, false);
-                  const p = vid.play();
-                  if (p !== undefined) {
-                    p.catch(function() {
-                      vid.muted = true;
-                      window.updateSoundButtonIcon(vid, true);
-                      vid.play().catch(function(){});
-                    });
-                  }
-                }
-              } else {
-                if (!vid.paused && !vid.closest('.video-thumb-stage')?.classList.contains('is-landscape-fullscreen')) {
-                  vid.pause();
-                }
-              }
-            });
-          }, {
-            threshold: [0, 0.3, 0.6],
-            rootMargin: "-12% 0px -12% 0px"
-          });
+        // Determine which card center is closer to the viewport center line
+        const center1 = (rect1.top + rect1.bottom) / 2;
+        const center2 = (rect2.top + rect2.bottom) / 2;
+        const dist1 = Math.abs(center1 - mid);
+        const dist2 = Math.abs(center2 - mid);
 
-          videos.forEach(function(v) { videoScrollObserver.observe(v); });
+        if (ratio1 >= 0.25 && dist1 <= dist2) {
+          // Video 1 (Above) is dominant in user's view
+          if (activeYTPlayerId !== 'ytPlayerAbove') {
+            window.playAndUnmuteYT('ytPlayerAbove');
+          }
+        } else if (ratio2 >= 0.25 && dist2 < dist1) {
+          // Video 2 (Down) is dominant in user's view
+          if (activeYTPlayerId !== 'ytPlayerBelow') {
+            window.playAndUnmuteYT('ytPlayerBelow');
+          }
         }
       }
 
-      document.addEventListener('DOMContentLoaded', setupVideoAutoplayObserver);
-      window.addEventListener('load', setupVideoAutoplayObserver);
+      function onYTScrollThrottled() {
+        if (ytScrollRaf) cancelAnimationFrame(ytScrollRaf);
+        ytScrollRaf = requestAnimationFrame(coordinateYTPlaybackOnScroll);
+      }
+      window.addEventListener('scroll', onYTScrollThrottled, { passive: true });
+      window.addEventListener('resize', onYTScrollThrottled, { passive: true });
 
       var currentCatalogType = 'wedding';
       window.switchCatalogType = function (type) {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
         currentCatalogType = type || 'wedding';
         const tabInvites = document.getElementById('tabInvites');
         const tabAIVideos = document.getElementById('tabAIVideos');
@@ -5216,11 +5495,7 @@
 
         // Pause YouTube players if leaving AI videos tab
         if (type !== 'aivideos') {
-          document.querySelectorAll('.youtube-player-frame').forEach(function(iframe) {
-            try {
-              iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-            } catch(e) {}
-          });
+          window.pauseAllYT();
         }
 
         if (type === 'aivideos') {
@@ -5230,8 +5505,12 @@
           if (grid) grid.style.display = 'none';
           if (stdGrid) stdGrid.style.display = 'none';
           if (aiGrid) aiGrid.style.display = 'grid';
-          setTimeout(setupVideoAutoplayObserver, 150);
           if (controls) controls.style.display = 'none';
+
+          // Instantly start Top Video (Royal Heritage) with sound ON, ensure Down Video is stopped!
+          initYTIframeSubscribers();
+          window.playAndUnmuteYT('ytPlayerAbove');
+          setTimeout(coordinateYTPlaybackOnScroll, 200);
         } else if (type === 'savedates') {
           currentPrice = 5000;
           tabSaveDates.classList.add('active');
@@ -5500,6 +5779,9 @@
         iframe.src = info.url;
         viewer.classList.add('active');
         document.body.style.overflow = 'hidden';
+        if (window.history && window.history.pushState) {
+          window.history.pushState({ nexoraViewer: true }, '');
+        }
       };
 
       window.closeNexoraViewer = function () {
@@ -5536,13 +5818,26 @@
         if (!shell) return;
         const isExp = shell.classList.toggle('expanded');
         if (viewer) viewer.classList.toggle('is-expanded', isExp);
-        if (btnLabel) btnLabel.textContent = isExp ? 'COLLAPSE' : 'EXPAND';
+        if (btnLabel) btnLabel.textContent = isExp ? '' : 'EXPAND';
+        const expandBtn = document.getElementById('btnToggleExpand');
+        if (expandBtn) {
+          expandBtn.setAttribute('title', isExp ? 'Minimize preview' : 'Full view');
+          expandBtn.setAttribute('aria-label', isExp ? 'Minimize preview' : 'Full view');
+        }
         if (btnIcon) {
           btnIcon.innerHTML = isExp 
             ? '<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/>' 
             : '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>';
         }
       };
+
+      // Hardware/Gesture Back Button support for mobile live preview
+      window.addEventListener('popstate', function () {
+        const viewer = document.getElementById('nexoraFrameViewer');
+        if (viewer && viewer.classList.contains('active')) {
+          closeNexoraViewer();
+        }
+      });
 
       // Background backdrop dismiss click
       document.addEventListener('DOMContentLoaded', function () {
