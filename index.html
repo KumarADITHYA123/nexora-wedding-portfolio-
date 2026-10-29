@@ -1060,6 +1060,10 @@
       overflow-x: auto;
       padding-bottom: 4px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .filter-pills-scroll::-webkit-scrollbar {
@@ -1503,6 +1507,51 @@
       cursor: pointer;
       transition: all var(--transition-normal);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    #aiVideosCatalogGrid {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .video-card-info {
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+      .video-card-info {
+        padding: 0.85rem 1rem !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+      }
+      .video-card-pricing-group {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .catalog-title {
+        font-size: clamp(1.65rem, 6.8vw, 2.2rem) !important;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+      }
     }
 
     .video-card-ivory:hover {
@@ -4238,9 +4287,7 @@
           <!-- Live AI Video 1: Royal Heritage 4K Film -->
           <article class="editorial-card" id="aiVideoCardAbove">
             <div class="video-card-ivory">
-              <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: #000000;">
-                <span class="video-quality-pill" style="pointer-events: none; z-index: 10;">4K ULTRA HD</span>
-                
+              <div class="video-thumb-stage" style="aspect-ratio: 16/9; background: #000000;">
                 <!-- High-Performance Embedded 4K Cinema Player -->
                 <iframe id="ytPlayerAbove"
                         class="youtube-player-frame"
@@ -4252,7 +4299,7 @@
                         style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;">
                 </iframe>
               </div>
-              <div class="video-card-info" style="padding: var(--space-md) var(--space-lg);">
+              <div class="video-card-info">
                 <div>
                   <h3 class="video-card-title">Royal Heritage 4K Film</h3>
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">4K Ultra HD &bull; 16:9 Widescreen &bull; Custom Score</p>
@@ -4273,9 +4320,7 @@
           <!-- Live AI Video 2: Shahi Jashn AI Wedding Reel -->
           <article class="editorial-card" id="aiVideoCardBelow">
             <div class="video-card-ivory">
-              <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: #000000;">
-                <span class="video-quality-pill" style="pointer-events: none; z-index: 10;">HD CINEMATIC</span>
-                
+              <div class="video-thumb-stage" style="aspect-ratio: 16/9; background: #000000;">
                 <!-- High-Performance Embedded HD Cinema Player -->
                 <iframe id="ytPlayerBelow"
                         class="youtube-player-frame"
@@ -4287,7 +4332,7 @@
                         style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;">
                 </iframe>
               </div>
-              <div class="video-card-info" style="padding: var(--space-md) var(--space-lg);">
+              <div class="video-card-info">
                 <div>
                   <h3 class="video-card-title">Shahi Jashn Wedding Reel</h3>
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">HD 16:9 &bull; Cinematic Motion &bull; Romantic Melody</p>
@@ -4308,11 +4353,11 @@
           <!-- Bespoke Style 3: Minimal Parisian Garden -->
           <article class="editorial-card">
             <div class="video-card-ivory">
-              <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: linear-gradient(135deg, #FADBD8 0%, #E8DAEF 100%);">
+              <div class="video-thumb-stage" style="aspect-ratio: 16/9; background: linear-gradient(135deg, #FADBD8 0%, #E8DAEF 100%);">
                 <span class="video-quality-pill" style="background: rgba(100, 60, 80, 0.88);">CUSTOM STYLE</span>
                 <span class="video-duration-pill">1:00</span>
               </div>
-              <div class="video-card-info" style="padding: var(--space-md) var(--space-lg);">
+              <div class="video-card-info">
                 <div>
                   <h3 class="video-card-title">Minimal Parisian Garden</h3>
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">Acoustic Guitar Vows &bull; Soft Pastel</p>
@@ -4333,11 +4378,11 @@
           <!-- Bespoke Style 4: Rajputana Fort Splendor -->
           <article class="editorial-card">
             <div class="video-card-ivory">
-              <div class="video-thumb-stage" style="aspect-ratio: 16/9; min-height: 220px; background: linear-gradient(135deg, #FADBD8 0%, #F5CBA7 100%);">
+              <div class="video-thumb-stage" style="aspect-ratio: 16/9; background: linear-gradient(135deg, #FADBD8 0%, #F5CBA7 100%);">
                 <span class="video-quality-pill" style="background: rgba(140, 70, 30, 0.88);">CUSTOM STYLE</span>
                 <span class="video-duration-pill">0:50</span>
               </div>
-              <div class="video-card-info" style="padding: var(--space-md) var(--space-lg);">
+              <div class="video-card-info">
                 <div>
                   <h3 class="video-card-title">Rajputana Fort Splendor</h3>
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">Heritage Nagada Drums &bull; Royal Velvet</p>

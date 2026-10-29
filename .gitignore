@@ -14,6 +14,7 @@ templates/rammandir/
 *.orig.jpg
 serve_wedding.py
 upload_to_firebase_storage.py
+create_pwa_assets.py
 **/monolithic_bundle.html
 **/hts-cache/**
 /*.jpg
