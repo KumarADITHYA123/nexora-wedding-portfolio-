@@ -1,0 +1,11 @@
+HTTrack3.50-4 launched on Wed, 28 Oct 2026 13:01:54 at https://www.shaadipath.com/api/preview/std?design=std-02-peacock +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "en, *" https://www.shaadipath.com/api/preview/std?design=std-02-peacock -O1 "C:\Users\eshhb\Downloads\save the date\save 1" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+
+HTTrack Website Copier/3.50-4 mirror complete in 5 seconds : 7 links scanned, 5 files written (648949 bytes overall) [626045 bytes received at 125209 bytes/sec], 68172 bytes transferred using HTTP compression in 5 files, ratio 44%, 1.4 requests per connection
+(No errors, 0 warnings, 0 messages)

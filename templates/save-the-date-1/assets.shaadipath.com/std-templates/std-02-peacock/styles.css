@@ -1,0 +1,608 @@
+/* ============================================================
+   Save the Date — Pichwai-inspired premium mobile invitation
+   Palette derived from the supplied assets:
+     - Background:  soft blush / ivory / dusty rose / lotus pink
+     - Jharoka:     pink frame, deep berry recesses, gold + sage
+     - Feather:     peacock teal, indigo, antique gold
+   ============================================================ */
+
+:root {
+  --ivory:        #fbf4e8;
+  --ivory-warm:   #f6e8d6;
+  --blush:        #f3d9d2;
+  --rose:         #d99a9a;
+  --lotus:        #c97388;
+  --plum:         #6c2a3d;
+  --plum-deep:    #4a1a2a;
+  --ink:          #3a1623;
+  --gold:         #b48848;
+  --gold-soft:    #d4ad6a;
+  --sage:         #8a9a7a;
+  --peacock:      #0f6473;
+  --peacock-deep: #0a4956;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.interacting {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ============ INTRO STAGE ============ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #0a0506;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.intro.fade-out { opacity: 0; pointer-events: none; }
+
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 75% 60% at 50% 50%, transparent 35%, rgba(10, 5, 8, 0.55) 100%);
+  transition: opacity 700ms ease;
+}
+.intro-veil.hidden { opacity: 0; }
+
+.tap-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 13vh);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--ivory);
+  text-align: center;
+  pointer-events: none;
+  animation: breathe 2600ms ease-in-out infinite;
+  transition: opacity 500ms ease, transform 700ms ease;
+}
+.tap-prompt.hidden { opacity: 0; transform: translate(-50%, 8px); animation: none; pointer-events: none; }
+.tap-prompt .flourish {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.9;
+}
+.tap-prompt .flourish .line {
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 115, 136, 0.75), transparent);
+}
+.tap-prompt .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  color: var(--lotus);
+  line-height: 1;
+}
+.tap-prompt .prompt-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(15px, 4.2vw, 19px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  padding-left: 0.42em;
+  color: rgba(243, 217, 210, 0.97);
+  text-shadow: 0 2px 12px rgba(10, 5, 8, 0.65);
+}
+.tap-prompt .prompt-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(11px, 3vw, 13px);
+  letter-spacing: 0.18em;
+  color: rgba(201, 115, 136, 0.80);
+  text-transform: lowercase;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.88; }
+  50%      { transform: translate(-50%, -4px); opacity: 1; }
+}
+
+/* ============ CARD STAGE ============ */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top) + 22px) 18px calc(env(safe-area-inset-bottom) + 26px);
+  opacity: 0;
+  transform: scale(1.015);
+  transition: opacity 1200ms ease, transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.card.in { opacity: 1; transform: scale(1); }
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url('assets/savethedate_bg.webp');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: var(--blush);
+}
+
+/* ---- header ---- */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.eyebrow .rule {
+  width: clamp(28px, 9vw, 44px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.eyebrow .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.title {
+  margin: 12px 0 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(13px, 3.8vw, 16px);
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--plum);
+  padding-left: 0.48em;
+  opacity: 0;
+  animation: rise 1100ms 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.couple {
+  margin: 6px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--plum-deep);
+  line-height: 1.0;
+  text-wrap: balance;
+  opacity: 0;
+  animation: rise 1200ms 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  font-size: clamp(38px, 11.5vw, 56px);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.18em;
+}
+.couple .name { letter-spacing: -0.005em; }
+.couple .amp {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+  font-size: 0.78em;
+  transform: translateY(-0.04em);
+}
+
+/* ---- jharoka frame ---- */
+.jharoka-wrap {
+  position: relative;
+  width: min(94vw, 460px);
+  aspect-ratio: 1086 / 1448;
+  margin: clamp(8px, 1.6vh, 16px) auto 0;
+  opacity: 0;
+  animation: rise 1400ms 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.jharoka-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 28px rgba(74, 26, 42, 0.16));
+  user-select: none;
+}
+
+/* Inner opening of the arch — measured from the Jharoka.webp alpha trim.
+   No mask: the frame image (z:3) overlaps any edge-bleed, and falling
+   feathers (z:5) need to drift past the frame to the bottom of the page. */
+.jharoka-inner {
+  position: absolute;
+  left: 25%;
+  top: 22%;
+  width: 50%;
+  height: 65%;
+  z-index: 2;
+}
+
+/* Feather layer extends beyond the arch so feathers can fall outside.
+   Anchored to the arch opening for idle layout, but feathers themselves
+   transform freely (no clipping). */
+.feather-layer {
+  position: absolute;
+  left: 25%;
+  top: 22%;
+  width: 50%;
+  height: 65%;
+  z-index: 5;          /* above the frame so falling feathers stay visible */
+  touch-action: none;
+  /* overflow visible by default — let feathers escape the arch as they fall */
+}
+
+/* ---- date block (sits behind feathers) ---- */
+.date-block {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14% 8% 10%;
+  color: var(--plum-deep);
+  text-align: center;
+  gap: 2px;
+}
+
+.date-block .glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 55% at 50% 55%,
+    rgba(212, 173, 106, 0.45) 0%,
+    rgba(212, 173, 106, 0.18) 40%,
+    transparent 75%);
+  opacity: 0;
+  transition: opacity 1100ms ease;
+}
+.card.revealed .date-block .glow { opacity: 1; animation: glowPulse 4200ms ease-in-out 700ms infinite; }
+@keyframes glowPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+.date-block > * { position: relative; }
+
+.date-block .preamble {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(10px, 2.7vw, 12px);
+  letter-spacing: 0.18em;
+  color: var(--plum);
+  opacity: 0.78;
+  margin-bottom: 4px;
+}
+
+.date-block .day-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1;
+}
+.date-block .day {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(48px, 16.5vw, 78px);
+  line-height: 0.95;
+  color: var(--plum-deep);
+  letter-spacing: -0.01em;
+}
+
+.date-block .month-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.date-block .month-row .bar {
+  width: clamp(16px, 5vw, 24px);
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.75;
+}
+.date-block .month {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(10px, 3vw, 13px);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--plum);
+  padding-left: 0.36em;
+}
+
+.date-block .year {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(11px, 3vw, 13px);
+  letter-spacing: 0.3em;
+  color: var(--plum);
+  margin-top: 2px;
+}
+
+.date-block .sep {
+  display: flex;
+  gap: 4px;
+  margin: clamp(8px, 2vw, 12px) 0 clamp(6px, 1.6vw, 9px);
+}
+.date-block .sep .dot {
+  width: 3px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.date-block .venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(13px, 3.8vw, 16px);
+  letter-spacing: 0.02em;
+  color: var(--plum-deep);
+  line-height: 1.15;
+}
+
+.date-block .loc {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(10px, 2.8vw, 12px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--plum);
+  opacity: 0.78;
+  margin-top: 3px;
+}
+
+/* ---- petal layer items (JS drives transform) ---- */
+.feather-layer > div {
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+
+/* ---- reveal hint ---- */
+.reveal-hint {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: breathe-hint 3400ms ease-in-out infinite;
+}
+.reveal-hint span {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--plum);
+  opacity: 0.78;
+}
+.reveal-hint::before {
+  content: '❀';
+  color: var(--gold-soft);
+  font-size: 11px;
+  opacity: 0.7;
+  animation: spin-ornament 8s linear infinite;
+}
+@keyframes spin-ornament {
+  to { transform: rotate(360deg); }
+}
+@keyframes breathe-hint {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, 0); }
+  50%      { opacity: 1;   transform: translate(-50%, -3px); }
+}
+.card.revealed .reveal-hint { opacity: 0; transition: opacity 600ms ease; }
+
+/* ---- footer ---- */
+.card-footer {
+  margin-top: clamp(16px, 4vh, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 1000ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.formal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(13px, 3.6vw, 15px);
+  letter-spacing: 0.06em;
+  color: var(--plum-deep);
+  text-align: center;
+}
+.formal .ornament {
+  color: var(--gold);
+  font-size: 0.7em;
+  opacity: 0.85;
+  font-style: normal;
+}
+
+/* ---- CTA (Save to Calendar) — appears after the reveal ---- */
+.cta-wrap {
+  margin-top: clamp(18px, 3.5vh, 28px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7c3149 0%, #4a1a2a 100%);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(9px, 2.3vw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding-left: calc(18px + 0.24em);
+  border: 1px solid rgba(212, 173, 106, 0.55);
+  box-shadow: 0 6px 18px rgba(74, 26, 42, 0.32), inset 0 0 0 1px rgba(251, 244, 232, 0.08);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.16,1,0.3,1), box-shadow 300ms ease;
+  pointer-events: none;
+}
+.cta.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.cta:active { transform: scale(0.97); }
+.cta .gicon { display: inline-block; width: 12px; height: 12px; }
+.cta:hover {
+  box-shadow: 0 10px 26px rgba(74, 26, 42, 0.4), inset 0 0 0 1px rgba(251, 244, 232, 0.15);
+}
+
+/* ---- shared ---- */
+@keyframes rise {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* tablet / desktop — keep mobile feel, just cap */
+@media (min-width: 520px) {
+  .card { padding-top: calc(env(safe-area-inset-top) + 44px); }
+}
+
+/* ── Reveal text entrance — invisible until petals fly off ── */
+.date-block .preamble,
+.date-block .day,
+.date-block .month-row,
+.date-block .year,
+.date-block .sep,
+.date-block .venue,
+.date-block .loc {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* Staggered cinematic entrance once card.revealed fires */
+.card.revealed .date-block .preamble  { animation: pkPreamble 900ms  200ms cubic-bezier(0.16,1,0.3,1) both; }
+.card.revealed .date-block .day       { animation: pkDay      1300ms 370ms cubic-bezier(0.16,1,0.3,1) both; }
+.card.revealed .date-block .month-row { animation: pkSlice    900ms  620ms cubic-bezier(0.16,1,0.3,1) both; }
+.card.revealed .date-block .year      { animation: pkYear     800ms  790ms cubic-bezier(0.16,1,0.3,1) both; }
+.card.revealed .date-block .sep       { animation: pkSep      680ms  910ms ease                       both; }
+.card.revealed .date-block .venue     { animation: pkRise     900ms 1030ms cubic-bezier(0.16,1,0.3,1) both; }
+.card.revealed .date-block .loc       { animation: pkLoc      800ms 1190ms cubic-bezier(0.16,1,0.3,1) both; }
+
+/* preamble — letter-tracking unfurls as it rises */
+@keyframes pkPreamble {
+  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.4em; }
+  to   { opacity: 0.78; transform: translateY(0); letter-spacing: 0.18em; }
+}
+
+/* day — cinematic focus-pull: blurry oversized → sharp settled (most dramatic) */
+@keyframes pkDay {
+  0%   { opacity: 0; filter: blur(22px); transform: scale(1.22) translateY(10px); }
+  60%  { opacity: 1; filter: blur(0);    transform: scale(1.04) translateY(0); }
+  82%  { transform: scale(0.98); }
+  100% { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+
+/* month row — slices open from center outward */
+@keyframes pkSlice {
+  from { opacity: 0; clip-path: inset(0 50% 0 50%); transform: translateY(5px); }
+  to   { opacity: 1; clip-path: inset(0 0% 0 0%);   transform: translateY(0); }
+}
+
+/* year — rises with tracking expansion */
+@keyframes pkYear {
+  from { opacity: 0; transform: translateY(8px); letter-spacing: 0.1em; }
+  to   { opacity: 1; transform: translateY(0); letter-spacing: 0.3em; }
+}
+
+/* separator dots — scale up from zero with a soft overshoot */
+@keyframes pkSep {
+  from { opacity: 0; transform: scale(0); }
+  78%  { transform: scale(1.3); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* venue — elegant upward drift */
+@keyframes pkRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* location — tracking expands while rising */
+@keyframes pkLoc {
+  from { opacity: 0; transform: translateY(8px); letter-spacing: 0.06em; }
+  to   { opacity: 0.78; transform: translateY(0); letter-spacing: 0.22em; }
+}
+
+/* Accessibility — collapse looping/large motion to instant end-states */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

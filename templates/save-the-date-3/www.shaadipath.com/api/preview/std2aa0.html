@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-04-lotus by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 07:50:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<script>window.__STD_CONFIG__ = {"title":"Save the Date","coupleName":"Tanya \u0026 Rohan","date":"12 December 2026","venue":"The Grand Palace, New Delhi","city":"New Delhi, India","location":"New Delhi, India","ctaText":"Save to Google Calendar","calendarUrl":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20%26%20Rohan%20%E2%80%94%20Save%20the%20Date\u0026dates=20261212/20261213\u0026details=Formal+invitation+to+follow.\u0026location=The%20Grand%20Palace%2C%20New%20Delhi"};</script>
+<base href="">
+<meta name="color-scheme" content="only light">
+<style>:root,html,body{color-scheme:only light}</style>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<meta name="theme-color" content="#f3ece0" />
+<title>Tanya &amp; Rohan — Save the Date</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&amp;display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&amp;display=swap" /></noscript>
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/petal_1.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/petal_2.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/date_bg.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/frame.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/mirror.webp" />
+
+<style>
+/* ============================================================
+   The Moonlit Lotus — Save the Date — premium mobile invitation
+   Palette: moonlit ivory, cool lapis blue, terracotta, warm brass
+   Visuals are the lotus mirror set (frame.webp = ornate frame,
+   mirror.webp = the fog/mist drawn into & wiped from the glass).
+   Glass aperture matches frame.webp's inner oval:
+     left:19%  right:19%  top:18.5%  bottom:8.5%
+   Adjust those if frame.webp has different border widths.
+   ============================================================ */
+
+:root {
+  --ivory:       #fbf4e3;
+  --ivory-soft:  #f3ece0;
+  --lapis:       #1c4663;
+  --lapis-deep:  #16384f;
+  --terra:       #9a4a3a;
+  --gold:        #b8904a;
+  --gold-soft:   #d4ad6a;
+  --gold-bright: #e8c87e;
+  --night:       #0b1420;
+  --fog-base:    #c8d9dd;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  background: #f3ece0;
+  color: var(--lapis-deep);
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  overscroll-behavior: none;
+}
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body.wiping { overflow: hidden; touch-action: none; }
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ═══════════════════════ INTRO ═══════════════════════ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #0b1420;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.intro.fade-out { opacity: 0; pointer-events: none; }
+
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 72% 58% at 50% 50%, transparent 32%, rgba(0,0,0,0.62) 100%);
+  transition: opacity 700ms ease;
+}
+.intro-veil.hidden { opacity: 0; }
+
+.tap-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 12vh);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--ivory);
+  text-align: center;
+  pointer-events: none;
+  animation: breathe 2600ms ease-in-out infinite;
+  transition: opacity 500ms ease;
+}
+.tap-prompt.hidden { opacity: 0; animation: none; pointer-events: none; }
+.tap-prompt .flourish {
+  display: flex; align-items: center; gap: 10px; opacity: 0.85;
+}
+.tap-prompt .flourish .line {
+  width: 34px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,173,106,0.85), transparent);
+}
+.tap-prompt .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--gold-soft);
+}
+.tap-prompt .prompt-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(15px, 4.2vw, 19px);
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  padding-left: 0.44em;
+  color: rgba(232, 216, 188, 0.96);
+}
+.tap-prompt .prompt-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(13px, 3.5vw, 15px);
+  letter-spacing: 0.10em;
+  color: rgba(212, 195, 160, 0.88);
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; transform: translateX(-50%) translateY(0); }
+  50%       { opacity: 1;    transform: translateX(-50%) translateY(-3px); }
+}
+
+/* ═══════════════════════ CARD ═══════════════════════ */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("https://assets.shaadipath.com/std-templates/std-04-lotus/assets/date_bg.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top) + 24px) 20px calc(env(safe-area-inset-bottom) + 28px);
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 1200ms ease, transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card.in { opacity: 1; transform: scale(1); }
+
+
+/* ─── header ─── */
+.eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.eyebrow .rule {
+  width: clamp(24px, 7vw, 38px); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lapis), transparent);
+}
+.eyebrow .diamond {
+  width: 6px; height: 6px;
+  background: var(--lapis);
+  transform: rotate(45deg);
+}
+
+.title {
+  margin: 16px 0 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(13px, 3.8vw, 17px);
+  letter-spacing: 0.50em;
+  text-transform: uppercase;
+  color: var(--lapis-deep);
+  padding-left: 0.50em;
+  text-align: center;
+  opacity: 0;
+  animation: rise 1100ms 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.couple {
+  margin: 8px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(34px, 10vw, 52px);
+  line-height: 1.05;
+  color: var(--lapis-deep);
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  animation: rise 1200ms 460ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.couple .amp { color: var(--terra); font-weight: 400; padding: 0 0.06em; }
+
+/* ═══════════════════════ MIRROR ═══════════════════════ */
+.mirror-wrap {
+  position: relative;
+  /* Height-driven like Chitra's .date-stage so the mirror scales to the card
+     instead of dominating it. aspect-ratio = Chitra's exact stage box (26/34);
+     the frame is stretched to fill it (object-fit:fill below), so the oval insets
+     line up with the frame's hole exactly as they do on Chitra's site. */
+  /* Explicit width derived from height keeps the 26/34 portrait box even inside
+     the flex card (aspect-ratio + auto-width does not constrain reliably here). */
+  height: min(58svh, 416px);
+  width: calc(min(58svh, 416px) * 26 / 34);
+  margin: clamp(6px, 1.6vh, 14px) auto 0;
+  /* Pivot from the top centre so the sway reads like a hanging mirror (Chitra) */
+  transform-origin: 50% 0%;
+  opacity: 0;
+  /* rise = entrance; frameSway = the gentle hanging pendulum sway that follows.
+     They animate different properties (translateY vs rotate) and barely overlap. */
+  animation: rise 1400ms 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             frameSway 7.5s ease-in-out 2.4s infinite;
+}
+
+/* Gentle pendulum sway — drifts very subtly, like Chitra's .date-stage */
+@keyframes frameSway {
+  0%   { transform: rotate(-1.1deg); }
+  50%  { transform: rotate( 1.1deg); }
+  100% { transform: rotate(-1.1deg); }
+}
+
+/* Pause the sway while the user is wiping (body.wiping is set by the canvas) */
+body.wiping .mirror-wrap { animation-play-state: paused; }
+
+/*
+  Glass region — pure CSS percentages relative to mirror-wrap.
+  mirror-wrap height is driven by the in-flow mirror-frame img, and
+  modern mobile browsers resolve % heights on absolute children correctly.
+  Matches frame.webp's inner oval: left:19% right:19% top:18.5% bottom:8.5%.
+*/
+.mirror-glass {
+  position: absolute;
+  left: 19%;
+  top: 18.5%;
+  width: 62%;
+  height: 73%;
+  border-radius: 50%;
+  overflow: hidden;
+  /* Cream glass surface the date sits on after the wipe — matches Chitra's
+     .date-oval exactly (gradient + inset depth shadows). */
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 45%, #fbf3df 0%, #efe2c4 65%, #e3d2aa 100%);
+  box-shadow:
+    inset 0 6px 18px rgba(60,45,20,0.10),
+    inset 0 -6px 14px rgba(60,45,20,0.08);
+  z-index: 5;
+}
+
+/* Diagonal glass reflection over the surface — matches Chitra's .date-oval::before */
+.mirror-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg,
+      rgba(255,250,235,0.28) 0%,
+      rgba(255,250,235,0.08) 22%,
+      transparent 42%,
+      transparent 70%,
+      rgba(255,250,235,0.04) 100%);
+  z-index: 6;
+  mix-blend-mode: screen;
+}
+
+
+/* ─── date text — hidden under fog until revealed ─── */
+.date-block {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  text-align: center;
+  /* Padding keeps the text inside the frame's visible hole (~38% wide, centred a
+     touch lower than the oval) rather than sliding under the ornate border.
+     Top > bottom nudges the block down to sit in the hole. */
+  padding: 15% 19% 11%;
+  z-index: 1;
+  background: transparent;
+}
+
+/* subtle warm shimmer after reveal */
+.mirror-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(212,173,106,0.18) 0%,
+    rgba(180,130,55,0.06) 40%,
+    transparent 70%);
+  transition: opacity 1000ms ease;
+}
+.mirror-glow.on { opacity: 1; animation: glowPulse 3800ms ease-in-out infinite; }
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.92; }
+  50%       { opacity: 0.52; }
+}
+
+/* ─── date text entrance — elements invisible until scratch complete ─── */
+.date-block .day,
+.date-block .month-row,
+.date-block .sep,
+.date-block .venue,
+.date-block .city {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.date-block.show .day       { animation: rtDay      1300ms   0ms cubic-bezier(0.16,1,0.3,1) both; }
+.date-block.show .month-row { animation: rtSlice     900ms 200ms cubic-bezier(0.16,1,0.3,1) both; }
+.date-block.show .sep       { animation: rtSep       700ms 400ms ease                       both; }
+.date-block.show .venue     { animation: rtRise      900ms 520ms cubic-bezier(0.16,1,0.3,1) both; }
+.date-block.show .city      { animation: rtCity      800ms 680ms cubic-bezier(0.16,1,0.3,1) both; }
+
+/* day — cinematic focus-pull: blurry + oversized → sharp + settled */
+@keyframes rtDay {
+  0%   { opacity: 0; filter: blur(18px); transform: scale(1.18) translateY(8px); }
+  60%  { opacity: 1; filter: blur(0);    transform: scale(1.03) translateY(0); }
+  82%  { transform: scale(0.99); }
+  100% { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+/* month row — slices open from the centre outward */
+@keyframes rtSlice {
+  from { opacity: 0; clip-path: inset(0 50% 0 50%); transform: translateY(4px); }
+  to   { opacity: 1; clip-path: inset(0 0% 0 0%);   transform: translateY(0); }
+}
+/* sep — expands from centre with tiny overshoot */
+@keyframes rtSep {
+  from { opacity: 0; transform: scaleX(0); }
+  78%  { transform: scaleX(1.08); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+/* venue — gentle rise */
+@keyframes rtRise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* city — tracking expands while rising */
+@keyframes rtCity {
+  from { opacity: 0; transform: translateY(6px); letter-spacing: 0.06em; }
+  to   { opacity: 0.88; transform: translateY(0); letter-spacing: 0.18em; }
+}
+
+/* ─── date text typography — sized to fit day + month + venue + city
+       inside the lotus oval's narrower portrait aperture ─── */
+.date-block .day {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1;
+  color: var(--lapis);
+}
+.date-block .month-row {
+  display: flex; align-items: center; gap: 5px; margin-top: 4px;
+}
+.date-block .month-row .bar {
+  width: clamp(8px, 2.4vw, 13px); height: 1px;
+  background: var(--lapis-deep); opacity: 0.55;
+}
+.date-block .month {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: clamp(10px, 2.7vw, 13px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lapis-deep);
+  padding-left: 0.16em;
+}
+/* sep — only rendered when venue or city is shown */
+.date-block .sep {
+  margin: clamp(5px, 1.4vw, 8px) 0 clamp(4px, 1.2vw, 7px);
+  display: flex; align-items: center; gap: 5px;
+  color: var(--terra); font-size: 9px;
+}
+.date-block .sep::before, .date-block .sep::after {
+  content: '';
+  width: clamp(9px, 2.6vw, 16px); height: 1px;
+  background: currentColor; opacity: 0.45;
+}
+.date-block .venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(11px, 3vw, 13px);
+  letter-spacing: 0.02em;
+  color: var(--lapis-deep);
+  line-height: 1.18;
+  text-align: center;
+  max-width: 100%;
+}
+.date-block .city {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(8px, 2.2vw, 10px);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-top: 3px;
+  max-width: 100%;
+}
+
+/* ─── glass sheen canvas — sits behind fog, shows through wiped region ─── */
+.sheen-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
+.sheen-canvas.gone { opacity: 0; }
+
+/* ─── fog (scratch) canvas ─── */
+.fog-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  touch-action: none;
+  cursor: grab;
+  transition: opacity 700ms ease;
+}
+.fog-canvas.gone { opacity: 0; pointer-events: none; }
+.fog-canvas:active { cursor: grabbing; }
+
+/* breathing fog — living steam, stops the moment user touches */
+@keyframes fogBreathe {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.78; }
+}
+.fog-canvas:not(.gone):not(.started) {
+  animation: fogBreathe 2800ms ease-in-out infinite;
+}
+
+/* ─── water droplet canvas — same footprint as fog canvas ─── */
+.droplet-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  /* screen blend = soft watercolor flecks that glow, like Chitra (not opaque dots) */
+  mix-blend-mode: screen;
+  transition: opacity 700ms ease;
+}
+.droplet-canvas.gone { opacity: 0; }
+
+/* Warm ivory glow that follows the finger while wiping — matches Chitra */
+.wipe-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  margin: -45px 0 0 -45px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+  background: radial-gradient(circle,
+    rgba(255,248,225,0.55) 0%,
+    rgba(255,243,210,0.22) 38%,
+    transparent 72%);
+  mix-blend-mode: screen;
+  filter: blur(3px);
+  transition: opacity 0.45s ease;
+  transform: translate3d(-9999px, -9999px, 0);
+  will-change: transform, opacity;
+}
+.wipe-glow.active { opacity: 1; }
+
+/* ─── wipe hint ─── */
+.wipe-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+.wipe-hint.hidden { opacity: 0; }
+.wipe-hint .inscription {
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  color: rgba(22,56,79,0.92);
+  text-shadow: 0 1px 4px rgba(255,255,255,0.35);
+  animation: hintBreathe 3000ms ease-in-out infinite;
+}
+.wipe-hint .flourish {
+  display: flex; align-items: center; gap: 8px; opacity: 0.80;
+}
+.wipe-hint .flourish .line {
+  width: clamp(18px, 5vw, 28px); height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(22,56,79,0.55), transparent);
+}
+.wipe-hint .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif; font-size: 10px; color: rgba(22,56,79,0.6);
+}
+.wipe-hint .text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(14px, 3.9vw, 17px);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(22,56,79,0.92);
+}
+.wipe-hint .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(10px, 2.55vw, 12px);
+  color: rgba(22,56,79,0.6);
+  letter-spacing: 0.08em;
+}
+@keyframes hintBreathe {
+  0%, 100% { opacity: 0.82; transform: translateY(0); }
+  50%       { opacity: 1;    transform: translateY(-2px); }
+}
+
+/* ─── mirror frame — in normal flow so it defines mirror-wrap height naturally ─── */
+.mirror-frame {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  /* ABOVE the glass (z5) — like Chitra's .date-frame(z3) over .date-oval(z2).
+     The ornate frame masks the oversized cream oval down to its transparent hole;
+     pointer-events:none lets wipes pass through to the fog canvas below. */
+  z-index: 10;
+  filter:
+    drop-shadow(0 14px 28px rgba(0,0,0,0.28))
+    drop-shadow(0 3px 8px rgba(28,40,70,0.16));
+}
+
+/* ─── below mirror ─── */
+.formal {
+  margin-top: clamp(16px, 3.5vh, 26px);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 5.1vw, 23px);
+  letter-spacing: 0.05em;
+  color: rgba(22,56,79,0.8);
+  text-align: center;
+  opacity: 0;
+  animation: rise 1100ms 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.formal .ornament { color: var(--terra); margin: 0 9px; letter-spacing: 0; }
+
+/* ─── CTA ─── */
+.cta-wrap {
+  margin-top: calc(clamp(20px, 4vh, 32px) + 30px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  /* Light lapis pill — matches Chitra's .date-cta colour basis (translucent
+     ivory glass + deep blue text/border), not the brass of other STD designs. */
+  background: linear-gradient(180deg, rgba(255,250,235,0.62) 0%, rgba(255,247,225,0.34) 100%);
+  color: #1c3551;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(9px, 2.3vw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding-left: calc(20px + 0.24em);
+  border: 1px solid rgba(28,53,81,0.42);
+  box-shadow: 0 6px 18px rgba(20,35,65,0.10), inset 0 1px 0 rgba(255,250,235,0.65);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.16,1,0.3,1), box-shadow 300ms ease, border-color 300ms ease, background 300ms ease;
+  pointer-events: none;
+}
+.cta.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.cta:active { transform: scale(0.97); }
+.cta .gicon { display: inline-block; width: 12px; height: 12px; }
+/* Recolor the inline SVG icons to the lapis text colour (CSS overrides the
+   presentation fill attributes baked into the icons) */
+.cta svg path { fill: #1c3551; }
+.cta svg circle { fill: #2b6a78; }
+.cta:hover {
+  background: linear-gradient(180deg, rgba(255,250,235,0.9) 0%, rgba(255,243,210,0.6) 100%);
+  border-color: rgba(28,53,81,0.7);
+  box-shadow: 0 10px 26px rgba(20,35,65,0.16), inset 0 1px 0 rgba(255,250,235,0.7);
+}
+
+@keyframes rise {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 520px) {
+  .card { padding-top: calc(env(safe-area-inset-top) + 40px); }
+}
+
+/* Accessibility — collapse looping/large motion to instant end-states */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+
+<!-- Asset paths — server rewrites these to absolute URLs via regex in buildStdHtml -->
+<script>
+window.__resources = { mirrorImg: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/frame.webp", scratchImg: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/mirror.webp", bgImg: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/date_bg.webp", introVideo: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/intro.mp4", petal1: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/petal_1.webp", petal2: "https://assets.shaadipath.com/std-templates/std-04-lotus/assets/petal_2.webp" };
+</script>
+<meta property="og:title" content="Tanya &amp; Rohan — Save the Date">
+<meta property="og:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tanya &amp; Rohan — Save the Date">
+<meta name="twitter:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:image" content="../../../assets.shaadipath.com/std-templates/std-04-lotus/assets/og/og.png">
+<meta name="twitter:image" content="../../../assets.shaadipath.com/std-templates/std-04-lotus/assets/og/og.png">
+<meta property="og:site_name" content="ShaadiPath">
+<style id="std-line-breaks">
+.title,.venue,.city,.loc,.formal,.formal>span:not(.ornament):not(.tilde){white-space:pre-line}
+</style>
+
+</head>
+
+<body>
+<div id="root"></div>
+
+<script src="../../../assets.shaadipath.com/std-templates/std-04-lotus/assets/app.js"></script>
+
+<style>
+#stdMusicBtn {
+  position: fixed;
+  right: 14px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fbf4e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms ease, background 200ms ease;
+}
+#stdMusicBtn:active { transform: scale(0.92); }
+#stdMusicBtn svg { width: 18px; height: 18px; }
+#stdMusicBtn .std-music-bar {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: currentColor;
+  margin: 0 1px;
+  border-radius: 1px;
+  animation: stdMusicBars 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+#stdMusicBtn .std-music-bar:nth-child(2) { animation-delay: 0.18s; }
+#stdMusicBtn .std-music-bar:nth-child(3) { animation-delay: 0.36s; }
+#stdMusicBtn.is-paused .std-music-bar { animation-play-state: paused; transform: scaleY(0.5); }
+@keyframes stdMusicBars {
+  0%, 100% { transform: scaleY(0.45); }
+  50%      { transform: scaleY(1); }
+}
+</style>
+<audio id="stdBgAudio" src="https://assets.shaadipath.com/std-templates/std-04-lotus/assets/music/std_demo_music.mp3" loop preload="auto" playsinline></audio>
+<button id="stdMusicBtn" class="is-paused" aria-label="Toggle music">
+  <span class="std-music-bar"></span><span class="std-music-bar"></span><span class="std-music-bar"></span>
+</button>
+<script>
+(function () {
+  var audio = document.getElementById('stdBgAudio');
+  var btn   = document.getElementById('stdMusicBtn');
+  if (!audio || !btn) return;
+  audio.volume = 0.55;
+  var started = false;
+
+  // ── First-tap starter. On Android Chrome a touch 'pointerdown'/'touchstart'
+  //    carries NO user activation — only the tap's trailing 'pointerup' /
+  //    'touchend' / 'click' / 'keydown' do. A play() fired from pointerdown is
+  //    therefore rejected there (it works on iOS, which is why this looks fine
+  //    on an iPhone). So we keep the starter armed on the trailing events too
+  //    and only unbind once playback is CONFIRMED — the same physical tap's
+  //    touchend then starts the music. ──
+  var START_EVENTS = ['pointerdown', 'touchstart', 'pointerup', 'touchend', 'click', 'keydown'];
+  function armStarter() {
+    START_EVENTS.forEach(function (ev) {
+      document.addEventListener(ev, firstTap, { passive: true, capture: true });
+    });
+  }
+  function disarmStarter() {
+    START_EVENTS.forEach(function (ev) { document.removeEventListener(ev, firstTap, true); });
+  }
+  function firstTap() {
+    if (started || !audio.paused) return;
+    play();
+  }
+
+  function play() {
+    var p;
+    try { p = audio.play(); } catch (e) { p = null; }
+    if (p && typeof p.then === 'function') {
+      p.then(onPlaying).catch(function () {
+        btn.classList.add('is-paused');
+        if (!started) armStarter();   // stay armed; a later gesture can recover
+      });
+    } else {
+      onPlaying();
+    }
+  }
+  function onPlaying() {
+    btn.classList.remove('is-paused');
+    started = true;
+    disarmStarter();
+  }
+  function pause() {
+    audio.pause();
+    btn.classList.add('is-paused');
+    disarmStarter();                  // a manual pause must not be undone by a stray tap
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (audio.paused) { audio.muted = false; if (!audio.volume) audio.volume = 0.55; play(); }
+    else pause();
+  });
+
+  armStarter();
+
+  // ── Never play in the background. Browsers keep <audio> running after the tab
+  //    is hidden or the browser is closed on mobile (OS media session), so the
+  //    guest hears music long after "leaving". _awayPaused tracks only the
+  //    automatic pauses, so a manual mute is never overridden on return. ──
+  var _awayPaused = false;
+  function _pauseForAway() {
+    if (!audio.paused) { _awayPaused = true; pause(); }
+  }
+  function _resumeOnReturn() {
+    if (_awayPaused && audio.paused) { _awayPaused = false; play(); }
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') _pauseForAway(); else _resumeOnReturn();
+  });
+  window.addEventListener('pagehide', _pauseForAway); // Safari/iOS often skip visibilitychange
+  window.addEventListener('pageshow', _resumeOnReturn);
+  // NOT blur/focus — on mobile those fire for share sheets, keyboards and
+  // address-bar taps, which would mute the music mid-visit.
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"ef5558f7810c49329caed0202f5f2d8d","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-04-lotus by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 07:50:10 GMT -->
+</html>

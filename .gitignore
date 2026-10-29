@@ -4,3 +4,16 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+.firebase/
+__pycache__/
+*.pyc
+*.bak
+ai videos/
+r2_export/
+templates/rammandir/
+*.orig.jpg
+serve_wedding.py
+upload_to_firebase_storage.py
+**/monolithic_bundle.html
+**/hts-cache/**
+/*.jpg

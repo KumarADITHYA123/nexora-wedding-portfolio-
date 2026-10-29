@@ -9,6 +9,7 @@
       "firestore.indexes.json",
       "serve_wedding.py",
       "index.html.bak",
+      "*.jpg",
       "**/.git/**",
       "**/__pycache__/**",
       "ai videos/**",
@@ -19,6 +20,7 @@
       "templates/**/*.mp3",
       "**/monolithic_bundle.html",
       "templates/**/monolithic_bundle.html",
+      "**/hts-cache/**",
       "**/verification_shots/full_invitation.png",
       "r2_export/**",
       "wire_cloudflare_cdn.py"

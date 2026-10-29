@@ -1,0 +1,799 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-01-sand by HTTrack Website Copier/3.x [XR&CO], Fri, 02 Oct 2026 06:32:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<script>window.__STD_CONFIG__ = {"title":"Save the Date","coupleName":"Tanya \u0026 Rohan","date":"12 December 2026","venue":"The Grand Palace, New Delhi","city":"New Delhi, India","location":"New Delhi, India","ctaText":"Save to Google Calendar","calendarUrl":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20%26%20Rohan%20%E2%80%94%20Save%20the%20Date\u0026dates=20261212/20261213\u0026details=Formal+invitation+to+follow.\u0026location=The%20Grand%20Palace%2C%20New%20Delhi"};</script>
+<base href="">
+<meta name="color-scheme" content="only light">
+<style>:root,html,body{color-scheme:only light}</style>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0a4a56">
+<title>Tanya &amp; Rohan — Save the Date</title>
+
+<!-- Resources referenced from JSX strings; lifted so the bundler can inline them -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600;1,700&amp;family=Jost:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600;1,700&amp;family=Jost:wght@400;500&amp;display=swap"></noscript>
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/savethedate_bg.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/frame.webp" />
+<style>/* latin-ext */
+
+</style>
+<style>/* Save the Date — Pichwai-inspired premium mobile */
+
+:root {
+  --ivory: #fbf4e3;
+  --ivory-soft: #f6ecd6;
+  --paper: #f3e8cf;
+  --peacock: #0f6473;
+  --peacock-deep: #0a4a56;
+  --peacock-ink: #08323b;
+  --gold: #b8904a;
+  --gold-soft: #d4ad6a;
+  --coral: #cf7762;
+  --lotus: #e6a89a;
+  --teal-overlay: rgba(15, 100, 115, 0.06);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  background: var(--ivory);
+  color: var(--peacock-ink);
+  font-family: 'Jost', system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* prevent scroll while scratching */
+body.scratching {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ============ INTRO ============ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #1a1008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.intro.fade-out { opacity: 0; pointer-events: none; }
+
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: max(env(safe-area-inset-bottom), 14vh);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%);
+  transition: opacity 600ms ease;
+}
+.intro-overlay.hidden { opacity: 0; }
+
+.tap-to-begin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold-soft);
+  text-align: center;
+  animation: breathe 2400ms ease-in-out infinite;
+}
+.tap-to-begin .ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.85;
+}
+.tap-to-begin .ornament .line {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15,100,115,0.75), transparent);
+}
+.tap-to-begin .ornament .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--peacock);
+  box-shadow: 0 0 8px rgba(15,100,115,0.55);
+}
+.tap-to-begin .label {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(16px, 4.4vw, 20px);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  padding-left: 0.42em;
+  color: var(--gold-soft);
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* ============ CARD ============ */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/savethedate_bg.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top) + 28px) 20px calc(env(safe-area-inset-bottom) + 32px);
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 1200ms ease, transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card.in { opacity: 1; transform: scale(1); }
+
+/* subtle ivory wash for readability where needed */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 38%, rgba(251, 244, 227, 0.55) 0%, rgba(251, 244, 227, 0) 75%);
+  pointer-events: none;
+}
+
+.card > * { position: relative; z-index: 1; }
+
+/* header */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.eyebrow .rule {
+  width: clamp(26px, 8vw, 40px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.eyebrow .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.title {
+  margin: 14px 0 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(14px, 4vw, 17px);
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--peacock-deep);
+  padding-left: 0.48em;
+  text-align: center;
+  opacity: 0;
+  animation: rise 1100ms 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.couple {
+  margin: 6px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(38px, 11.5vw, 56px);
+  line-height: 1.05;
+  color: var(--peacock-deep);
+  text-align: center;
+  text-wrap: balance;
+  opacity: 0;
+  animation: rise 1200ms 480ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.couple .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+  padding: 0 0.05em;
+}
+
+/* frame */
+.frame-wrap {
+  position: relative;
+  width: min(86vw, 420px);
+  aspect-ratio: 1122 / 1402;
+  margin: clamp(10px, 2.5vh, 22px) auto 0;
+  opacity: 0;
+  animation: rise 1400ms 640ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.frame-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3;
+  filter: drop-shadow(0 12px 26px rgba(10, 50, 59, 0.18));
+}
+
+/* inner oval — coords from alpha trim: 25.6%-74.2% x, 27%-79.3% y */
+.inner {
+  position: absolute;
+  left: 25.6%;
+  top: 27.0%;
+  width: 48.6%;
+  height: 52.3%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* oval clip so any glow/canvas sits inside the oval */
+  border-radius: 50%;
+}
+
+.reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  padding: 6% 10%;
+  color: var(--peacock-deep);
+  z-index: 1;
+}
+
+.reveal .preamble {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--peacock);
+  opacity: 0.78;
+}
+.reveal .day {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(38px, 12vw, 56px);
+  line-height: 1;
+  color: var(--peacock-deep);
+  margin: 2px 0 0;
+}
+.reveal .month-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.reveal .month-row .bar {
+  width: clamp(18px, 5vw, 26px);
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+.reveal .month {
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(11px, 3.2vw, 14px);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--peacock);
+  padding-left: 0.32em;
+}
+.reveal .sep {
+  margin: clamp(8px, 2vw, 12px) 0 clamp(6px, 1.6vw, 10px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold);
+  font-size: 10px;
+}
+.reveal .sep::before, .reveal .sep::after {
+  content: "";
+  width: clamp(14px, 4vw, 22px);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.reveal .venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(13px, 3.6vw, 16px);
+  letter-spacing: 0.04em;
+  color: var(--peacock-deep);
+  line-height: 1.15;
+}
+.reveal .city {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peacock);
+  opacity: 0.72;
+  margin-top: 3px;
+}
+
+/* scratch canvas sits above reveal */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  touch-action: none;
+  cursor: grab;
+  transition: opacity 700ms ease;
+  /* oval mask so sand is constrained inside oval */
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 98%, transparent 100%);
+          mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 98%, transparent 100%);
+}
+.scratch-canvas.gone { opacity: 0; pointer-events: none; }
+.scratch-canvas:active { cursor: grabbing; }
+
+/* particle layer — extends beyond the oval so grains can fly outside */
+.particle-canvas {
+  position: absolute;
+  top: -22%;
+  left: -22%;
+  width: 144%;
+  height: 144%;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+}
+.particle-canvas.gone { opacity: 0; }
+
+/* hint over the sand — calligraphic invitation */
+.scratch-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+.scratch-hint.hidden { opacity: 0; }
+.scratch-hint .inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(251, 244, 227, 0.92);
+  text-shadow: 0 1px 8px rgba(8, 50, 59, 0.55);
+  animation: breathe-hint 3200ms ease-in-out infinite;
+}
+.scratch-hint .flourish {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+}
+.scratch-hint .flourish .line {
+  width: clamp(20px, 6vw, 32px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 173, 106, 0.85), transparent);
+}
+.scratch-hint .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: rgba(212, 173, 106, 0.95);
+  line-height: 1;
+}
+.scratch-hint .text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(15px, 4vw, 18px);
+  letter-spacing: 0.06em;
+  color: rgba(251, 244, 227, 0.98);
+}
+@keyframes breathe-hint {
+  0%, 100% { opacity: 0.78; transform: translateY(0); }
+  50%      { opacity: 1;    transform: translateY(-2px); }
+}
+
+/* glow after reveal */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse at center,
+    rgba(212, 173, 106, 0.55) 0%,
+    rgba(212, 173, 106, 0.18) 30%,
+    transparent 65%);
+  transition: opacity 900ms ease;
+}
+.glow.on { opacity: 1; animation: glowPulse 3600ms ease-in-out infinite; }
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.55; }
+}
+
+/* sparkles */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.sparkle {
+  position: absolute;
+  width: 6px; height: 6px;
+  background: radial-gradient(circle, #fff 0%, rgba(212,173,106,0.9) 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: spark 2200ms ease-out forwards;
+}
+@keyframes spark {
+  0% { opacity: 0; transform: scale(0.3); }
+  30% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* fallback */
+.fallback-btn {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(15, 100, 115, 0.9);
+  color: #fbf4e3;
+  border: 1px solid rgba(212,173,106,0.6);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding-left: calc(18px + 0.3em);
+}
+
+/* below frame */
+.formal {
+  margin-top: clamp(18px, 4vh, 28px);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(13px, 3.6vw, 15px);
+  letter-spacing: 0.04em;
+  color: var(--peacock-deep);
+  opacity: 0;
+  animation: rise 1100ms 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-align: center;
+}
+.formal .tilde {
+  color: var(--gold);
+  margin: 0 8px;
+  letter-spacing: 0;
+}
+
+/* cta */
+.cta-wrap {
+  margin-top: clamp(24px, 5vh, 38px);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #126b7a 0%, #0a4a56 100%);
+  color: var(--ivory);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(9px, 2.4vw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding-left: calc(16px + 0.24em);
+  border: 1px solid rgba(212, 173, 106, 0.55);
+  box-shadow:
+    0 6px 16px rgba(10, 50, 59, 0.26),
+    inset 0 0 0 1px rgba(251, 244, 227, 0.08);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  pointer-events: none;
+}
+.cta.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.cta:active { transform: translateY(0) scale(0.98); }
+.cta .gicon {
+  display: inline-block;
+  width: 12px; height: 12px;
+}
+.cta:hover {
+  box-shadow:
+    0 10px 26px rgba(10, 50, 59, 0.32),
+    inset 0 0 0 1px rgba(251, 244, 227, 0.15);
+}
+
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reveal text entrance — elements are invisible until full scratch ── */
+.reveal .preamble,
+.reveal .day,
+.reveal .month-row,
+.reveal .sep,
+.reveal .venue,
+.reveal .city {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* Staggered cinematic entrance when reveal completes */
+.reveal.show .preamble { animation: rtPreamble  900ms  0ms  cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .day      { animation: rtDay       1200ms 90ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .month-row{ animation: rtSlice     860ms  310ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .sep      { animation: rtSep       680ms  470ms ease                       both; }
+.reveal.show .venue    { animation: rtRise      900ms  590ms cubic-bezier(0.16,1,0.3,1) both; }
+.reveal.show .city     { animation: rtCity      800ms  750ms cubic-bezier(0.16,1,0.3,1) both; }
+
+/* preamble — letter-tracking expands as it rises */
+@keyframes rtPreamble {
+  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.36em; }
+  to   { opacity: 0.78; transform: translateY(0); letter-spacing: 0.18em; }
+}
+
+/* day — cinematic focus-pull: blurry + oversized → sharp + settled */
+@keyframes rtDay {
+  0%   { opacity: 0; filter: blur(18px); transform: scale(1.18) translateY(8px); }
+  60%  { opacity: 1; filter: blur(0);    transform: scale(1.03) translateY(0); }
+  82%  { transform: scale(0.99); }
+  100% { opacity: 1; filter: blur(0);    transform: scale(1); }
+}
+
+/* month row — slices open from the center outward */
+@keyframes rtSlice {
+  from { opacity: 0; clip-path: inset(0 50% 0 50%); transform: translateY(4px); }
+  to   { opacity: 1; clip-path: inset(0 0% 0 0%);   transform: translateY(0); }
+}
+
+/* separator — expands from center with a tiny overshoot */
+@keyframes rtSep {
+  from { opacity: 0; transform: scaleX(0); }
+  78%  { transform: scaleX(1.1); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* venue — gentle rise */
+@keyframes rtRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* city — tracking expands while rising */
+@keyframes rtCity {
+  from { opacity: 0; transform: translateY(8px); letter-spacing: 0.06em; }
+  to   { opacity: 0.72; transform: translateY(0); letter-spacing: 0.22em; }
+}
+
+/* tablet & up — keep mobile-first but cap width */
+@media (min-width: 520px) {
+  .card { padding-top: calc(env(safe-area-inset-top) + 44px); }
+}
+
+/* Accessibility — collapse looping/large motion to instant end-states */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+
+<script>
+window.__resources = { frameImg: "https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/frame.webp", sandImg: "https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/sand.webp", introVideo: "https://assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/intro.mp4" };
+</script><meta property="og:title" content="Tanya &amp; Rohan — Save the Date">
+<meta property="og:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tanya &amp; Rohan — Save the Date">
+<meta name="twitter:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:image" content="../../../assets.shaadipath.com/std-templates/std-01-sand/assets/og/og_std1.png">
+<meta name="twitter:image" content="../../../assets.shaadipath.com/std-templates/std-01-sand/assets/og/og_std1.png">
+<meta property="og:site_name" content="ShaadiPath">
+<style id="std-line-breaks">
+.title,.venue,.city,.loc,.formal,.formal>span:not(.ornament):not(.tilde){white-space:pre-line}
+</style>
+
+</head>
+<body>
+<div id="root"></div>
+
+<script src="../../../assets.shaadipath.com/std-templates/std-01-sand/assets/save-the-date/app.js"></script>
+
+
+<style>
+#stdMusicBtn {
+  position: fixed;
+  right: 14px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fbf4e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms ease, background 200ms ease;
+}
+#stdMusicBtn:active { transform: scale(0.92); }
+#stdMusicBtn svg { width: 18px; height: 18px; }
+#stdMusicBtn .std-music-bar {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: currentColor;
+  margin: 0 1px;
+  border-radius: 1px;
+  animation: stdMusicBars 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+#stdMusicBtn .std-music-bar:nth-child(2) { animation-delay: 0.18s; }
+#stdMusicBtn .std-music-bar:nth-child(3) { animation-delay: 0.36s; }
+#stdMusicBtn.is-paused .std-music-bar { animation-play-state: paused; transform: scaleY(0.5); }
+@keyframes stdMusicBars {
+  0%, 100% { transform: scaleY(0.45); }
+  50%      { transform: scaleY(1); }
+}
+</style>
+<audio id="stdBgAudio" src="https://assets.shaadipath.com/std-templates/std-01-sand/assets/music/std_demo_music.mp3" loop preload="auto" playsinline></audio>
+<button id="stdMusicBtn" class="is-paused" aria-label="Toggle music">
+  <span class="std-music-bar"></span><span class="std-music-bar"></span><span class="std-music-bar"></span>
+</button>
+<script>
+(function () {
+  var audio = document.getElementById('stdBgAudio');
+  var btn   = document.getElementById('stdMusicBtn');
+  if (!audio || !btn) return;
+  audio.volume = 0.55;
+  var started = false;
+
+  // ── First-tap starter. On Android Chrome a touch 'pointerdown'/'touchstart'
+  //    carries NO user activation — only the tap's trailing 'pointerup' /
+  //    'touchend' / 'click' / 'keydown' do. A play() fired from pointerdown is
+  //    therefore rejected there (it works on iOS, which is why this looks fine
+  //    on an iPhone). So we keep the starter armed on the trailing events too
+  //    and only unbind once playback is CONFIRMED — the same physical tap's
+  //    touchend then starts the music. ──
+  var START_EVENTS = ['pointerdown', 'touchstart', 'pointerup', 'touchend', 'click', 'keydown'];
+  function armStarter() {
+    START_EVENTS.forEach(function (ev) {
+      document.addEventListener(ev, firstTap, { passive: true, capture: true });
+    });
+  }
+  function disarmStarter() {
+    START_EVENTS.forEach(function (ev) { document.removeEventListener(ev, firstTap, true); });
+  }
+  function firstTap() {
+    if (started || !audio.paused) return;
+    play();
+  }
+
+  function play() {
+    var p;
+    try { p = audio.play(); } catch (e) { p = null; }
+    if (p && typeof p.then === 'function') {
+      p.then(onPlaying).catch(function () {
+        btn.classList.add('is-paused');
+        if (!started) armStarter();   // stay armed; a later gesture can recover
+      });
+    } else {
+      onPlaying();
+    }
+  }
+  function onPlaying() {
+    btn.classList.remove('is-paused');
+    started = true;
+    disarmStarter();
+  }
+  function pause() {
+    audio.pause();
+    btn.classList.add('is-paused');
+    disarmStarter();                  // a manual pause must not be undone by a stray tap
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (audio.paused) { audio.muted = false; if (!audio.volume) audio.volume = 0.55; play(); }
+    else pause();
+  });
+
+  armStarter();
+
+  // ── Never play in the background. Browsers keep <audio> running after the tab
+  //    is hidden or the browser is closed on mobile (OS media session), so the
+  //    guest hears music long after "leaving". _awayPaused tracks only the
+  //    automatic pauses, so a manual mute is never overridden on return. ──
+  var _awayPaused = false;
+  function _pauseForAway() {
+    if (!audio.paused) { _awayPaused = true; pause(); }
+  }
+  function _resumeOnReturn() {
+    if (_awayPaused && audio.paused) { _awayPaused = false; play(); }
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') _pauseForAway(); else _resumeOnReturn();
+  });
+  window.addEventListener('pagehide', _pauseForAway); // Safari/iOS often skip visibilitychange
+  window.addEventListener('pageshow', _resumeOnReturn);
+  // NOT blur/focus — on mobile those fire for share sheets, keyboards and
+  // address-bar taps, which would mute the music mid-visit.
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"ef5558f7810c49329caed0202f5f2d8d","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-01-sand by HTTrack Website Copier/3.x [XR&CO], Fri, 02 Oct 2026 06:32:07 GMT -->
+</html>

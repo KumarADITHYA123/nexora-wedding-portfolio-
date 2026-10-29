@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-05-chandelier by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 07:50:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<script>window.__STD_CONFIG__ = {"title":"Save the Date","coupleName":"Tanya \u0026 Rohan","date":"12 December 2026","venue":"The Grand Palace, New Delhi","city":"New Delhi, India","location":"New Delhi, India","ctaText":"Save to Google Calendar","calendarUrl":"https://calendar.google.com/calendar/render?action=TEMPLATE\u0026text=Tanya%20%26%20Rohan%20%E2%80%94%20Save%20the%20Date\u0026dates=20261212/20261213\u0026details=Formal+invitation+to+follow.\u0026location=The%20Grand%20Palace%2C%20New%20Delhi"};</script>
+<base href="">
+<meta name="color-scheme" content="only light">
+<style>:root,html,body{color-scheme:only light}</style>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<meta name="theme-color" content="#f3e6cf" />
+<title>Tanya &amp; Rohan — Save the Date</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&amp;display=swap" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&amp;display=swap" /></noscript>
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/save_The_date_bg.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/frame.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/scracth_layer.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/petal1.webp" />
+<link rel="preload" as="image" href="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/petal2.webp" />
+
+<style>
+/* ============================================================
+   Royal Radiance — Save the Date — luxury chandelier ballroom
+   Palette read from the assets: warm champagne ivory walls, a
+   crystal chandelier, antique-gold pillars, pearl-and-gold
+   medallions. Text is a deep warm bronze (readable on the pale
+   cream wall), accented with antique gold — never pure white,
+   never navy.
+
+   Interaction: three pearl-gold medallions (Month / Date / Year).
+   Each medallion's cream centre is covered by a scratch layer
+   (scracth_layer.webp). Scratch each to reveal its value; once
+   all three are clear, the venue / city / buttons fade in.
+   ============================================================ */
+
+:root {
+  --ivory:       #fbf3e3;
+  --champagne:   #f3e6cf;
+  --bronze:      #563a1c;   /* primary deep text — antique brown */
+  --bronze-deep: #3c2710;   /* darkest — headings/values */
+  --bronze-soft: rgba(74,50,24,0.92);
+  --gold:        #8a6326;   /* antique brown-gold accents (darkened) */
+  --gold-soft:   #9c7637;
+  --gold-bright: #b58a3f;
+  --rose:        #8a4f38;   /* deep antique rose-brown */
+  --night:       #2a1d10;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  background: #f3e6cf;
+  color: var(--bronze-deep);
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  overscroll-behavior: none;
+}
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body.scratching { overflow: hidden; touch-action: none; }
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ═══════════════════════ INTRO ═══════════════════════ */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #1a1206;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.intro.fade-out { opacity: 0; pointer-events: none; }
+
+.intro video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 72% 58% at 50% 50%, transparent 32%, rgba(0,0,0,0.55) 100%);
+  transition: opacity 700ms ease;
+}
+.intro-veil.hidden { opacity: 0; }
+
+.tap-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 12vh);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--ivory);
+  text-align: center;
+  pointer-events: none;
+  animation: breathe 2600ms ease-in-out infinite;
+  transition: opacity 500ms ease;
+}
+.tap-prompt.hidden { opacity: 0; animation: none; pointer-events: none; }
+.tap-prompt .flourish {
+  display: flex; align-items: center; gap: 10px; opacity: 0.85;
+}
+.tap-prompt .flourish .line {
+  width: 34px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(227,198,132,0.9), transparent);
+}
+.tap-prompt .flourish .glyph {
+  font-family: 'Cormorant Garamond', serif; font-size: 11px; color: var(--gold-bright);
+}
+.tap-prompt .prompt-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(15px, 4.2vw, 19px);
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  padding-left: 0.44em;
+  color: rgba(247, 232, 200, 0.97);
+}
+.tap-prompt .prompt-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(13px, 3.5vw, 15px);
+  letter-spacing: 0.10em;
+  color: rgba(227, 198, 140, 0.9);
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; transform: translateX(-50%) translateY(0); }
+  50%       { opacity: 1;    transform: translateX(-50%) translateY(-3px); }
+}
+
+/* ═══════════════════════ CARD ═══════════════════════ */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/save_The_date_bg.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(env(safe-area-inset-top) + 12vh) 12px calc(env(safe-area-inset-bottom) + 7vh);
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 1200ms ease, transform 1600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card.in { opacity: 1; transform: scale(1); }
+
+/* very soft cream readability glow behind the central content — not a box */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 124%;
+  height: 60%;
+  background: radial-gradient(ellipse 52% 50% at 50% 50%,
+    rgba(251,243,225,0.62) 0%,
+    rgba(251,243,225,0.34) 44%,
+    transparent 74%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(8px);
+}
+.card > * { position: relative; z-index: 1; }
+
+/* ─── header ─── */
+.eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0;
+  animation: rise 1100ms 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.eyebrow .rule {
+  width: clamp(24px, 7vw, 40px); height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.eyebrow .diamond {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(184,144,74,0.5);
+}
+
+.title {
+  margin: 15px 0 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(13px, 3.9vw, 17px);
+  letter-spacing: 0.50em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  padding-left: 0.50em;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(251,243,227,0.7);
+  opacity: 0;
+  animation: rise 1100ms 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.couple {
+  margin: 8px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(34px, 10vw, 52px);
+  line-height: 1.05;
+  color: var(--bronze-deep);
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 1px 12px rgba(251,243,227,0.7);
+  opacity: 0;
+  animation: rise 1200ms 460ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.couple .amp { color: var(--rose); font-weight: 400; padding: 0 0.06em; }
+
+/* helper line under the names — fades out once the first medallion clears */
+.helper {
+  margin: 14px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(12px, 3.3vw, 15px);
+  letter-spacing: 0.04em;
+  color: var(--bronze-soft);
+  text-align: center;
+  opacity: 0;
+  animation: rise 1100ms 640ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 700ms ease, transform 700ms ease, margin 700ms ease, height 700ms ease;
+}
+.helper.gone {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+/* ═══════════════════════ MEDALLIONS ═══════════════════════ */
+.medallions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(4px, 1.5vw, 12px);
+  margin: clamp(18px, 4vh, 34px) auto 0;
+  width: 100%;
+  max-width: 520px;
+  opacity: 0;
+  animation: rise 1300ms 760ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.medallion {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 164px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* square box that holds the frame + scratch disc */
+.med-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* gentle hanging float + sway — pivots from near the top fleur so it reads
+     like a medallion drifting on the wall. Paused while scratching. */
+  transform-origin: 50% 7%;
+  animation: medFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+/* slightly different speeds + offsets so the three never move in unison */
+.medallion:nth-child(1) .med-box { animation-duration: 7s;   animation-delay: 0s;    }
+.medallion:nth-child(2) .med-box { animation-duration: 6.2s; animation-delay: -1.4s; }
+.medallion:nth-child(3) .med-box { animation-duration: 6.8s; animation-delay: -2.6s; }
+body.scratching .med-box { animation-play-state: paused; }
+@keyframes medFloat {
+  0%   { transform: translateY(0)     rotate(-1.3deg); }
+  50%  { transform: translateY(-6px)  rotate( 1.3deg); }
+  100% { transform: translateY(0)     rotate(-1.3deg); }
+}
+
+/* soft warm glow behind each medallion so it feels seated on the wall */
+.med-box::before {
+  content: '';
+  position: absolute;
+  inset: -16%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 46%,
+    rgba(255,244,214,0.72) 0%,
+    rgba(232,202,142,0.30) 46%,
+    transparent 72%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(5px);
+}
+
+/* the ornate pearl-gold medallion sits at the bottom of the stack */
+.med-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 8px 16px rgba(80,55,20,0.22)) drop-shadow(0 2px 5px rgba(80,55,20,0.14));
+}
+
+/* the cream centre disc — where the value lives and the scratch sits.
+   Sized/positioned to match frame.webp's inner cream circle. */
+.med-disc {
+  position: absolute;
+  left: 27%;
+  top: 27%;
+  width: 46%;
+  height: 46%;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.med-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(15px, 5.2vw, 23px);
+  color: var(--bronze-deep);
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 2;
+  padding: 5%;
+}
+.med-value .v {
+  opacity: 0;
+}
+.medallion.revealed .med-value .v {
+  animation: vIn 1100ms cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes vIn {
+  0%   { opacity: 0; filter: blur(8px); transform: scale(1.15); }
+  60%  { opacity: 1; filter: blur(0);   transform: scale(1.02); }
+  100% { opacity: 1; filter: blur(0);   transform: scale(1); }
+}
+
+/* warm gold glow that blooms behind the value after the scratch clears */
+.med-glow {
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(227,198,132,0.55) 0%,
+    rgba(184,144,74,0.20) 45%,
+    transparent 72%);
+  transition: opacity 900ms ease;
+}
+.medallion.revealed .med-glow { opacity: 1; animation: glowPulse 3600ms ease-in-out 900ms infinite; }
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.5; }
+}
+
+/* scratch canvas — covers only the cream disc */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  touch-action: none;
+  cursor: grab;
+  transition: opacity 600ms ease;
+}
+.scratch-canvas.gone { opacity: 0; pointer-events: none; }
+.scratch-canvas:active { cursor: grabbing; }
+
+.med-label {
+  margin-top: 3px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(9px, 2.6vw, 12px);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding-left: 0.26em;
+  color: var(--bronze);
+  text-align: center;
+  transition: color 500ms ease;
+}
+.medallion.revealed .med-label { color: var(--bronze-deep); }
+
+/* one-tap hint dot that breathes on the first un-scratched medallion */
+.med-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+.med-hint.hidden { opacity: 0; }
+.med-hint .pulse {
+  width: 26%;
+  height: 26%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(110,77,42,0.55);
+  animation: hintPulse 2200ms ease-in-out infinite;
+}
+@keyframes hintPulse {
+  0%   { transform: scale(0.7); opacity: 0.85; }
+  70%  { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ═══════════════════════ REVEAL EXTRAS ═══════════════════════ */
+.extras {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+  margin-top: clamp(16px, 3vh, 26px);
+}
+
+.extras .sep {
+  display: flex; align-items: center; gap: 7px;
+  color: var(--rose); font-size: 10px;
+  opacity: 0;
+}
+.extras .sep::before, .extras .sep::after {
+  content: '';
+  width: clamp(16px, 5vw, 30px); height: 1px;
+  background: currentColor; opacity: 0.5;
+}
+
+.extras .venue {
+  margin-top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(18px, 5.4vw, 24px);
+  letter-spacing: 0.01em;
+  color: var(--bronze-deep);
+  line-height: 1.18;
+  text-align: center;
+  text-shadow: 0 1px 8px rgba(251,243,225,0.6);
+  opacity: 0;
+}
+.extras .city {
+  margin-top: 5px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(10px, 2.8vw, 12px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose);
+  text-align: center;
+  opacity: 0;
+}
+
+.extras.show .sep   { animation: rtSep   700ms 120ms ease                       both; }
+.extras.show .venue { animation: rtRise  900ms 260ms cubic-bezier(0.16,1,0.3,1) both; }
+.extras.show .city  { animation: rtCity  800ms 420ms cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes rtSep  { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes rtRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rtCity { from { opacity: 0; transform: translateY(6px); letter-spacing: 0.06em; } to { opacity: 0.92; transform: translateY(0); letter-spacing: 0.16em; } }
+
+/* ─── formal footer ─── */
+.formal {
+  margin-top: clamp(14px, 3vh, 22px);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(16px, 4.6vw, 20px);
+  letter-spacing: 0.04em;
+  color: var(--bronze-soft);
+  text-align: center;
+  opacity: 0;
+}
+.extras.show .formal { animation: rtRise 1000ms 560ms cubic-bezier(0.16,1,0.3,1) both; }
+.formal .ornament { color: var(--rose); margin: 0 9px; letter-spacing: 0; }
+
+/* ─── CTA ─── */
+.cta-wrap {
+  margin-top: clamp(16px, 3vh, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(184,144,74,0.95) 0%, rgba(156,118,55,0.95) 100%);
+  color: #fbf3e3;
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  font-size: clamp(9px, 2.3vw, 11px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding-left: calc(22px + 0.22em);
+  border: 1px solid rgba(227,198,132,0.7);
+  box-shadow: 0 8px 20px rgba(120,85,30,0.22), inset 0 1px 0 rgba(255,247,225,0.4);
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition: transform 200ms ease, box-shadow 300ms ease, background 300ms ease;
+  pointer-events: none;
+}
+.extras.show .cta { animation: ctaIn 800ms 700ms cubic-bezier(0.16,1,0.3,1) both; pointer-events: auto; }
+@keyframes ctaIn { from { opacity: 0; transform: translateY(10px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.cta:active { transform: scale(0.97); }
+.cta .gicon { display: inline-block; width: 13px; height: 13px; }
+.cta.secondary {
+  margin-top: 0;
+  background: linear-gradient(180deg, rgba(255,250,235,0.7) 0%, rgba(247,232,200,0.5) 100%);
+  color: var(--bronze-deep);
+  border: 1px solid rgba(184,144,74,0.55);
+  box-shadow: 0 6px 16px rgba(120,85,30,0.12), inset 0 1px 0 rgba(255,250,235,0.6);
+}
+.cta.secondary svg path { fill: var(--bronze-deep); }
+.extras.show .cta.secondary { animation: ctaIn 800ms 840ms cubic-bezier(0.16,1,0.3,1) both; pointer-events: auto; }
+
+@keyframes rise {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 520px) {
+  .card { padding-top: calc(env(safe-area-inset-top) + 42px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+
+<!-- Asset paths — server rewrites these to absolute URLs in buildStdHtml -->
+<script>
+window.__resources = { frameImg: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/frame.webp", scratchImg: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/scracth_layer.webp", bgImg: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/save_The_date_bg.webp", introVideo: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/intro.mp4", petal1: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/petal1.webp", petal2: "https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/petal2.webp" };
+</script>
+<meta property="og:title" content="Tanya &amp; Rohan — Save the Date">
+<meta property="og:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tanya &amp; Rohan — Save the Date">
+<meta name="twitter:description" content="Tanya &amp; Rohan are getting married. Save the date!">
+<meta property="og:image" content="../../../assets.shaadipath.com/std-templates/std-05-chandelier/assets/og/og.png">
+<meta name="twitter:image" content="../../../assets.shaadipath.com/std-templates/std-05-chandelier/assets/og/og.png">
+<meta property="og:site_name" content="ShaadiPath">
+<style id="std-line-breaks">
+.title,.venue,.city,.loc,.formal,.formal>span:not(.ornament):not(.tilde){white-space:pre-line}
+</style>
+
+</head>
+
+<body>
+<div id="root"></div>
+
+<script src="../../../assets.shaadipath.com/std-templates/std-05-chandelier/assets/app.js"></script>
+
+<style>
+#stdMusicBtn {
+  position: fixed;
+  right: 14px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fbf4e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms ease, background 200ms ease;
+}
+#stdMusicBtn:active { transform: scale(0.92); }
+#stdMusicBtn svg { width: 18px; height: 18px; }
+#stdMusicBtn .std-music-bar {
+  display: inline-block;
+  width: 2px;
+  height: 12px;
+  background: currentColor;
+  margin: 0 1px;
+  border-radius: 1px;
+  animation: stdMusicBars 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+#stdMusicBtn .std-music-bar:nth-child(2) { animation-delay: 0.18s; }
+#stdMusicBtn .std-music-bar:nth-child(3) { animation-delay: 0.36s; }
+#stdMusicBtn.is-paused .std-music-bar { animation-play-state: paused; transform: scaleY(0.5); }
+@keyframes stdMusicBars {
+  0%, 100% { transform: scaleY(0.45); }
+  50%      { transform: scaleY(1); }
+}
+</style>
+<audio id="stdBgAudio" src="https://assets.shaadipath.com/std-templates/std-05-chandelier/assets/music/std_demo_music.mp3" loop preload="auto" playsinline></audio>
+<button id="stdMusicBtn" class="is-paused" aria-label="Toggle music">
+  <span class="std-music-bar"></span><span class="std-music-bar"></span><span class="std-music-bar"></span>
+</button>
+<script>
+(function () {
+  var audio = document.getElementById('stdBgAudio');
+  var btn   = document.getElementById('stdMusicBtn');
+  if (!audio || !btn) return;
+  audio.volume = 0.55;
+  var started = false;
+
+  // ── First-tap starter. On Android Chrome a touch 'pointerdown'/'touchstart'
+  //    carries NO user activation — only the tap's trailing 'pointerup' /
+  //    'touchend' / 'click' / 'keydown' do. A play() fired from pointerdown is
+  //    therefore rejected there (it works on iOS, which is why this looks fine
+  //    on an iPhone). So we keep the starter armed on the trailing events too
+  //    and only unbind once playback is CONFIRMED — the same physical tap's
+  //    touchend then starts the music. ──
+  var START_EVENTS = ['pointerdown', 'touchstart', 'pointerup', 'touchend', 'click', 'keydown'];
+  function armStarter() {
+    START_EVENTS.forEach(function (ev) {
+      document.addEventListener(ev, firstTap, { passive: true, capture: true });
+    });
+  }
+  function disarmStarter() {
+    START_EVENTS.forEach(function (ev) { document.removeEventListener(ev, firstTap, true); });
+  }
+  function firstTap() {
+    if (started || !audio.paused) return;
+    play();
+  }
+
+  function play() {
+    var p;
+    try { p = audio.play(); } catch (e) { p = null; }
+    if (p && typeof p.then === 'function') {
+      p.then(onPlaying).catch(function () {
+        btn.classList.add('is-paused');
+        if (!started) armStarter();   // stay armed; a later gesture can recover
+      });
+    } else {
+      onPlaying();
+    }
+  }
+  function onPlaying() {
+    btn.classList.remove('is-paused');
+    started = true;
+    disarmStarter();
+  }
+  function pause() {
+    audio.pause();
+    btn.classList.add('is-paused');
+    disarmStarter();                  // a manual pause must not be undone by a stray tap
+  }
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (audio.paused) { audio.muted = false; if (!audio.volume) audio.volume = 0.55; play(); }
+    else pause();
+  });
+
+  armStarter();
+
+  // ── Never play in the background. Browsers keep <audio> running after the tab
+  //    is hidden or the browser is closed on mobile (OS media session), so the
+  //    guest hears music long after "leaving". _awayPaused tracks only the
+  //    automatic pauses, so a manual mute is never overridden on return. ──
+  var _awayPaused = false;
+  function _pauseForAway() {
+    if (!audio.paused) { _awayPaused = true; pause(); }
+  }
+  function _resumeOnReturn() {
+    if (_awayPaused && audio.paused) { _awayPaused = false; play(); }
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') _pauseForAway(); else _resumeOnReturn();
+  });
+  window.addEventListener('pagehide', _pauseForAway); // Safari/iOS often skip visibilitychange
+  window.addEventListener('pageshow', _resumeOnReturn);
+  // NOT blur/focus — on mobile those fire for share sheets, keyboards and
+  // address-bar taps, which would mute the music mid-visit.
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"ef5558f7810c49329caed0202f5f2d8d","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from https://www.shaadipath.com/api/preview/std?design=std-05-chandelier by HTTrack Website Copier/3.x [XR&CO], Wed, 28 Oct 2026 07:50:43 GMT -->
+</html>
