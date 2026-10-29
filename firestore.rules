@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Lead capture & inquiries (Nexora Studio Bookings)
+    match /inquiries/{inquiryId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'phone'])
+                    && request.resource.data.name is string
+                    && request.resource.data.phone is string;
+      allow read, update, delete: if false; // Protect client privacy: write-only from public
+    }
+
+    // Wedding RSVP submissions
+    match /rsvps/{rsvpId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'attending'])
+                    && request.resource.data.name is string;
+      allow read, update, delete: if false; // Guests cannot scrape or modify other guest responses
+    }
+  }
+}

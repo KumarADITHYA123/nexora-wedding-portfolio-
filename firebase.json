@@ -1,0 +1,45 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "firebase-debug.log",
+      ".firebaserc",
+      "firestore.rules",
+      "firestore.indexes.json",
+      "serve_wedding.py",
+      "index.html.bak",
+      "**/.git/**",
+      "**/__pycache__/**",
+      "ai videos/**",
+      "**/*.mp4",
+      "**/*.mp3",
+      "**/*.wav",
+      "templates/**/*.mp4",
+      "templates/**/*.mp3",
+      "**/monolithic_bundle.html",
+      "templates/**/monolithic_bundle.html",
+      "**/verification_shots/full_invitation.png",
+      "r2_export/**",
+      "wire_cloudflare_cdn.py"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|webp|svg)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=604800, public"
+          }
+        ]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
