@@ -6,7 +6,28 @@
   <title>Nexora Wedding Invite — Bespoke Digital Wedding Invitations &amp; AI Videos</title>
   <meta name="description" content="Personalized to your love story — living digital wedding invitation websites (₹10,000), Save the Dates (₹5,000), and cinematic AI wedding invitation videos (₹10,000) by Nexora Wedding Invite.">
   <meta name="keywords" content="Nexora Wedding Invite, digital wedding invitations, wedding invitation websites, AI wedding videos, Indian wedding invite, RSVP website, luxury wedding card">
-  <meta name="author" content="Nexora Wedding Invite">
+    <meta name="author" content="Nexora Wedding Invite">
+
+  <!-- Early Regional & Currency Pre-Boot (Prevents Flash of Wrong Currency) -->
+  <script>
+    (function () {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var c = p.get('cur') || p.get('currency');
+        if (c) c = c.trim().toUpperCase();
+        var r = p.get('region');
+        if (r && (r.toUpperCase() === 'US' || r.toUpperCase() === 'USA')) c = 'USD';
+        if (!c) c = localStorage.getItem('nexora_currency');
+        if (!c && window.Intl) {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          if (tz.indexOf('America/') === 0 || tz.indexOf('US/') === 0 || tz.indexOf('Canada/') === 0) c = 'USD';
+        }
+        if (c === 'USD' || c === 'INR') {
+          document.documentElement.setAttribute('data-currency', c);
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Progressive Web App (PWA) Manifest & Standalone App Meta -->
   <script src="https://www.youtube.com/iframe_api" async></script>
@@ -410,6 +431,163 @@
     }
 
     /* Header Controls Group (Right Side) */
+    
+        /* Luxury Currency Switcher (INR / USD) - Apple Segmented Control Design */
+    .currency-switch-wrapper {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(250, 247, 242, 0.95);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-full);
+      padding: 2px;
+      gap: 2px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(94, 20, 36, 0.04);
+      user-select: none;
+      height: 36px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .currency-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 100%;
+      padding: 0 10px;
+      border: none;
+      border-radius: var(--radius-full);
+      background: transparent;
+      color: var(--color-text-dim);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .currency-toggle-btn:hover {
+      color: var(--color-burgundy);
+    }
+
+    .currency-toggle-btn.active {
+      background: var(--color-burgundy);
+      color: #FAF7F2;
+      box-shadow: 0 2px 8px rgba(94, 20, 36, 0.24);
+    }
+
+    .currency-toggle-btn .flag-icon {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .currency-switch-wrapper {
+        height: 34px;
+        padding: 2px;
+        gap: 1px;
+      }
+      .currency-toggle-btn {
+        padding: 0 7px;
+        font-size: 0.68rem;
+        gap: 4px;
+      }
+      .currency-toggle-btn .flag-icon {
+        width: 14px;
+        height: 14px;
+      }
+      .currency-toggle-btn .cur-text {
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+      .currency-toggle-btn .cur-code-hide {
+        display: none;
+      }
+      .header-actions-group {
+        gap: 0.42rem;
+      }
+      /* Hide redundant dummy profile button on mobile to preserve Apple-grade negative space */
+      .header-profile-btn {
+        display: none !important;
+      }
+      .header-circle-btn {
+        width: 36px;
+        height: 36px;
+      }
+      .header-circle-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+      .hamburger-circle-btn {
+        width: 36px;
+        height: 36px;
+      }
+      .hamburger-line {
+        width: 15px;
+        height: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-logo {
+        gap: 0.5rem;
+      }
+      .brand-crest-seal {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+      }
+      .logo-brand-name {
+        font-size: 1.14rem;
+        letter-spacing: 0.12em;
+      }
+      .logo-brand-sub {
+        font-size: 0.48rem;
+        letter-spacing: 0.22em;
+      }
+      .logo-brand-sub::before,
+      .logo-brand-sub::after {
+        width: 8px;
+      }
+      .currency-switch-wrapper {
+        height: 32px;
+      }
+      .currency-toggle-btn {
+        padding: 0 6px;
+      }
+      .header-actions-group {
+        gap: 0.35rem;
+      }
+    }
+
+    .mobile-currency-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.15rem;
+      background: #FAF7F2;
+      border-radius: var(--radius-md);
+      margin: 1.1rem 0;
+      border: 1px solid var(--color-border);
+    }
+
+    .mobile-currency-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
     .header-actions-group {
       display: flex;
       align-items: center;
@@ -4103,8 +4281,38 @@
 
       <!-- Right Action Controls (Matching Image 1 & 3) -->
       <div class="header-actions-group">
+        <!-- Currency Switcher (INR / USD) -->
+        <div class="currency-switch-wrapper" id="currencySwitchDesktop" role="radiogroup" aria-label="Currency Selector">
+          <button type="button" class="currency-toggle-btn active" data-cur="INR" onclick="setNexoraCurrency('INR')" aria-label="Switch to Indian Rupees" aria-checked="true" role="radio">
+            <svg class="flag-icon" viewBox="0 0 32 32" width="16" height="16" aria-hidden="true" style="border-radius: 50%; display: inline-block; vertical-align: middle; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+  <rect width="32" height="10.67" fill="#FF9933"/>
+  <rect y="10.67" width="32" height="10.67" fill="#FFFFFF"/>
+  <rect y="21.33" width="32" height="10.67" fill="#138808"/>
+  <circle cx="16" cy="16" r="4.2" fill="none" stroke="#000080" stroke-width="0.9"/>
+  <circle cx="16" cy="16" r="1.2" fill="#000080"/>
+</svg> <span class="cur-text">&#8377; <span class="cur-code-hide">INR</span></span>
+          </button>
+          <button type="button" class="currency-toggle-btn" data-cur="USD" onclick="setNexoraCurrency('USD')" aria-label="Switch to US Dollars" aria-checked="false" role="radio">
+            <svg class="flag-icon" viewBox="0 0 32 32" width="16" height="16" aria-hidden="true" style="border-radius: 50%; display: inline-block; vertical-align: middle; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+  <clipPath id="us-flag-round-desktop"><circle cx="16" cy="16" r="16"/></clipPath>
+  <g clip-path="url(#us-flag-round-desktop)">
+    <rect width="32" height="32" fill="#B22234"/>
+    <rect y="4.57" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect y="13.71" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect y="22.86" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect width="15" height="16" fill="#3C3B6E"/>
+    <circle cx="4.5" cy="4.5" r="1" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="4.5" r="1" fill="#FFFFFF"/>
+    <circle cx="7.5" cy="8.5" r="1" fill="#FFFFFF"/>
+    <circle cx="4.5" cy="12.5" r="1" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="12.5" r="1" fill="#FFFFFF"/>
+  </g>
+</svg> <span class="cur-text">$ <span class="cur-code-hide">USD</span></span>
+          </button>
+        </div>
+
         <!-- Profile Circle Button -->
-        <a href="#pricing" class="header-circle-btn" aria-label="View pricing plans">
+        <a href="#pricing" class="header-circle-btn header-profile-btn" aria-label="View pricing plans">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
@@ -4156,6 +4364,37 @@
       <a href="#process" class="mobile-nav-link">How It Works</a>
       <a href="#contact" class="mobile-nav-link">Contact Studio</a>
     </nav>
+        <div class="mobile-currency-row">
+      <span class="mobile-currency-label">Pricing Region</span>
+      <div class="currency-switch-wrapper" id="currencySwitchMobile" role="radiogroup" aria-label="Currency Selector Mobile">
+        <button type="button" class="currency-toggle-btn active" data-cur="INR" onclick="setNexoraCurrency('INR')" aria-checked="true" role="radio">
+          <svg class="flag-icon" viewBox="0 0 32 32" width="16" height="16" aria-hidden="true" style="border-radius: 50%; display: inline-block; vertical-align: middle; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+  <rect width="32" height="10.67" fill="#FF9933"/>
+  <rect y="10.67" width="32" height="10.67" fill="#FFFFFF"/>
+  <rect y="21.33" width="32" height="10.67" fill="#138808"/>
+  <circle cx="16" cy="16" r="4.2" fill="none" stroke="#000080" stroke-width="0.9"/>
+  <circle cx="16" cy="16" r="1.2" fill="#000080"/>
+</svg> <span class="cur-text">&#8377; INR</span>
+        </button>
+        <button type="button" class="currency-toggle-btn" data-cur="USD" onclick="setNexoraCurrency('USD')" aria-checked="false" role="radio">
+          <svg class="flag-icon" viewBox="0 0 32 32" width="16" height="16" aria-hidden="true" style="border-radius: 50%; display: inline-block; vertical-align: middle; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+  <clipPath id="us-flag-round-mobile"><circle cx="16" cy="16" r="16"/></clipPath>
+  <g clip-path="url(#us-flag-round-mobile)">
+    <rect width="32" height="32" fill="#B22234"/>
+    <rect y="4.57" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect y="13.71" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect y="22.86" width="32" height="4.57" fill="#FFFFFF"/>
+    <rect width="15" height="16" fill="#3C3B6E"/>
+    <circle cx="4.5" cy="4.5" r="1" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="4.5" r="1" fill="#FFFFFF"/>
+    <circle cx="7.5" cy="8.5" r="1" fill="#FFFFFF"/>
+    <circle cx="4.5" cy="12.5" r="1" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="12.5" r="1" fill="#FFFFFF"/>
+  </g>
+</svg> <span class="cur-text">$ USD</span>
+        </button>
+      </div>
+    </div>
     <div class="mobile-nav-cta">
       <a href="https://wa.me/919032684083" target="_blank" rel="noopener" class="btn-mobile-order">Chat on WhatsApp &rarr;</a>
     </div>
@@ -4191,7 +4430,7 @@
         <a href="#process" class="hero-how-it-works-link">How it works</a>
 
         <!-- Price Anchor -->
-        <div class="hero-price-anchor">
+        <div class="hero-price-anchor" id="heroPriceAnchor">
           From <strong>&#8377;5,000</strong> &bull; Websites at <strong>&#8377;10,000</strong>
         </div>
 
@@ -4214,7 +4453,7 @@
                 <div class="hero-format-card-title">Websites</div>
                 <div class="hero-format-card-desc">Interactive 3D RSVPs</div>
               </div>
-              <div class="hero-format-card-price">&#8377;10,000 <span>&rarr;</span></div>
+              <div class="hero-format-card-price" data-hero-price="website">&#8377;10,000 <span>&rarr;</span></div>
             </button>
 
             <!-- Format 2: AI Cinema Video -->
@@ -4231,7 +4470,7 @@
                 <div class="hero-format-card-title">AI Video</div>
                 <div class="hero-format-card-desc">4K Likeness Cinema</div>
               </div>
-              <div class="hero-format-card-price">&#8377;10,000 <span>&rarr;</span></div>
+              <div class="hero-format-card-price" data-hero-price="video">&#8377;10,000 <span>&rarr;</span></div>
             </button>
 
             <!-- Format 3: Save the Date -->
@@ -4249,7 +4488,7 @@
                 <div class="hero-format-card-title">Save Date</div>
                 <div class="hero-format-card-desc">Animated Announcements</div>
               </div>
-              <div class="hero-format-card-price">&#8377;5,000 <span>&rarr;</span></div>
+              <div class="hero-format-card-price" data-hero-price="std">&#8377;5,000 <span>&rarr;</span></div>
             </button>
           </div>
         </div>
@@ -4378,7 +4617,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="bestseller">
             <div class="card-phone-stage theme-royal">
               <span class="card-badge-pill">BEST SELLER</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image / Wax Seal Envelope -->
                 <div class="mini-mockup-phone phone-left">
@@ -4400,8 +4639,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template0" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template0" data-buy-btn="website" data-item-name="Royal Heritage" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4414,7 +4653,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="exclusive">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FFF6E5 0%, #FAF0D9 100%); border: 1.5px solid #E6C875;">
               <span class="card-badge-pill" style="background: #C57D29; color: #FFF;">AYODHYA DIVINE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Ram Mandir Ornate Gate Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4436,8 +4675,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_rammandir" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Ram%20Mandir%20Divine%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_rammandir" data-buy-btn="website" data-item-name="Divine Ayodhya" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Divine%20Ayodhya%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4450,7 +4689,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="bestseller">
             <div class="card-phone-stage theme-kalyanam">
               <span class="card-badge-pill">SOUTH INDIAN</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4472,8 +4711,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template1" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Traditional%20Kalyanam%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template1" data-buy-btn="website" data-item-name="Royal Rajputana" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Rajputana%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4486,7 +4725,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="popular">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FDF9EE 0%, #F5ECDF 100%);">
               <span class="card-badge-pill" style="background: var(--color-gold); color: #231B1C;">ROYAL MANDAP</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4508,8 +4747,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template2" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Golden%20Mandap%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template2" data-buy-btn="website" data-item-name="Mughal Grandeur" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Mughal%20Grandeur%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4522,7 +4761,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="exclusive">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FBF0F2 0%, #F5E6E8 100%);">
               <span class="card-badge-pill" style="background: var(--color-burgundy); color: #FFF;">PALACE SUITE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Velvet Wax Seal Envelope Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4544,8 +4783,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template3" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Crimson%20Royal%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template3" data-buy-btn="website" data-item-name="South Indian Traditional" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20South%20Indian%20Traditional%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4558,7 +4797,7 @@
           <article class="editorial-card" data-category="hindu" data-tag="traditional">
             <div class="card-phone-stage theme-mandala">
               <span class="card-badge-pill">SACRED VOWS</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4580,8 +4819,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template4" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Vedic%20Mangalyam%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template4" data-buy-btn="website" data-item-name="Modern Minimalist" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Modern%20Minimalist%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4594,7 +4833,7 @@
           <article class="editorial-card" data-category="muslim" data-tag="exclusive">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #EEF7F2 0%, #E3EFE9 100%);">
               <span class="card-badge-pill" style="background: #1B5E3C; color: #FFF;">ROYAL NIKAH</span>
-              <span class="card-price-pill"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
+              <span class="card-price-pill" data-card-pill="website"><span class="strike">&#8377;15,000</span>&#8377;10,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4616,8 +4855,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_template5" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi%20Darbar%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;10,000</span>
+                <a class="btn-buy-card" id="btnBuy_template5" data-buy-btn="website" data-item-name="Boho Garden" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Boho%20Garden%20invitation%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="website">&#8377;10,000</span>
                 </a>
               </div>
             </div>
@@ -4658,8 +4897,8 @@
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">4K Ultra HD &bull; 16:9 Widescreen &bull; Custom Score</p>
                 </div>
                 <div class="video-card-pricing-group">
-                  <span class="video-card-price">&#8377;10,000</span>
-                  <a class="btn-buy-video-pill" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%204K%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  <span class="video-card-price" data-video-price="video">&#8377;10,000</span>
+                  <a class="btn-buy-video-pill" data-buy-btn="video" data-wa-param="Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%204K%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Heritage%204K%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                     Buy now
                   </a>
                 </div>
@@ -4697,8 +4936,8 @@
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">HD 16:9 &bull; Cinematic Motion &bull; Romantic Melody</p>
                 </div>
                 <div class="video-card-pricing-group">
-                  <span class="video-card-price">&#8377;10,000</span>
-                  <a class="btn-buy-video-pill" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi%20Jashn%20AI%20Wedding%20Reel%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  <span class="video-card-price" data-video-price="video">&#8377;10,000</span>
+                  <a class="btn-buy-video-pill" data-buy-btn="video" data-wa-param="Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi%20Jashn%20AI%20Wedding%20Reel%20for%20%E2%82%B910,000" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shahi%20Jashn%20AI%20Wedding%20Reel%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                     Buy now
                   </a>
                 </div>
@@ -4722,8 +4961,8 @@
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">Acoustic Guitar Vows &bull; Soft Pastel</p>
                 </div>
                 <div class="video-card-pricing-group">
-                  <span class="video-card-price">&#8377;10,000</span>
-                  <a class="btn-buy-video-pill" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20commission%20a%20Minimal%20Parisian%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  <span class="video-card-price" data-video-price="video">&#8377;10,000</span>
+                  <a class="btn-buy-video-pill" data-buy-btn="video" data-wa-param="Hi%20Nexora,%20I%20want%20to%20commission%20a%20Minimal%20Parisian%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20commission%20a%20Minimal%20Parisian%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                     Buy now
                   </a>
                 </div>
@@ -4747,8 +4986,8 @@
                   <p style="font-size: 0.8rem; color: var(--color-text-muted);">Heritage Nagada Drums &bull; Royal Velvet</p>
                 </div>
                 <div class="video-card-pricing-group">
-                  <span class="video-card-price">&#8377;10,000</span>
-                  <a class="btn-buy-video-pill" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20commission%20a%20Rajputana%20Splendor%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
+                  <span class="video-card-price" data-video-price="video">&#8377;10,000</span>
+                  <a class="btn-buy-video-pill" data-buy-btn="video" data-wa-param="Hi%20Nexora,%20I%20want%20to%20commission%20a%20Rajputana%20Splendor%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20commission%20a%20Rajputana%20Splendor%20AI%20Wedding%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener">
                     Buy now
                   </a>
                 </div>
@@ -4769,7 +5008,7 @@
           <article class="editorial-card" data-category="savedate" data-tag="bestseller">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FAF6EE 0%, #F3ECE0 100%); border: 1.5px solid #E5D5BC;">
               <span class="card-badge-pill" style="background: var(--color-gold); color: #231B1C;">SAND SCRATCH REVEAL</span>
-              <span class="card-price-pill"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
+              <span class="card-price-pill" data-card-pill="std"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4791,8 +5030,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_std0" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shoreline%20Reveal%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;5,000</span>
+                <a class="btn-buy-card" id="btnBuy_std0" data-buy-btn="std" data-item-name="Shoreline Reveal" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Shoreline%20Reveal%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="std">&#8377;5,000</span>
                 </a>
               </div>
             </div>
@@ -4805,7 +5044,7 @@
           <article class="editorial-card" data-category="savedate" data-tag="popular">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #F0F7F4 0%, #E2EFE9 100%); border: 1.5px solid #C4DFC8;">
               <span class="card-badge-pill" style="background: #1B5E3C; color: #FFF;">PEACOCK FEATHER SWIPE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
+              <span class="card-price-pill" data-card-pill="std"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4827,8 +5066,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_std1" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Blossom%20Touch%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;5,000</span>
+                <a class="btn-buy-card" id="btnBuy_std1" data-buy-btn="std" data-item-name="Blossom Touch" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Blossom%20Touch%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="std">&#8377;5,000</span>
                 </a>
               </div>
             </div>
@@ -4841,7 +5080,7 @@
           <article class="editorial-card" data-category="savedate" data-tag="new">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FDF7F4 0%, #F7EAE5 100%); border: 1.5px solid #EBD5CE;">
               <span class="card-badge-pill" style="background: var(--color-burgundy); color: #FFF;">BAROQUE FOG WIPE</span>
-              <span class="card-price-pill"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
+              <span class="card-price-pill" data-card-pill="std"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4863,8 +5102,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_std2" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Mirror%20Bloom%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;5,000</span>
+                <a class="btn-buy-card" id="btnBuy_std2" data-buy-btn="std" data-item-name="Mirror Bloom" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Mirror%20Bloom%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="std">&#8377;5,000</span>
                 </a>
               </div>
             </div>
@@ -4877,7 +5116,7 @@
           <article class="editorial-card" data-category="savedate" data-tag="exclusive">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #101726 0%, #1A2238 100%); border: 1.5px solid #2F3D5E;">
               <span class="card-badge-pill" style="background: #D4AF37; color: #0C121D;">MOONLIT LOTUS MIST</span>
-              <span class="card-price-pill"><span class="strike" style="color: #8C99B2;">&#8377;8,000</span><span style="color: #FFF;">&#8377;5,000</span></span>
+              <span class="card-price-pill" data-card-pill="std"><span class="strike" style="color: #8C99B2;">&#8377;8,000</span><span style="color: #FFF;">&#8377;5,000</span></span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4899,8 +5138,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_std3" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20The%20Moonlit%20Lotus%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;5,000</span>
+                <a class="btn-buy-card" id="btnBuy_std3" data-buy-btn="std" data-item-name="The Moonlit Lotus" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20The%20Moonlit%20Lotus%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="std">&#8377;5,000</span>
                 </a>
               </div>
             </div>
@@ -4913,7 +5152,7 @@
           <article class="editorial-card" data-category="savedate" data-tag="bestseller">
             <div class="card-phone-stage" style="background: linear-gradient(145deg, #FDF9EE 0%, #F6ECDF 100%); border: 1.5px solid #E6D2B0;">
               <span class="card-badge-pill" style="background: #C57D29; color: #FFF;">ROYAL CHANDELIER SCRATCH</span>
-              <span class="card-price-pill"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
+              <span class="card-price-pill" data-card-pill="std"><span class="strike">&#8377;8,000</span>&#8377;5,000</span>
               <div class="duo-phones-wrapper">
                 <!-- Left Phone: Intro Video Start Image -->
                 <div class="mini-mockup-phone phone-left">
@@ -4935,8 +5174,8 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                   <span>Preview Demo</span>
                 </button>
-                <a class="btn-buy-card" id="btnBuy_std4" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Radiance%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
-                  Buy now &mdash; <span class="card-btn-price">&#8377;5,000</span>
+                <a class="btn-buy-card" id="btnBuy_std4" data-buy-btn="std" data-item-name="Royal Radiance" href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Royal%20Radiance%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener">
+                  Buy now &mdash; <span class="card-btn-price" data-card-price="std">&#8377;5,000</span>
                 </a>
               </div>
             </div>
@@ -4970,8 +5209,8 @@
             <p style="font-size: 0.88rem; color: var(--color-text-muted);">Quick-to-share animated vertical announcements with 1-tap calendar sync.</p>
             
             <div class="pricing-rate-row">
-              <span class="pricing-original-strike">&#8377;8,000</span>
-              <span class="pricing-current-rate">&#8377;5,000</span>
+              <span class="pricing-original-strike" data-pricing-strike="std">&#8377;8,000</span>
+              <span class="pricing-current-rate" data-pricing-current="std">&#8377;5,000</span>
               <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; background: var(--color-rose-light); color: var(--color-burgundy); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">SAVE 37%</span>
             </div>
 
@@ -4983,20 +5222,20 @@
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Guaranteed Within 24-Hour Express Delivery</li>
             </ul>
 
-            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Digital%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener" class="btn-pricing-action outline">
-              Order Save the Date &mdash; &#8377;5,000
+            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Digital%20Save%20the%20Date%20for%20%E2%82%B95,000" target="_blank" rel="noopener" class="btn-pricing-action outline" data-pkg-btn="std">
+              Order Save the Date &mdash; <span data-pkg-price="std">&#8377;5,000</span>
             </a>
           </article>
 
           <!-- Package 2: AI Wedding Invitation Video (₹10,000 Fixed) -->
           <article class="pricing-card-ivory">
-            <span class="featured-badge-top" style="background: var(--color-gold); color: #231B1C;">AI CINEMA &bull; &#8377;10,000</span>
+            <span class="featured-badge-top" data-badge-price="video" style="background: var(--color-gold); color: #231B1C;">AI CINEMA &bull; &#8377;10,000</span>
             <h3 class="pricing-product-name">AI Wedding Video</h3>
             <p style="font-size: 0.88rem; color: var(--color-text-muted);">Photorealistic 4K cinematic 16:9 invitation reels with couple likeness and custom music score.</p>
             
             <div class="pricing-rate-row">
-              <span class="pricing-original-strike">&#8377;15,000</span>
-              <span class="pricing-current-rate">&#8377;10,000</span>
+              <span class="pricing-original-strike" data-pricing-strike="video">&#8377;15,000</span>
+              <span class="pricing-current-rate" data-pricing-current="video">&#8377;10,000</span>
               <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; background: var(--color-rose-light); color: var(--color-burgundy); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">SAVE 33%</span>
             </div>
 
@@ -5009,8 +5248,8 @@
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Guaranteed Within 24-Hour Express Delivery</li>
             </ul>
 
-            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20AI%20Wedding%20Invitation%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener" class="btn-pricing-action primary">
-              Order AI Video &mdash; &#8377;10,000
+            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20AI%20Wedding%20Invitation%20Video%20for%20%E2%82%B910,000" target="_blank" rel="noopener" class="btn-pricing-action primary" data-pkg-btn="video">
+              Order AI Video &mdash; <span data-pkg-price="video">&#8377;10,000</span>
             </a>
           </article>
 
@@ -5021,8 +5260,8 @@
             <p style="font-size: 0.88rem; color: var(--color-text-muted);">The flagship vertical invitation website with interactive RSVPs, map, and story.</p>
             
             <div class="pricing-rate-row">
-              <span class="pricing-original-strike">&#8377;15,000</span>
-              <span class="pricing-current-rate">&#8377;10,000</span>
+              <span class="pricing-original-strike" data-pricing-strike="website">&#8377;15,000</span>
+              <span class="pricing-current-rate" data-pricing-current="website">&#8377;10,000</span>
             </div>
 
             <ul class="pricing-feature-list">
@@ -5035,33 +5274,33 @@
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Guaranteed Within 24-Hour Express Delivery</li>
             </ul>
 
-            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Digital%20Wedding%20Website%20for%20%E2%82%B910,000" target="_blank" rel="noopener" class="btn-pricing-action primary">
-              Order Website &mdash; &#8377;10,000
+            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Digital%20Wedding%20Website%20for%20%E2%82%B910,000" target="_blank" rel="noopener" class="btn-pricing-action primary" data-pkg-btn="website">
+              Order Website &mdash; <span data-pkg-price="website">&#8377;10,000</span>
             </a>
           </article>
 
           <!-- Package 4: Grand Studio Combo (₹18,000) -->
           <article class="pricing-card-ivory">
-            <span class="featured-badge-top" style="background: var(--color-burgundy-dark); color: #FAF7F2;">ALL-IN-ONE &bull; SAVE &#8377;7,000</span>
+            <span class="featured-badge-top" data-badge-price="combo" style="background: var(--color-burgundy-dark); color: #FAF7F2;">ALL-IN-ONE &bull; SAVE &#8377;7,000</span>
             <h3 class="pricing-product-name">Grand Studio Combo</h3>
-            <p style="font-size: 0.88rem; color: var(--color-text-muted);">The complete luxury suite: Wedding Website (&#8377;10k) + AI Video (&#8377;10k) + Save the Date (&#8377;5k).</p>
+            <p id="comboPackageDesc" style="font-size: 0.88rem; color: var(--color-text-muted);">The complete luxury suite: Wedding Website (&#8377;10k) + AI Video (&#8377;10k) + Save the Date (&#8377;5k).</p>
             
             <div class="pricing-rate-row">
-              <span class="pricing-original-strike">&#8377;25,000</span>
-              <span class="pricing-current-rate">&#8377;18,000</span>
+              <span class="pricing-original-strike" data-pricing-strike="combo">&#8377;25,000</span>
+              <span class="pricing-current-rate" data-pricing-current="combo">&#8377;18,000</span>
             </div>
 
             <ul class="pricing-feature-list">
-              <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Full Wedding Website (&#8377;10,000 Value)</li>
-              <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> AI Cinematic Video (&#8377;10,000 Value)</li>
-              <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Digital Save the Date (&#8377;5,000 Value)</li>
+              <li class="pricing-feature-item" id="comboBulletWeb"><span class="feature-check">&#10003;</span> Full Wedding Website (&#8377;10,000 Value)</li>
+              <li class="pricing-feature-item" id="comboBulletVid"><span class="feature-check">&#10003;</span> AI Cinematic Video (&#8377;10,000 Value)</li>
+              <li class="pricing-feature-item" id="comboBulletStd"><span class="feature-check">&#10003;</span> Digital Save the Date (&#8377;5,000 Value)</li>
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Video embedded directly in website</li>
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Dedicated WhatsApp Design Concierge</li>
               <li class="pricing-feature-item"><span class="feature-check">&#10003;</span> Guaranteed Within 24-Hour Express Delivery</li>
             </ul>
 
-            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Grand%20Studio%20Combo%20for%20%E2%82%B918,000" target="_blank" rel="noopener" class="btn-pricing-action outline">
-              Order Combo &mdash; &#8377;18,000
+            <a href="https://wa.me/919032684083?text=Hi%20Nexora,%20I%20want%20to%20order%20the%20Grand%20Studio%20Combo%20for%20%E2%82%B918,000" target="_blank" rel="noopener" class="btn-pricing-action outline" data-pkg-btn="combo">
+              Order Combo &mdash; <span data-pkg-price="combo">&#8377;18,000</span>
             </a>
           </article>
 
@@ -5127,7 +5366,7 @@
               <span class="logo-brand-sub">Wedding Studio</span>
             </div>
           </div>
-          <p class="footer-brand-desc">
+          <p class="footer-brand-desc" id="footerBespokeSummary">
             Bespoke luxury digital wedding invitation websites (&#8377;10k), Save the Dates (&#8377;5k), and cinematic AI wedding films (&#8377;5k) crafted to leave unforgettable first impressions.
           </p>
           <div class="footer-badges-row">
@@ -5422,6 +5661,268 @@
   <script>
     (function () {
       'use strict';
+
+    // ========================================================================
+    // GLOBAL DUAL-CURRENCY ENGINE (INR / USD)
+    // Intelligent Cross-Border Regional Pricing & Dynamic WhatsApp Routing
+    // ========================================================================
+    var PRICING_CONFIG = {
+      INR: {
+        code: 'INR',
+        symbol: '&#8377;',
+        symbolText: '₹',
+        std: { current: '&#8377;5,000', currentText: '₹5,000', strike: '&#8377;8,000', raw: 5000 },
+        website: { current: '&#8377;10,000', currentText: '₹10,000', strike: '&#8377;15,000', raw: 10000 },
+        video: { current: '&#8377;10,000', currentText: '₹10,000', strike: '&#8377;15,000', raw: 10000 },
+        combo: { current: '&#8377;18,000', currentText: '₹18,000', strike: '&#8377;25,000', save: 'SAVE &#8377;7,000', raw: 18000 },
+        heroAnchor: 'From <strong>&#8377;5,000</strong> &bull; Websites at <strong>&#8377;10,000</strong>',
+        heroWebsites: '&#8377;10,000 <span>&rarr;</span>',
+        heroVideos: '&#8377;10,000 <span>&rarr;</span>',
+        heroStd: '&#8377;5,000 <span>&rarr;</span>',
+        catalogSubWebsite: 'Each website hand-crafted at fixed ₹10,000 — personalized to your love story and designed to be unforgettable.',
+        catalogSubVideo: 'High-fashion 4K 16:9 cinematic video reels with couple likeness, romantic voiceover & custom score at fixed ₹10,000.',
+        catalogSubStd: 'Interactive scratch-off & swipe animated vertical announcements with one-tap calendar sync at fixed ₹5,000.',
+        comboBadge: 'ALL-IN-ONE &bull; SAVE &#8377;7,000',
+        comboDesc: 'The complete luxury suite: Wedding Website (&#8377;10k) + AI Video (&#8377;10k) + Save the Date (&#8377;5k).',
+        comboBulletWeb: 'Full Wedding Website (&#8377;10,000 Value)',
+        comboBulletVid: 'AI Cinematic Video (&#8377;10,000 Value)',
+        comboBulletStd: 'Digital Save the Date (&#8377;5,000 Value)',
+        videoBadge: 'AI CINEMA &bull; &#8377;10,000',
+        videoModalRate: '&#8377;10,000',
+        footerSummary: 'Bespoke luxury digital wedding invitation websites (&#8377;10k), Save the Dates (&#8377;5k), and cinematic AI wedding films (&#8377;10k) crafted for discerning couples across the globe.'
+      },
+      USD: {
+        code: 'USD',
+        symbol: '$',
+        symbolText: '$',
+        std: { current: '$99', currentText: '$99', strike: '$149', raw: 99 },
+        website: { current: '$199', currentText: '$199', strike: '$299', raw: 199 },
+        video: { current: '$199', currentText: '$199', strike: '$299', raw: 199 },
+        combo: { current: '$349', currentText: '$349', strike: '$499', save: 'SAVE $150', raw: 349 },
+        heroAnchor: 'From <strong>$99</strong> &bull; Websites at <strong>$199</strong>',
+        heroWebsites: '$199 <span>&rarr;</span>',
+        heroVideos: '$199 <span>&rarr;</span>',
+        heroStd: '$99 <span>&rarr;</span>',
+        catalogSubWebsite: 'Each website hand-crafted at fixed $199 — personalized to your love story and designed to be unforgettable.',
+        catalogSubVideo: 'High-fashion 4K 16:9 cinematic video reels with couple likeness, romantic voiceover & custom score at fixed $199.',
+        catalogSubStd: 'Interactive scratch-off & swipe animated vertical announcements with one-tap calendar sync at fixed $99.',
+        comboBadge: 'ALL-IN-ONE &bull; SAVE $150',
+        comboDesc: 'The complete luxury suite: Wedding Website ($199) + AI Video ($199) + Save the Date ($99).',
+        comboBulletWeb: 'Full Wedding Website ($199 Value)',
+        comboBulletVid: 'AI Cinematic Video ($199 Value)',
+        comboBulletStd: 'Digital Save the Date ($99 Value)',
+        videoBadge: 'AI CINEMA &bull; $199',
+        videoModalRate: '$199',
+        footerSummary: 'Bespoke luxury digital wedding invitation websites ($199), Save the Dates ($99), and cinematic AI wedding films ($199) crafted for discerning couples across the globe.'
+      }
+    };
+
+    var currentCurrency = 'INR';
+
+    function detectInitialCurrency() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var curParam = params.get('cur') || params.get('currency');
+        if (curParam) {
+          var clean = curParam.trim().toUpperCase();
+          if (clean === 'USD' || clean === 'INR') return clean;
+        }
+        var regParam = params.get('region');
+        if (regParam) {
+          var r = regParam.trim().toUpperCase();
+          if (r === 'US' || r === 'USA') return 'USD';
+          if (r === 'IN' || r === 'IND') return 'INR';
+        }
+        var stored = localStorage.getItem('nexora_currency');
+        if (stored && (stored === 'USD' || stored === 'INR')) {
+          return stored;
+        }
+        var tz = '';
+        if (window.Intl && typeof window.Intl.DateTimeFormat === 'function') {
+          tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        }
+        if (tz.indexOf('America/') === 0 || tz.indexOf('US/') === 0 || tz.indexOf('Canada/') === 0) {
+          return 'USD';
+        }
+      } catch (e) {
+        console.warn('Currency detection exception:', e);
+      }
+      return 'INR';
+    }
+
+    window.getNexoraPricing = function () {
+      return PRICING_CONFIG[currentCurrency] || PRICING_CONFIG.INR;
+    };
+
+    window.getNexoraCurrency = function () {
+      return currentCurrency;
+    };
+
+    window.setNexoraCurrency = function (cur, syncUrl) {
+      if (cur !== 'INR' && cur !== 'USD') cur = 'INR';
+      currentCurrency = cur;
+      window.__nexoraCurrency = cur;
+      try {
+        localStorage.setItem('nexora_currency', cur);
+        document.documentElement.setAttribute('data-currency', cur);
+        if (syncUrl !== false && window.history && window.history.replaceState) {
+          var url = new URL(window.location);
+          url.searchParams.set('cur', cur.toLowerCase());
+          window.history.replaceState({}, '', url);
+        }
+      } catch (e) {}
+
+      applyCurrencyToDOM(cur);
+    };
+
+    function applyCurrencyToDOM(cur) {
+      var c = PRICING_CONFIG[cur] || PRICING_CONFIG.INR;
+
+      // 1. Switcher buttons in Header & Mobile Drawer
+      document.querySelectorAll('.currency-toggle-btn').forEach(function (btn) {
+        if (btn.getAttribute('data-cur') === cur) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-checked', 'false');
+        }
+      });
+
+      // 2. Hero Section
+      var heroAnchor = document.getElementById('heroPriceAnchor');
+      if (heroAnchor) heroAnchor.innerHTML = c.heroAnchor;
+
+      var heroWeb = document.querySelector('[data-hero-price="website"]');
+      if (heroWeb) heroWeb.innerHTML = c.heroWebsites;
+      var heroVid = document.querySelector('[data-hero-price="video"]');
+      if (heroVid) heroVid.innerHTML = c.heroVideos;
+      var heroStd = document.querySelector('[data-hero-price="std"]');
+      if (heroStd) heroStd.innerHTML = c.heroStd;
+
+      // 3. Catalog Header Subtitle
+      var catSub = document.getElementById('catalogHeaderSub');
+      if (catSub && typeof currentCatalogType !== 'undefined') {
+        if (currentCatalogType === 'aivideos') catSub.textContent = c.catalogSubVideo;
+        else if (currentCatalogType === 'savedates') catSub.textContent = c.catalogSubStd;
+        else catSub.textContent = c.catalogSubWebsite;
+      }
+
+      // 4. Template Cards (Websites)
+      document.querySelectorAll('[data-card-pill="website"]').forEach(function (el) {
+        el.innerHTML = '<span class="strike">' + c.website.strike + '</span>' + c.website.current;
+      });
+      document.querySelectorAll('[data-buy-btn="website"]').forEach(function (btn) {
+        var item = btn.getAttribute('data-item-name') || 'Wedding Website';
+        var priceSpan = btn.querySelector('.card-btn-price');
+        if (priceSpan) priceSpan.innerHTML = c.website.current;
+        btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + item + ' invitation for ' + c.website.currentText);
+      });
+
+      // 5. AI Video Cards
+      document.querySelectorAll('[data-video-price="video"]').forEach(function (el) {
+        el.innerHTML = c.video.current;
+      });
+      document.querySelectorAll('[data-buy-btn="video"]').forEach(function (btn) {
+        var baseParam = btn.getAttribute('data-wa-param') || '';
+        var decoded = decodeURIComponent(baseParam);
+        var cleaned = decoded.replace(/(for\s+)(₹|&#8377;|\$)[0-9,]+/i, '$1' + c.video.currentText);
+        if (cleaned === decoded) {
+          cleaned = decoded + ' for ' + c.video.currentText;
+        }
+        btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent(cleaned);
+      });
+
+      // 6. Save the Date Cards
+      document.querySelectorAll('[data-card-pill="std"]').forEach(function (el) {
+        var strikeEl = el.querySelector('.strike');
+        var colorStrike = strikeEl && strikeEl.style.color ? strikeEl.style.color : '';
+        if (colorStrike) {
+          el.innerHTML = '<span class="strike" style="color: ' + colorStrike + ';">' + c.std.strike + '</span><span style="color: #FFF;">' + c.std.current + '</span>';
+        } else {
+          el.innerHTML = '<span class="strike">' + c.std.strike + '</span>' + c.std.current;
+        }
+      });
+      document.querySelectorAll('[data-buy-btn="std"]').forEach(function (btn) {
+        var item = btn.getAttribute('data-item-name') || 'Save the Date';
+        var priceSpan = btn.querySelector('.card-btn-price');
+        if (priceSpan) priceSpan.innerHTML = c.std.current;
+        btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + item + ' Save the Date for ' + c.std.currentText);
+      });
+
+      // 7. Pricing Packages Section
+      var p1Strike = document.querySelector('[data-pricing-strike="std"]');
+      if (p1Strike) p1Strike.innerHTML = c.std.strike;
+      var p1Curr = document.querySelector('[data-pricing-current="std"]');
+      if (p1Curr) p1Curr.innerHTML = c.std.current;
+      var p1Price = document.querySelector('[data-pkg-price="std"]');
+      if (p1Price) p1Price.innerHTML = c.std.current;
+      var p1Btn = document.querySelector('[data-pkg-btn="std"]');
+      if (p1Btn) p1Btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the Digital Save the Date for ' + c.std.currentText);
+
+      var p2Badge = document.querySelector('[data-badge-price="video"]');
+      if (p2Badge) p2Badge.innerHTML = c.videoBadge;
+      var p2Strike = document.querySelector('[data-pricing-strike="video"]');
+      if (p2Strike) p2Strike.innerHTML = c.video.strike;
+      var p2Curr = document.querySelector('[data-pricing-current="video"]');
+      if (p2Curr) p2Curr.innerHTML = c.video.current;
+      var p2Price = document.querySelector('[data-pkg-price="video"]');
+      if (p2Price) p2Price.innerHTML = c.video.current;
+      var p2Btn = document.querySelector('[data-pkg-btn="video"]');
+      if (p2Btn) p2Btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the AI Wedding Invitation Video for ' + c.video.currentText);
+
+      var p3Strike = document.querySelector('[data-pricing-strike="website"]');
+      if (p3Strike) p3Strike.innerHTML = c.website.strike;
+      var p3Curr = document.querySelector('[data-pricing-current="website"]');
+      if (p3Curr) p3Curr.innerHTML = c.website.current;
+      var p3Price = document.querySelector('[data-pkg-price="website"]');
+      if (p3Price) p3Price.innerHTML = c.website.current;
+      var p3Btn = document.querySelector('[data-pkg-btn="website"]');
+      if (p3Btn) p3Btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the Digital Wedding Website for ' + c.website.currentText);
+
+      var p4Badge = document.querySelector('[data-badge-price="combo"]');
+      if (p4Badge) p4Badge.innerHTML = c.comboBadge;
+      var p4Desc = document.getElementById('comboPackageDesc');
+      if (p4Desc) p4Desc.innerHTML = c.comboDesc;
+      var p4Strike = document.querySelector('[data-pricing-strike="combo"]');
+      if (p4Strike) p4Strike.innerHTML = c.combo.strike;
+      var p4Curr = document.querySelector('[data-pricing-current="combo"]');
+      if (p4Curr) p4Curr.innerHTML = c.combo.current;
+      var p4Price = document.querySelector('[data-pkg-price="combo"]');
+      if (p4Price) p4Price.innerHTML = c.combo.current;
+      var b1 = document.getElementById('comboBulletWeb');
+      if (b1) b1.innerHTML = '<span class="feature-check">&#10003;</span> ' + c.comboBulletWeb;
+      var b2 = document.getElementById('comboBulletVid');
+      if (b2) b2.innerHTML = '<span class="feature-check">&#10003;</span> ' + c.comboBulletVid;
+      var b3 = document.getElementById('comboBulletStd');
+      if (b3) b3.innerHTML = '<span class="feature-check">&#10003;</span> ' + c.comboBulletStd;
+      var p4Btn = document.querySelector('[data-pkg-btn="combo"]');
+      if (p4Btn) p4Btn.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the Grand Studio Combo for ' + c.combo.currentText);
+
+      // 8. Footer
+      var foot = document.getElementById('footerBespokeSummary');
+      if (foot) foot.innerHTML = c.footerSummary;
+
+      // 9. Simulator and Video Modal if active
+      var vidRate = document.getElementById('videoModalRate');
+      if (vidRate) vidRate.innerHTML = c.video.current;
+
+      if (typeof window.refreshSimPricing === 'function') {
+        window.refreshSimPricing();
+      }
+    }
+
+    // Auto-detect and boot currency immediately
+    currentCurrency = detectInitialCurrency();
+    window.__nexoraCurrency = currentCurrency;
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        setNexoraCurrency(currentCurrency, false);
+      });
+    } else {
+      setNexoraCurrency(currentCurrency, false);
+    }
+
 
       // 1. Preloader Fadeout
       const preloader = document.getElementById('preloader');
@@ -6090,7 +6591,7 @@
         if (type === 'aivideos') {
           if (tabAIVideos) tabAIVideos.classList.add('active');
           headTitle.textContent = 'Cinematic AI wedding invitation videos.';
-          headSub.textContent = 'High-fashion 4K 16:9 cinematic video reels with couple likeness, romantic voiceover & custom score at fixed ₹10,000.';
+          headSub.textContent = (window.getNexoraPricing ? window.getNexoraPricing().catalogSubVideo : 'High-fashion 4K 16:9 cinematic video reels with couple likeness, romantic voiceover & custom score.');
           if (grid) grid.style.display = 'none';
           if (stdGrid) stdGrid.style.display = 'none';
           if (aiGrid) aiGrid.style.display = 'grid';
@@ -6110,7 +6611,7 @@
           currentPrice = 5000;
           if (tabSaveDates) tabSaveDates.classList.add('active');
           headTitle.textContent = 'Digital Save the Date announcements.';
-          headSub.textContent = 'Interactive scratch-off & swipe animated vertical announcements with one-tap calendar sync at fixed ₹5,000.';
+          headSub.textContent = (window.getNexoraPricing ? window.getNexoraPricing().catalogSubStd : 'Interactive scratch-off & swipe animated vertical announcements with one-tap calendar sync.');
           if (grid) grid.style.display = 'none';
           if (aiGrid) aiGrid.style.display = 'none';
           if (stdGrid) stdGrid.style.display = 'grid';
@@ -6125,7 +6626,7 @@
           currentPrice = 10000;
           if (tabInvites) tabInvites.classList.add('active');
           headTitle.textContent = 'Our digital wedding invitation websites.';
-          headSub.textContent = 'Each website hand-crafted at fixed ₹10,000 — personalized to your love story and designed to be unforgettable.';
+          headSub.textContent = (window.getNexoraPricing ? window.getNexoraPricing().catalogSubWebsite : 'Each website hand-crafted — personalized to your love story and designed to be unforgettable.');
           if (grid) grid.style.display = 'grid';
           if (aiGrid) aiGrid.style.display = 'none';
           if (stdGrid) stdGrid.style.display = 'none';
@@ -6268,24 +6769,30 @@
         const orderPrice = document.getElementById('simOrderWaPrice');
         const btnOrder = document.getElementById('btnSimOrderWa');
 
+        var pr = window.getNexoraPricing ? window.getNexoraPricing() : null;
+        var stdPriceHtml = pr ? pr.std.current : '&#8377;5,000';
+        var stdPriceTxt = pr ? pr.std.currentText : '₹5,000';
+        var webPriceHtml = pr ? pr.website.current : '&#8377;10,000';
+        var webPriceTxt = pr ? pr.website.currentText : '₹10,000';
+
         if (mode === 'savedate') {
           btnStd.classList.add('active');
           btnWeb.classList.remove('active');
           viewStd.style.display = 'block';
           viewWeb.style.display = 'none';
           bottomTier.textContent = 'Digital Save The Date Card';
-          bottomPrice.innerHTML = '&#8377;5,000';
-          orderPrice.innerHTML = '&#8377;5,000';
-          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Save the Date card for ₹5,000.');
+          bottomPrice.innerHTML = stdPriceHtml;
+          orderPrice.innerHTML = stdPriceHtml;
+          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Save the Date card for ' + stdPriceTxt + '.');
         } else {
           btnWeb.classList.add('active');
           btnStd.classList.remove('active');
           viewWeb.style.display = 'block';
           viewStd.style.display = 'none';
           bottomTier.textContent = 'Bespoke Wedding Website Suite';
-          bottomPrice.innerHTML = '&#8377;10,000';
-          orderPrice.innerHTML = '&#8377;10,000';
-          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Wedding Website for ₹10,000.');
+          bottomPrice.innerHTML = webPriceHtml;
+          orderPrice.innerHTML = webPriceHtml;
+          btnOrder.href = 'https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + activeDemoTemplate + ' Wedding Website for ' + webPriceTxt + '.');
         }
       };
 
@@ -6340,7 +6847,9 @@
       };
 
       window.openVideoOrder = function (styleName) {
-        window.open('https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + styleName + ' AI wedding video for ₹10,000.'), '_blank');
+        var pr = window.getNexoraPricing ? window.getNexoraPricing() : null;
+        var videoPriceTxt = pr ? pr.video.currentText : '₹10,000';
+        window.open('https://wa.me/919032684083?text=' + encodeURIComponent('Hi Nexora, I want to order the ' + styleName + ' AI wedding video for ' + videoPriceTxt + '.'), '_blank');
       };
 
       window.openAIVideoModal = function (videoSrc, videoTitle, orderStyleName, badgeText) {
@@ -6355,8 +6864,12 @@
 
         if (titleEl) titleEl.textContent = videoTitle;
         if (badgeEl) badgeEl.textContent = badgeText || 'CINEMATIC AI REEL';
+        var pr = window.getNexoraPricing ? window.getNexoraPricing() : null;
+        var videoPriceTxt = pr ? pr.video.currentText : '₹10,000';
+        var videoRateEl = document.getElementById('videoModalRate');
+        if (videoRateEl && pr) videoRateEl.innerHTML = pr.video.current;
         if (waBtn) {
-          const text = encodeURIComponent('Hi Nexora, I watched the preview of ' + (orderStyleName || videoTitle) + ' and want to order it for ₹10,000.');
+          const text = encodeURIComponent('Hi Nexora, I watched the preview of ' + (orderStyleName || videoTitle) + ' and want to order it for ' + videoPriceTxt + '.');
           waBtn.href = 'https://wa.me/919032684083?text=' + text;
         }
 
@@ -6567,7 +7080,7 @@
       </div>
       <div class="video-modal-footer">
         <div class="video-modal-pricing">
-          <span class="video-modal-rate">&#8377;10,000</span>
+          <span class="video-modal-rate" id="videoModalRate">&#8377;10,000</span>
           <span class="video-modal-sub">Delivered in 4K within 24 Hours &bull; Couple Likeness</span>
         </div>
         <a class="btn-video-order-wa" id="btnVideoOrderWa" href="https://wa.me/919032684083" target="_blank" rel="noopener">
